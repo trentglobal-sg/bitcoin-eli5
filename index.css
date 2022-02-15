@@ -1,0 +1,45 @@
+.bitcoin-logo {
+    color: orange;
+}
+
+#parent-container {
+    background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
+}
+
+/* navbar  */
+
+/* landing image */
+#landing-image {
+    width: 100%;
+}
+
+#landing-image-parent-div {
+    position: relative;
+}
+
+#landing-image-text {
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    /* Centering the textbox in the parent div  */
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    text-align: center;
+    color: white;
+}
+
+/* cards  */
+
+/* footer  */
+#facebook-btn {
+    background-color: #3b5998;
+}
+#linkedin-btn {
+    background-color: #0082ca;
+}
+#github-btn {
+    background-color: #333333;
+}
