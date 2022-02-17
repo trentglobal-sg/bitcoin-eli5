@@ -1,0 +1,54 @@
+/* Standardized palette */
+
+/* gradient backgrounds */
+.bg-radial-4 {
+    background: rgb(241, 251, 255);
+    background: radial-gradient(circle, rgba(241, 251, 255, 1) 0%, rgba(135, 192, 205, 1) 33%, rgba(40, 104, 105, 1) 66%, rgba(9, 43, 50, 1) 100%);
+}
+.bg-radial-2 {
+    background: rgb(40, 104, 105);
+    background: radial-gradient(circle, rgba(40, 104, 105, 1) 0%, rgba(9, 43, 50, 1) 100%);
+}
+/* single colored backgrounds */
+.bg-grey {
+    background-color: #3c4152;
+}
+.bg-dark-green {
+    background-color: #092b32;
+}
+.bg-white {
+    background-color: #f1fbff;
+}
+.bg-light-green {
+    background-color: #87c0cd;
+}
+.bg-green {
+    background-color: #286869;
+}
+/* font colors */
+.font-grey {
+    color: #3c4152;
+}
+.font-dark-green {
+    color: #092b32;
+}
+.font-white {
+    color: #f1fbff;
+}
+.font-light-green {
+    color: #87c0cd;
+}
+.font-green {
+    color: #286869;
+}
+
+/* google font families  */
+.font-h1 {
+    font-family: "Exo", sans-serif;
+}
+.font-h2 {
+    font-family: "Nobile", sans-serif;
+}
+.font-p {
+    font-family: "Heebo", sans-serif;
+}

@@ -1,12 +1,16 @@
+/* debugging tools */
+.debug {
+    border: 1px red solid;
+}
+
 .bitcoin-logo {
     color: orange;
 }
 
-#parent-container {
-    background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%);
-}
-
 /* navbar  */
+.dropdown-item {
+    color: #f1fbff;
+}
 
 /* landing image */
 #landing-image {
@@ -18,20 +22,69 @@
 }
 
 #landing-image-text {
-    position: absolute;
-    width: 50%;
-    height: 50%;
+    /* Sizing */
+    width: 70%;
+    height: 70%;
     /* Centering the textbox in the parent div  */
+    position: absolute;
     margin: auto;
     left: 0;
     right: 0;
     top: 0;
     bottom: 0;
+    /* Aligning the divs inside */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    /* Asthetics */
+    background-color: #3c4152a9;
     text-align: center;
-    color: white;
+    border-radius: 12% 88% 11% 89% / 86% 12% 88% 14%;
+}
+
+#lending-image-text-1 {
+    font-size: 1.5em;
+}
+
+#lending-image-text-2 {
+    font-size: 1em;
+}
+
+#lending-image-btn {
+    font-size: 1em;
+    padding: 0px 20px;
 }
 
 /* cards  */
+.card-left {
+    text-align: left;
+}
+.card-right {
+    text-align: right;
+}
+
+.card-div {
+    display: flex;
+}
+.card {
+    border: none;
+    margin-bottom: 1em;
+    border-radius: 5% 95% 5% 95% / 95% 5% 95% 5%;
+    overflow: hidden;
+}
+#card-1 {
+    background-image: url("/images/index/card-1.jpeg");
+}
+#card-2 {
+    background-image: url("/images/index/card-2.jpg");
+}
+#card-3 {
+    background-image: url("/images/index/card-3.jpeg");
+}
+#card-4 {
+    background-image: url("/images/index/card-4.jpeg");
+}
 
 /* footer  */
 #facebook-btn {
@@ -42,4 +95,7 @@
 }
 #github-btn {
     background-color: #333333;
+}
+#footer-top {
+    background-color: #3c4152bd;
 }

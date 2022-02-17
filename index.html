@@ -5,24 +5,32 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+        <!-- Animate CSS  -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
         <!-- Font Awesome CSS  -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+        <!-- Google Font CSS -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Exo:wght@900&family=Heebo&family=Nobile:ital,wght@1,500&display=swap" rel="stylesheet" />
         <!-- Own CSS -->
         <link rel="stylesheet" href="index.css" />
+        <link rel="stylesheet" href="font-and-colors.css" />
 
         <!-- Title and Favicon  -->
         <title>Bitcoin ELI5</title>
         <link rel="icon" type="image/x-icon" href="/images/favicon.svg" />
     </head>
+
     <body>
         <!-- Parent Container  -->
-        <div id="parent-container">
+        <div class="bg-radial-4" id="parent-container">
             <!-- Navbar  -->
-            <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+            <nav class="navbar navbar-dark navbar-expand-lg sticky-top bg-radial-2 font-h1 font-white">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="#"> <i class="fa-brands fa-bitcoin bitcoin-logo"></i> Bitcoin ELI5</a>
+                    <div class="navbar-brand"><i class="fa-brands fa-bitcoin bitcoin-logo"></i> Bitcoin ELI5</div>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -31,73 +39,72 @@
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" href="#">Home</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Link</a>
-                            </li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Dropdown </a>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="#">Action</a></li>
-                                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                                    <li><hr class="dropdown-divider" /></li>
-                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Topics </a>
+                                <ul class="dropdown-menu bg-radial-2 font-white" aria-labelledby="navbarDropdown">
+                                    <li class="dropdown-item">History</li>
+                                    <li class="dropdown-item">Security</li>
+                                    <li class="dropdown-item">Scarcity</li>
+                                    <li class="dropdown-item">Decentralization</li>
                                 </ul>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-                            </li>
                         </ul>
-                        <form class="d-flex">
-                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-                            <button class="btn btn-outline-success" type="submit">Search</button>
-                        </form>
                     </div>
                 </div>
             </nav>
             <!-- Landing Page Image  -->
             <div id="landing-image-parent-div">
-                <img id="landing-image" src="/images/index/index-main.jpeg" alt="Landing Page Bitcoin Image" />
+                <img id="landing-image" src="/images/index/landing-image-high-res.jpg" alt="Landing Page Blockchain Image" />
                 <div id="landing-image-text">
-                    <div>Demystifying Bitcoin, explaining it like you are five.</div>
-                    <button>Start your journey here</button>
+                    <div id="lending-image-text-1" class="font-white font-h1">Bitcoin ELI5</div>
+                    <div id="lending-image-text-2" class="font-white font-h2">(Explained Like I'm Five)</div>
+                    <button id="lending-image-btn" class="btn btn-outline-light" type="button">Start your journey</button>
                 </div>
             </div>
             <!-- Cards -->
             <div class="container mt-3 mb-3">
                 <div class="row">
                     <div class="col">
-                        <div class="card" style="width: 18rem">
-                            <img src="/images/index/card1.jpeg" class="card-img-top" alt="..." />
-                            <div class="card-body">
-                                <h5 class="card-title">Simple Examples</h5>
-                                <p class="card-text">The use of simple examples help the reader ease into a complex topic.</p>
+                        <div class="card animate__animated animate__bounceInUp" style="width: 18rem">
+                            <div class="card-div" id="card-1">
+                                <div class="" style="width: 200px"></div>
+                                <div class="card-body card-right bg-grey font-white">
+                                    <h5 class="card-title font-h1">History</h5>
+                                    <p class="card-text font-p">Review the history of Bitcoin, Satoshi and Bitcoin's meteoric rise.</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="col">
-                        <div class="card" style="width: 18rem">
-                            <img src="/images/index/card1.jpeg" class="card-img-top" alt="..." />
-                            <div class="card-body">
-                                <h5 class="card-title">Concise and Accurate</h5>
-                                <p class="card-text">This program focuses on the most important concepts.</p>
+                        <div class="card animate__animated animate__bounceInUp" style="width: 18rem">
+                            <div class="card-div" id="card-2">
+                                <div class="card-body card-left bg-grey font-white">
+                                    <h5 class="card-title font-h1">Security</h5>
+                                    <p class="card-text font-p">Discover more about the cryptography behind Bitcoin and Proof of Work.</p>
+                                </div>
+                                <div class="" style="width: 120%"></div>
                             </div>
                         </div>
                     </div>
                     <div class="col">
-                        <div class="card" style="width: 18rem">
-                            <img src="/images/index/card1.jpeg" class="card-img-top" alt="..." />
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <div class="card animate__animated animate__bounceInUp" style="width: 18rem">
+                            <div class="card-div" id="card-3">
+                                <div class="" style="width: 120%"></div>
+                                <div class="card-body card-right bg-grey font-white">
+                                    <h5 class="card-title font-h1">Scarcity</h5>
+                                    <p class="card-text font-p">Learn about why Bitcoin is scarce, and what is the halving event.</p>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="col">
-                        <div class="card" style="width: 18rem">
-                            <img src="/images/index/card1.jpeg" class="card-img-top" alt="..." />
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <div class="card animate__animated animate__bounceInUp" style="width: 18rem">
+                            <div class="card-div" id="card-4">
+                                <div class="card-body card-left bg-grey font-white">
+                                    <h5 class="card-title font-h1">Decentralization</h5>
+                                    <p class="card-text font-p">Understand why is Bitcoin censorship resistant and how anyone can run a node.</p>
+                                </div>
+                                <div class="" style="width: 120%"></div>
                             </div>
                         </div>
                     </div>
@@ -106,8 +113,8 @@
             <!-- Footer  -->
             <footer class="bg-light text-center text-white">
                 <!-- Copyright -->
-                <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)"><a data-bs-toggle="modal" data-bs-target="#terms"> Terms of Use</a> | <a data-bs-toggle="modal" data-bs-target="#legal">Legal Notice</a></div>
-                <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.5)">
+                <div class="text-center p-3 font-p" id="footer-top"><a data-bs-toggle="modal" data-bs-target="#terms"> Terms of Use</a> | <a data-bs-toggle="modal" data-bs-target="#legal">Legal Notice</a></div>
+                <div class="text-center p-3 bg-grey">
                     <div>
                         <!-- Facebook -->
                         <a class="btn btn-primary m-2" id="facebook-btn" href="https://www.facebook.com/tbooons" role="button"><i class="fab fa-facebook-f"></i></a>
@@ -116,7 +123,7 @@
                         <!-- Github -->
                         <a class="btn btn-primary m-2" id="github-btn" href="https://github.com/Tayboonsiang90" role="button"><i class="fab fa-github"></i></a>
                     </div>
-                    <div>© 2022 Tay Boon Siang</div>
+                    <div class="font-p">© 2022 Tay Boon Siang</div>
                 </div>
                 <!-- Copyright -->
             </footer>
