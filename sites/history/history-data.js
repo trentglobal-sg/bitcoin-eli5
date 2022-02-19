@@ -11,7 +11,7 @@ async function getTopList() {
 //get only the price data of a choosen coin
 async function getPriceData(coin_id, days) {
     response = await axios.get(`${COINGECKO_API_URL}/coins/${coin_id}/market_chart`, {
-        params: { vs_currency: "usd", days: days, interval: "hourly" },
+        params: { vs_currency: "usd", days: days, interval: "daily" },
     });
     return response.data;
 }
@@ -32,6 +32,19 @@ function processCandleData(data) {
         let processedEntry = {};
         processedEntry["x"] = new Date(entry[0]);
         processedEntry["y"] = entry.slice(1);
+        processedData.push(processedEntry);
+    }
+
+    return processedData;
+}
+
+//process the Volume data into a apexchart readable form
+function processVolumeData(data) {
+    let processedData = [];
+    for (entry of data.total_volumes) {
+        let processedEntry = {};
+        processedEntry["x"] = new Date(entry[0]);
+        processedEntry["y"] = entry[1];
         processedData.push(processedEntry);
     }
 
