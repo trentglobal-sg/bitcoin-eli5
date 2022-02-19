@@ -18,7 +18,7 @@ async function getPriceData(coin_id, days) {
 
 //get the candle data of a choosen coin
 async function getCandleData(coin_id, days) {
-    console.log("getcandledata", coin_id)
+    console.log("Getting Candle Data of:", coin_id)
     response = await axios.get(`${COINGECKO_API_URL}/coins/${coin_id}/ohlc`, {
         params: { vs_currency: "usd", days: days },
     });

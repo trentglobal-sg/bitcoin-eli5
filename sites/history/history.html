@@ -57,19 +57,27 @@
                     </div>
                 </div>
             </nav>
-            <!-- Choose a coin div -->
-            <div>
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">Choose a Coin</button>
-                    <ul class="dropdown-menu" id="list-of-cryptos"></ul>
-                </div>
-            </div>
+
             <!-- Apex Charts -->
             <!-- Candle Charts -->
             <div id="candle">
-                <div id="candle-chart-options"></div>
-                <div id="candle-chart"></div>
-                <div id="volume-chart"></div>
+                <div class="dropdown" id="new-coin-dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">Choose a Coin</button>
+                    <ul class="dropdown-menu" id="list-of-cryptos"></ul>
+                </div>
+                <div id="candle-chart-options">
+                    <span class="dropdown" id="candle-chart-days" style="display:none">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">Days</button>
+                        <ul class="dropdown-menu" id="list-of-days"></ul>
+                    </span>
+                    <span id="candle-chart-show-volume">
+                    </span>
+                    <span id="candle-chart-close" style="display:none">
+                        <button type="button" class="btn btn-secondary">Close Charts</button>
+                    </span>
+                </div>
+                <div id="candle-chart" style="display:none"></div>
+                <div id="volume-chart" style="display:none"></div>
             </div>
             <!-- Footer  -->
             <footer class="bg-light text-center text-white">
