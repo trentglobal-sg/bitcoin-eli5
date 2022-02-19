@@ -1,0 +1,27 @@
+/* debugging tools */
+.debug {
+    border: 1px red solid;
+}
+
+.bitcoin-logo {
+    color: orange;
+}
+
+/* navbar  */
+.dropdown-item {
+    color: #f1fbff;
+}
+
+/* footer  */
+#facebook-btn {
+    background-color: #3b5998;
+}
+#linkedin-btn {
+    background-color: #0082ca;
+}
+#github-btn {
+    background-color: #333333;
+}
+#footer-top {
+    background-color: #3c4152bd;
+}

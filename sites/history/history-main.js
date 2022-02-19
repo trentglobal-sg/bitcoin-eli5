@@ -1,7 +1,9 @@
-window.addEventListener("DOMContentLoaded", function() {
-    getData();
-})
-
+window.addEventListener("DOMContentLoaded", async function () {
+    topList = await getTopList();
+    // priceData = getPriceData("bitcoin")
+    // candleData = getCandleData("bitcoin")
+    populateListOfCryptos(topList);
+});
 
 // // 1. We define the chart options.
 // const options = {

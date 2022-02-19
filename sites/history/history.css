@@ -1,0 +1,13 @@
+/* Dropdown Box Styling */
+#list-of-cryptos a {
+    color: black;
+}
+#list-of-cryptos img {
+    width:1em;
+    height:auto;
+    margin-right: 0.5em;
+}
+
+#list-of-days a {
+    color: black;
+}

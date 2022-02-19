@@ -1,17 +1,3 @@
-/* debugging tools */
-.debug {
-    border: 1px red solid;
-}
-
-.bitcoin-logo {
-    color: orange;
-}
-
-/* navbar  */
-.dropdown-item {
-    color: #f1fbff;
-}
-
 /* landing image */
 #landing-image {
     width: 100%;
@@ -74,28 +60,15 @@
     overflow: hidden;
 }
 #card-1 {
-    background-image: url("/images/index/card-1.jpeg");
+    background-image: url("../../images/index/card-1.jpeg");
 }
 #card-2 {
-    background-image: url("/images/index/card-2.jpg");
+    background-image: url("../../images/index/card-2.jpg");
 }
 #card-3 {
-    background-image: url("/images/index/card-3.jpeg");
+    background-image: url("../../images/index/card-3.jpeg");
 }
 #card-4 {
-    background-image: url("/images/index/card-4.jpeg");
+    background-image: url("../../images/index/card-4.jpeg");
 }
 
-/* footer  */
-#facebook-btn {
-    background-color: #3b5998;
-}
-#linkedin-btn {
-    background-color: #0082ca;
-}
-#github-btn {
-    background-color: #333333;
-}
-#footer-top {
-    background-color: #3c4152bd;
-}
