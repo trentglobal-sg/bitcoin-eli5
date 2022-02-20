@@ -17,14 +17,17 @@ function initPage(list) {
         a.innerText = item.name;
         a.addEventListener("click", function () {
             //logic when a new coin is clicked
-            console.log("Rendering New Coin Candle Chart:", item.id);
+            console.log("New Coin Clicked", item.id);
             //render candle chart, default 7 day chart
             renderCandleChart(item.id, item.name, 7);
             //render days button
-            renderAndAddEventListenerDaysButton(item.id, item.name);
+            removeAndAddEventListenerDaysButton(item.id, item.name);
             //render close button
             renderCloseButton();
             volumeDisplayFlag = false; //volume is not displayed on new chart by default
+            //change text on button
+            document.querySelector("#new-coin-dropdown>button").innerHTML = `Displaying ${item.name} <img src="${item.image}"/>`;
+            document.querySelector("#candle-chart-days>button").innerText = `7 Days`;
         });
         img.src = item.image;
         a.prepend(img);
@@ -101,7 +104,7 @@ async function renderCandleChart(id, coinName, days) {
     //flag: does a volume chart exist for the selected day?
     //Only for 1, 14, 30 and Max
     let volumeSuitabilityFlag = false;
-    if ([1, 14, 30, "Max"].includes(days)) {
+    if ([1, 14, 30, "max"].includes(days)) {
         volumeSuitabilityFlag = true;
     }
 
@@ -122,13 +125,13 @@ async function renderCandleChart(id, coinName, days) {
         }
     }
 
-    console.log("Rendering Candle Chart");
     //Processing candle chart data (O,H,L,C)
     data = await getCandleData(id, days); //in data.js
     processedData = processCandleData(data);
     startDate = processedData[0].x;
     endDate = processedData.slice(-1)[0].x;
 
+    console.log("Rendering Candle Chart:", id);
     //update candle chart series and options with a selector
     ApexCharts.exec("candleChart", "updateSeries", [{ data: processedData }]);
     ApexCharts.exec(
@@ -146,8 +149,11 @@ async function renderCandleChart(id, coinName, days) {
 }
 
 //rendering + add event listeners to days dropdown (will become visible)
-function renderAndAddEventListenerDaysButton(id, coinName) {
+function removeAndAddEventListenerDaysButton(id, coinName) {
+    console.log("Rendering and adding add event listeners for Days:", coinName);
     listOfDays = document.querySelector("#list-of-days");
+    listOfDays.innerHTML = ""; //cleaning all old buttons and their old listeners
+    //adding new listeners
     dayOptions = [1, 7, 14, 30, 90, 180, 365, "Max"];
     for (let i of dayOptions) {
         let li = document.createElement("li");
@@ -156,8 +162,11 @@ function renderAndAddEventListenerDaysButton(id, coinName) {
         a.innerText = i + " days";
         //adding event listener to each button in the chart option
         a.addEventListener("click", function () {
+            console.log("Day is clicked:", coinName, i);
             //logic when new day is selected, render a new candle chart
             renderCandleChart(id, coinName, i == "Max" ? "max" : i);
+            //change button text
+            document.querySelector("#candle-chart-days>button").innerText = `${i} Days`;
         });
         li.append(a);
         listOfDays.append(li);
@@ -181,6 +190,8 @@ function addEventListenerCloseButton() {
         //close the buttons
         document.querySelector("#candle-chart-days").style.display = "none";
         document.querySelector("#candle-chart-close").style.display = "none";
+        //clear text from new coin button
+        document.querySelector("#new-coin-dropdown>button").innerText = `Choose a Coin to Display`;
         //clear all dropdowns from days
         document.querySelector("#list-of-days").innerHTML = "";
         //clear the event listener button from add volume
@@ -191,7 +202,7 @@ function addEventListenerCloseButton() {
 }
 
 function removeAndAddEventListenerVolumeButton(id, days) {
-    console.log("Removing and re-adding Volume Button");
+    console.log("Removing and re-adding Volume Button:", id);
     //remove old button
     document.querySelector("#candle-chart-show-volume").innerHTML = "";
 
@@ -207,14 +218,13 @@ function removeAndAddEventListenerVolumeButton(id, days) {
     volumeButton.addEventListener("click", function () {
         //if volume isn't being shown...
         if (!volumeDisplayFlag) {
-            console.log("Showing Volume");
             renderVolume(id, days); //show volume chart
             //change to Hide Volume Button
             document.querySelector("#candle-chart-show-volume>button").innerText = "Hide Volume"; //switch button
             volumeDisplayFlag = true; //set flag
         } else {
             //if volume is shown currently
-            console.log("Hiding Volume");
+            console.log("Hiding Volume", id, days);
             document.querySelector("#volume-chart").style.display = "none"; //hide volume chart
             //change to Show Volume Button
             document.querySelector("#candle-chart-show-volume>button").innerText = "Show Volume"; //switch button
@@ -225,6 +235,7 @@ function removeAndAddEventListenerVolumeButton(id, days) {
 }
 
 async function renderVolume(id, days) {
+    console.log("Showing Volume", id, days);
     //get volume data
     data = await getPriceData(id, days);
     processedData = processVolumeData(data);

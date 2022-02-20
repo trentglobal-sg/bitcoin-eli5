@@ -1,11 +1,17 @@
-/* Dropdown Box Styling */
+/* Change Coin Styling */
 #list-of-cryptos a {
     color: black;
 }
 #list-of-cryptos img {
-    width:1em;
-    height:auto;
+    width: 1em;
+    height: auto;
     margin-right: 0.5em;
+}
+
+#new-coin-dropdown img {
+    width: 1em;
+    height: auto;
+    margin-left: 0.1em;
 }
 
 #list-of-days a {
