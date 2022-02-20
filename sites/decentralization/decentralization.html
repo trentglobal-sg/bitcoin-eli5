@@ -6,8 +6,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
         <!-- Own CSS -->
-        <!--/*specific CSS*/-->
-        <link rel="stylesheet" href="history.css" />
+        <!-- specific CSS -->
+        <link rel="stylesheet" href="decentralization.css" />
+        <!-- leaflet CSS  -->
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
+        <!-- leaflet marker clustering  -->
+        <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css" />
+        <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css" />
         <!-- Animate CSS  -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
         <!-- Font Awesome CSS  -->
@@ -58,9 +63,15 @@
                 </div>
             </nav>
 
+            <!-- map  -->
+            <div class="fs-1 font-white">Bitcoin Node Map</div>
+            <div>
+                <button id="individual-btn" type="button" class="btn btn-secondary">Show Individual Nodes</button>
+                <button id="country-btn" type="button" class="btn btn-secondary">Group Nodes by Countries</button>
+                <button id="continent-btn"  type="button" class="btn btn-secondary">Group Nodes by Continent</button>
+            </div>
+            <div id="map"></div>
 
-
-            
             <!-- Footer  -->
             <footer class="bg-light text-center text-white">
                 <!-- Copyright -->
@@ -124,6 +135,10 @@
             </div>
         </div>
 
+        <!-- Leaflet  -->
+        <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+        <!-- Leaflet Marker Clustering -->
+        <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster-src.js"></script>
         <!-- Axios -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.0/axios.min.js" integrity="sha512-bPh3uwgU5qEMipS/VOmRqynnMXGGSRv+72H/N260MQeXZIK4PG48401Bsby9Nq5P5fz7hy5UGNmC/W1Z51h2GQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <!-- Apex Chart -->
@@ -131,8 +146,8 @@
         <!-- Bootstrap -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
         <!-- Own Script -->
-        <script src="history-data.js"></script>
-        <script src="history-display.js"></script>
-        <script src="history-main.js"></script>
+        <script src="decentralization-data.js"></script>
+        <script src="decentralization-display.js"></script>
+        <script src="decentralization-main.js"></script>
     </body>
 </html>
