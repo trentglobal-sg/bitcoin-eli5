@@ -34,10 +34,14 @@ function addEventListenerContinentBtn(map) {
 }
 
 function populateNodeMarkers(map, nodeData) {
-    let markerClusterLayer = L.markerClusterGroup();
-    for (i of nodeData) {
-        L.marker(i).addTo(markerClusterLayer);
+    for (let key in nodeData) {
+        let continentLayer = L.markerClusterGroup();
+        let markerArray = [];
+        for (let latlong of nodeData[key]) {
+            nodeMarker = L.marker(latlong);
+            markerArray.push(nodeMarker);
+        }
+        continentLayer.addLayers(markerArray);
+        continentLayer.addTo(map);
     }
-
-    markerClusterLayer.addTo(map);
 }
