@@ -2,3 +2,53 @@
 #map {
     height: 800px;
 }
+
+/* map icons  */
+.fa-brands {
+    display: inline;
+}
+.continentMarker:hover {
+    text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
+}
+.continentMarkerCounter {
+    font-family: "League Gothic", "Arial Narrow", Arial, sans;
+    margin: 0 auto;
+}
+.continentMarkerText {
+    font-family: "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    line-height: 14px;
+    text-transform: uppercase;
+    margin: 0 auto;
+}
+
+.countryMarker:hover {
+    text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
+}
+.countryMarkerCounter {
+    font-family: "League Gothic", "Arial Narrow", Arial, sans;
+    margin: 0 auto;
+}
+.countryMarkerText {
+    font-family: "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    line-height: 14px;
+    text-transform: uppercase;
+    margin: 0 auto;
+}
+
+.cityMarker:hover {
+    text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
+}
+.cityMarkerCounter {
+    font-family: "League Gothic", "Arial Narrow", Arial, sans;
+    margin: 0 auto;
+}
+.cityMarkerText {
+    font-family: "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    line-height: 14px;
+    text-transform: uppercase;
+    margin: 0 auto;
+}
+
