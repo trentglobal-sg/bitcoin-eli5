@@ -12,8 +12,8 @@ For new entrants, the first thing when they google Bitcoin is “Bitcoin is a di
 
 This project aims to dispel some of the myths surrounding cryptocurrencies, and generally, blockchains and delves into the technical aspect of how they work - with data visualization.
 
-#Plane 1: 
-#Target audience group:
+# Plane 1: 
+# Target audience group:
 Non-Technical people with no blockchain knowledge but are curious
 Age: 16 onwards 
 Occupation: Students, Working Adults from all walks of life
@@ -51,8 +51,8 @@ Information presented needs to be technically accurate
 Can handle more complex concepts which will give them better understanding
 
 
-#UI/UX:
-#User Stories
+# UI/UX:
+# User Stories
 As a working (in a non-technical field) adult with little time and no prior knowledge about cryptocurrencies, I want to learn more about them so that I can decide whether to invest in them.
 Acceptance Criteria
 Quick and succinct in knowledge delivery
@@ -69,14 +69,14 @@ Acceptance Criteria
 Delving into technical aspects which most people rarely touch
 Delving into more exotic topics
 
-#Special considerations:
+# Special considerations:
 Due to the jurisdiction in which the website is created in, there should be no financial advice whatsoever. 
 
-#Plane 2: 
+# Plane 2: 
 
-#Content Requirement:
+# Content Requirement:
 4 Topic Pillars (With ability for more)
-#1: Security
+# 1: Security
 Bitcoin hashing - how it relates to security and immutability
 Interactive block hashing example
 Bitcoin mining - coinbase transactions, block rewards, block time
@@ -84,8 +84,8 @@ Interactive example: Try to mine a bitcoin block yourself!
 Bitcoin Proof of Work - 0000000000s
 
 
-#2: Scarcity
-#3: Decentralization
+# 2: Scarcity
+# 3: Decentralization
 Node running - Light node vs Full nodes
 Soft Fork vs Hard Fork
 #4: History
@@ -132,12 +132,12 @@ Blockchain Explorer
 
 
 
-APIs
+# APIs
 Node Map: https://bitnodes.io/api/
 Price Data: https://coinmarketcap.com/api/pricing/
 Bitcoin Block Explorer API: https://www.blockchain.com/api/blockchain_api
 
-Wireframe
+# Wireframe
 Hand Drawn, See paper
 Color Palette
 https://coolors.co/palette/3c4152-092b32-f1fbff-87c0cd-286869
