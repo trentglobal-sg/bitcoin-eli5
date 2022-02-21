@@ -33,11 +33,52 @@ function addEventListenerContinentBtn(map) {
     document.querySelector("#continent-btn").addEventListener("click", function () {});
 }
 
-function populateNodeMarkers(map, nodeData) {
-    for (let key in nodeData) {
+//Populate the map with markers, individual -> city -> country -> continent
+
+//expected logic of the function
+//all nodes lat long -> city layer
+//all city layers -> country layer
+//all country layer -> continent layer
+function populateNodeMarkers(map, sortedData) {
+    continentLayerArray = [];
+    for (let continent in sortedData) {
         let continentLayer = L.markerClusterGroup();
+        let countryLayerArray = [];
+        for (let country in sortedData[continent]) {
+            let countryLayer = L.markerClusterGroup();
+            let cityLayerArray = [];
+            for (let city in sortedData[continent][country]) {
+                let cityMarkerArray = [];
+                let cityLayer = L.markerClusterGroup();
+                for (let nodes in sortedData[continent][country][city]) {
+                    nodeObject = sortedData[continent][country][city][nodes];
+                    latlong = [nodeObject[8], nodeObject[9]];
+                    nodeMarker = L.marker(latlong);
+                    cityMarkerArray.push(nodeMarker);
+                }
+                cityLayer.addLayers(cityMarkerArray);
+                cityLayerArray.push(cityLayer);
+            }
+            for (let cityLayer of cityLayerArray) {
+                countryLayer.addLayers(cityLayer);
+            }
+            countryLayerArray.push(countryLayer);
+        }
+        for (let countryLayer of countryLayerArray) {
+            continentLayer.addLayers(countryLayer);
+        }
+        continentLayerArray.push(continentLayer);
+    }
+    for (let continentLayer of continentLayerArray) {
+        continentLayer.addTo(map);
+    }
+}
+
+function defaultPopulateNodeMarkers(map, sortedData) {
+    for (let key in sortedData) {
+        let continentLayer = L.markerClusterGroup(); //Create a layer for continents
         let markerArray = [];
-        for (let latlong of nodeData[key]) {
+        for (let latlong of sortedData[key]) {
             nodeMarker = L.marker(latlong);
             markerArray.push(nodeMarker);
         }
