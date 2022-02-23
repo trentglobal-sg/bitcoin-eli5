@@ -58,30 +58,72 @@
                 </div>
             </nav>
 
-            
-            
             <!-- Hashing discussion, slide 1 -->
             <div class="container" id="slide-1">
                 <h1 class="display-1">A short introduction to cryptography</h1>
                 <h2>Hash functions</h2>
                 <p class="lead">A hash function is a function that accepts an input (plaintext) of any length and outputs a scrambled output (ciphertext) of fixed length.</p>
                 <p>Try out the example below!</p>
-                <select class="form-select form-select-lg" id="hash-select">
+                <select class="form-select form-select-lg mb-3" id="hash-example-1-select">
                     <option selected>Please choose a hash function.</option>
-                    <option value="1">MD5</option>
-                    <option value="2">RIPEMD160</option>
-                    <option value="3">SHA1</option>
-                    <option value="4">SHA256</option>
+                    <option value="MD5">MD5</option>
+                    <option value="SHA1">SHA1</option>
+                    <option value="SHA256">SHA256</option>
+                    <option value="SHA256">SHA512</option>
+                    <option value="SHA256">SHA3</option>
+                    <option value="RIPEMD160">RIPEMD160</option>
                 </select>
-
-
-                <div>
-                    <label>Key in a message</label>
-                    <input type="text" id="message" value="Sample Message to be Hashed" />
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Plaintext</span>
+                    <textarea class="form-control" id="hash-example-1-plaintext">Please key in your message to be hashed.</textarea>
                 </div>
-                <div>
-                    <h1>SHA256 output in HEX (256 bit)</h1>
-                    <h2 id="output-hex"></h2>
+                <div class="mb-3" id="hash-example-1-message"></div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Ciphertext (HEX)</span>
+                    <textarea class="form-control" id="hash-example-1-ciphertext" readonly>This is the hashed output.</textarea>
+                </div>
+                <p class="lead">The output of a hash changes drastically when the message is changed.</p>
+                <p>Even if the message is changed by only a single letter, the hash becomes unrecognizable.</p>
+                <p class="lead">A hash function is computationally difficult to reverse.</p>
+                <p>Given a hash, it is hard to guess the message that returns the hash. These are known as one-way functions.</p>
+
+                <h2>Security</h2>
+                <p class="lead">Hash functions have 3 important properties.</p>
+                <ol>
+                    <li><p>Preimage resistance: Given a message hash hash(M), it is hard to find the original message M.</p></li>
+                    <li><p>Second preimage resistance: Given a message hash hash(M), if it hard to find another different message such that that have the same hash.</p></li>
+                    <li><p>Collision resistance: It is hard to find any two different message such that they have the same hash.</p></li>
+                </ol>
+                <p class="lead">Notice how #3: Collision resistance is the weakest property.</p>
+                <p>Hence, if a hash function is collision resistant, #1 and #2 are assured as they are stronger properties.</p>
+                <p class="lead">Lets attempt to generate hashes to find a collision.</p>
+                <p>Try out the example below!</p>
+                <select class="form-select form-select-lg mb-3" id="hash-example-2-select-1">
+                    <option selected>Please choose a hash function.</option>
+                    <option value="MD5">MD5</option>
+                    <option value="SHA1">SHA1</option>
+                    <option value="SHA256">SHA256</option>
+                    <option value="SHA256">SHA512</option>
+                    <option value="SHA256">SHA3</option>
+                    <option value="RIPEMD160">RIPEMD160</option>
+                </select>
+                <select class="form-select form-select-lg mb-3" id="hash-example-2-select-2">
+                    <option selected>Please choose a hash function.</option>
+                    <option value="MD5">MD5</option>
+                    <option value="SHA1">SHA1</option>
+                    <option value="SHA256">SHA256</option>
+                    <option value="SHA256">SHA512</option>
+                    <option value="SHA256">SHA3</option>
+                    <option value="RIPEMD160">RIPEMD160</option>
+                </select>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Plaintext</span>
+                    <textarea class="form-control" id="hash-example-2-plaintext">Please key in your message to be hashed.</textarea>
+                </div>
+                <div class="mb-3" id="hash-example-2-message"></div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text">Ciphertext (HEX)</span>
+                    <textarea class="form-control" id="hash-example-2-ciphertext" readonly>This is the hashed output.</textarea>
                 </div>
             </div>
 
@@ -148,6 +190,8 @@
             </div>
         </div>
 
+        <!-- Cryptojs  -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js" integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <!-- Axios -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.0/axios.min.js" integrity="sha512-bPh3uwgU5qEMipS/VOmRqynnMXGGSRv+72H/N260MQeXZIK4PG48401Bsby9Nq5P5fz7hy5UGNmC/W1Z51h2GQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <!-- Apex Chart -->

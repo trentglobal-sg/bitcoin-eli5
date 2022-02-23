@@ -1,8 +1,3 @@
-document.querySelector("#message").addEventListener("input", function () {
-    console.log(document.querySelector("#hash-select"))
-
-
-});
 
 
 
