@@ -6,7 +6,7 @@ function initMap() {
     let map = L.map("map", {
         zoomSnap: 0.25, //zoom snap levels
         zoomDelta: 0.25, //+- button speed
-        wheelPxPerZoomLevel: 80, //mouse scroll speed
+        wheelPxPerZoomLevel: 150, //mouse scroll speed
     }).setView(midPoint, zoomLevel);
 
     // setup the tile layers
@@ -37,11 +37,11 @@ function populateNodeMarkers(map, continentNodes, countryNodes, cityNodes, indiv
         if (zoomLevel < 4) {
             continentNodesLayerGroup.addTo(map);
             countryNodesLayerGroup.remove();
-        } else if ((zoomLevel >= 4) & (zoomLevel < 5)) {
+        } else if ((zoomLevel >= 4) & (zoomLevel < 6)) {
             countryNodesLayerGroup.addTo(map);
             continentNodesLayerGroup.remove();
             cityNodesLayerGroup.remove();
-        } else if ((zoomLevel >= 5) & (zoomLevel < 7)) {
+        } else if ((zoomLevel >= 6) & (zoomLevel < 7)) {
             cityNodesLayerGroup.addTo(map);
             countryNodesLayerGroup.remove();
             individualNodesLayerGroup.remove();
@@ -59,8 +59,33 @@ function individualNodeRender(individualNodes) {
     for (let key in individualNodes.nodes) {
         //create Marker
         individualNodeMarker = L.marker([individualNodes.nodes[key][8], individualNodes.nodes[key][9]]);
+        let d = new Date(Number(individualNodes.nodes[key][2])*1000);
         //Popup Binding
-        individualNodeMarker.bindPopup(`Ip Address: ${key}`);
+        individualNodeMarker.bindPopup(`
+        <table class="table table-striped">
+            <tbody>
+                <tr>
+                    <th>IP Address </th>
+                    <td>${key} <td>
+                </tr>
+                <tr>
+                    <th>Protocol Version </th>
+                    <td>${individualNodes.nodes[key][0]} <td>
+                </tr>
+                <tr>
+                    <th>Live since </th>
+                    <td>${d} <td>
+                </tr>
+                <tr>
+                    <th>Block Height </th>
+                    <td>${individualNodes.nodes[key][4]} <td>
+                </tr>
+                <tr>
+                    <th>ISP Name </th>
+                    <td>${individualNodes.nodes[key][12]} <td>
+                </tr>
+            </tbody>
+        </table>`);
         individualNodeMarker.addTo(individualNodesLayerGroup);
     }
 
@@ -74,21 +99,32 @@ function cityNodeRender(cityNodes) {
     for (let key in cityNodes) {
         //Let city node count decide font size
         cityNodeCount = cityNodes[key].count;
-        fontSize = Number(cityNodeCount) / 2000 + 1;
+        fontSize = Number(cityNodeCount) / 2000 + 1.2;
         //Create custom icon for every city
         let myIcon = new L.divIcon({
             className: "my-div-icon",
             html: `
-            <div class="cityMarker" style="font-size:${fontSize}em">
-                <div class="cityMarkerCounter"><i class="fa-brands fa-hashnode"></i> ${cityNodeCount}</div>
-                <div class="cityMarkerText">${key}</div>
+            <div class="marker" style="font-size:${fontSize}em">
+                <div class="markerCounter"><i class="fa-brands fa-hashnode"></i> ${cityNodeCount}</div>
+                <div class="markerText">${key}</div>
             </div>`,
         });
         //Create Marker
         cityNodeMarker = L.marker(cityNodes[key].averageLocation, { icon: myIcon });
         //Popup Binding
-        cityNodeMarker.bindPopup(`city: ${key}
-        Count: ${cityNodes[key].count}`);
+        cityNodeMarker.bindPopup(`
+        <table class="table table-striped">
+            <tbody>
+                <tr>
+                    <th>City </th>
+                    <td>${key} <td>
+                </tr>
+                <tr>
+                    <th>Node Count </th>
+                    <td>${cityNodes[key].count} <td>
+                </tr>
+            </tbody>
+        </table>`);
 
         cityNodeMarker.addTo(cityNodesLayerGroup);
     }
@@ -103,21 +139,32 @@ function countryNodeRender(countryNodes) {
     for (let key in countryNodes) {
         //Let country node count decide font size
         countryNodeCount = countryNodes[key].count;
-        fontSize = Number(countryNodeCount) / 2000 + 1;
+        fontSize = Number(countryNodeCount) / 2000 + 1.2;
         //Create custom icon for every country
         let myIcon = new L.divIcon({
             className: "my-div-icon",
             html: `
-            <div class="countryMarker" style="font-size:${fontSize}em">
-                <div class="countryMarkerCounter"><i class="fa-brands fa-hashnode"></i> ${countryNodeCount}</div>
-                <div class="countryMarkerText">${key}</div>
+            <div class="marker" style="font-size:${fontSize}em">
+                <div class="markerCounter"><i class="fa-brands fa-hashnode"></i> ${countryNodeCount}</div>
+                <div class="markerText">${key}</div>
             </div>`,
         });
         //Create Marker
         countryNodeMarker = L.marker(countryNodes[key].averageLocation, { icon: myIcon });
         //Popup Binding
-        countryNodeMarker.bindPopup(`Country: ${key}
-        Count: ${countryNodes[key].count}`);
+        countryNodeMarker.bindPopup(`
+        <table class="table table-striped">
+            <tbody>
+                <tr>
+                    <th>Country </th>
+                    <td>${key} <td>
+                </tr>
+                <tr>
+                    <th>Node Count </th>
+                    <td>${countryNodes[key].count} <td>
+                </tr>
+            </tbody>
+        </table>`);
 
         countryNodeMarker.addTo(countryNodesLayerGroup);
     }
@@ -132,21 +179,32 @@ function continentNodeRender(continentNodes) {
     for (let key in continentNodes) {
         //Let continent node count decide font size
         continentNodeCount = continentNodes[key].count;
-        fontSize = Number(continentNodeCount) / 2000 + 1;
+        fontSize = Number(continentNodeCount) / 7000 + 1.5;
         //Create custom icon for every continent
         let myIcon = new L.divIcon({
             className: "my-div-icon",
             html: `
-            <div class="continentMarker" style="font-size:${fontSize}em">
-                <div class="continentMarkerCounter"><i class="fa-brands fa-hashnode"></i> ${continentNodeCount}</div>
-                <div class="continentMarkerText">${key}</div>
+            <div class="marker" style="font-size:${fontSize}em">
+                <div class="markerCounter"><i class="fa-brands fa-hashnode"></i> ${continentNodeCount}</div>
+                <div class="markerText">${key}</div>
             </div>`,
         });
         //Create Marker
         continentNodeMarker = L.marker(continentNodes[key].averageLocation, { icon: myIcon });
         //Popup Binding
-        continentNodeMarker.bindPopup(`continent: ${key}
-        Count: ${continentNodes[key].count}`);
+        continentNodeMarker.bindPopup(`
+        <table class="table table-striped">
+            <tbody>
+                <tr>
+                    <th>Continent </th>
+                    <td>${key} <td>
+                </tr>
+                <tr>
+                    <th>Node Count </th>
+                    <td>${continentNodes[key].count} <td>
+                </tr>
+            </tbody>
+        </table>`);
 
         continentNodeMarker.addTo(continentNodesLayerGroup);
     }
