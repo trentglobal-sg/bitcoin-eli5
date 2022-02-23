@@ -3,7 +3,7 @@
 /* gradient backgrounds */
 .bg-radial-4 {
     background: rgb(241, 251, 255);
-    background: radial-gradient(circle, rgba(241, 251, 255, 1) 0%, rgba(135, 192, 205, 1) 33%, rgba(40, 104, 105, 1) 66%, rgba(9, 43, 50, 1) 100%);
+    background: radial-gradient(circle, rgba(241, 251, 255, 1) 0%, rgb(255, 255, 255) 33%, rgb(255, 255, 255) 66%, rgb(255, 255, 255) 100%);
 }
 .bg-radial-2 {
     background: rgb(40, 104, 105);

@@ -7,7 +7,7 @@
 
         <!-- Own CSS -->
         <!--/*specific CSS*/-->
-        <link rel="stylesheet" href="history.css" />
+        <link rel="stylesheet" href="security.css" />
         <!-- Animate CSS  -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
         <!-- Font Awesome CSS  -->
@@ -58,9 +58,31 @@
                 </div>
             </nav>
 
+            <!-- Hashing discussion, slide 1 -->
+            <div class="container" id="slide-1">
+                <h1 class="display-1">A short introduction to cryptography</h1>
+                <h2>Hash functions</h2>
+                <p class="lead">A hash function is a function that accepts an input (plaintext) of any length and outputs a scrambled output (ciphertext) of fixed length.</p>
+                <p>Try out the example below!</p>
+                <select class="form-select form-select-lg" id="hash-select">
+                    <option selected>Please choose a hash function.</option>
+                    <option value="1">MD5</option>
+                    <option value="2">RIPEMD160</option>
+                    <option value="3">SHA1</option>
+                    <option value="4">SHA256</option>
+                </select>
 
 
-            
+                <div>
+                    <label>Key in a message</label>
+                    <input type="text" id="message" value="Sample Message to be Hashed" />
+                </div>
+                <div>
+                    <h1>SHA256 output in HEX (256 bit)</h1>
+                    <h2 id="output-hex"></h2>
+                </div>
+            </div>
+
             <!-- Footer  -->
             <footer class="bg-light text-center text-white">
                 <!-- Copyright -->
@@ -131,8 +153,8 @@
         <!-- Bootstrap -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
         <!-- Own Script -->
-        <script src="history-data.js"></script>
-        <script src="history-display.js"></script>
-        <script src="history-main.js"></script>
+        <script src="security-data.js"></script>
+        <script src="security-display.js"></script>
+        <script src="security-main.js"></script>
     </body>
 </html>
