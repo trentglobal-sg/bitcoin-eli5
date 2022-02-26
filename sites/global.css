@@ -1,15 +1,23 @@
-/* debugging tools */
 .debug {
     border: 1px red solid;
 }
 
+/* navbar  */
 .bitcoin-logo {
     color: orange;
 }
 
-/* navbar  */
-.dropdown-item {
-    color: #f1fbff;
+.fa-bars {
+    color: #e0e0e0;
+}
+
+a {
+    color: #e0e0e0;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #e0e0e0;
 }
 
 /* footer  */
@@ -22,6 +30,24 @@
 #github-btn {
     background-color: #333333;
 }
-#footer-top {
-    background-color: #3c4152bd;
+
+@media screen and (min-width: 1200px) {
+    /* css rules for large screens from 1200 onwards (xl) */
 }
+
+@media screen and (max-width: 1200px) {
+    /* css rules for laptops from 992 to 1200px (lg) */
+}
+
+@media screen and (max-width: 992px) {
+    /* css rules for tablets from 768 to 992px (md) */
+}
+
+@media screen and (max-width: 768px) {
+    /* css rules for large phones from 576 to 768px (sm) */
+}
+
+@media screen and (max-width: 576px) {
+    /* css rules for small phones from 380 to 576px */
+}
+

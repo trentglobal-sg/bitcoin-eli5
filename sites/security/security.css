@@ -1,8 +1,54 @@
-.slides {
-    text-align: center;
-    border: 1px solid black;
+/* Slides in general  */
+#slides-parent {
+    min-height: 92vh;
+    display: flex;
+    justify-content: center;
 }
 
-#hash-output td{
-    background-color: ;
+.slides {
+    min-height: 92vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    position: absolute;
+}
+
+.hidden {
+    transform: translateX(-150%);
+}
+
+.show {
+    transform: translateX(0);
+    transition: transform 0.2s linear;
+}
+
+/* Slides Nav Bar  */
+#slides-nav-bar {
+    pointer-events: none;
+}
+
+#slides-nav-bar .col {
+    height: 10vh;
+    text-align: center;
+    font-size: 4em;
+}
+
+#slides-nav-bar i {
+    pointer-events: auto;
+    border-radius: 40%;
+}
+
+#hash-output td {
+    font-size: 0.3em;
+}
+
+#hash-example-2-table {
+    overflow-x: auto;
+}
+
+/* Slide 5 Styling  */
+#slide-5 input {
+    text-align: center;
 }

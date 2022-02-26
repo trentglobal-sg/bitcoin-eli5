@@ -1,6 +1,9 @@
+/* css rules for small phones from 380 to 576px */
+
 /* landing image */
 #landing-image {
     width: 100%;
+    min-height: 300px;
 }
 
 #landing-image-parent-div {
@@ -9,8 +12,8 @@
 
 #landing-image-text {
     /* Sizing */
-    width: 70%;
-    height: 70%;
+    width: 100%;
+    height: 40%;
     /* Centering the textbox in the parent div  */
     position: absolute;
     margin: auto;
@@ -24,32 +27,33 @@
     align-items: center;
     flex-direction: column;
     /* Asthetics */
-    background-color: #3c4152a9;
+    background-color: rgba(32, 32, 32, 0.65);
     text-align: center;
-    border-radius: 12% 88% 11% 89% / 86% 12% 88% 14%;
 }
 
-#lending-image-text-1 {
+#landing-image-text-1 {
     font-size: 1.5em;
+    color: red;
 }
-
-#lending-image-text-2 {
+#landing-image-text-2 {
     font-size: 1em;
 }
-
-#lending-image-btn {
+#landing-image-btn {
     font-size: 1em;
     padding: 0px 20px;
 }
 
 /* cards  */
+.card-bg {
+    width: 80%;
+}
+
 .card-left {
     text-align: left;
 }
 .card-right {
     text-align: right;
 }
-
 .card-div {
     display: flex;
 }
@@ -72,3 +76,88 @@
     background-image: url("../../images/index/card-4.jpeg");
 }
 
+@media screen and (min-width: 576px) {
+    /* css rules for large phones from 576 to 768px (sm) */
+    #landing-image-text {
+        height: 60%;
+    }
+    #landing-image-text-1 {
+        font-size: 2em;
+        color: blue;
+    }
+    #landing-image-text-2 {
+        font-size: 1em;
+    }
+    #landing-image-btn {
+        font-size: 1em;
+        padding: 0px 20px;
+    }
+    .card-bg {
+        width: 200%;
+    }
+}
+@media screen and (min-width: 768px) {
+    /* css rules for tablets from 768 to 992px (md) */
+    #landing-image-text {
+        height: 60%;
+    }
+    #landing-image-text-1 {
+        font-size: 3em;
+        color: yellow;
+    }
+    #landing-image-text-2 {
+        font-size: 1em;
+    }
+    #landing-image-btn {
+        font-size: 1em;
+        padding: 0px 20px;
+    }
+    .card-bg {
+        width: 120%;
+    }
+}
+@media screen and (min-width: 992px) {
+    /* css rules for laptops from 992 to 1200px (lg) */
+    #landing-image-text {
+        height: 50%;
+    }
+    #landing-image-text-1 {
+        font-size: 4em;
+        color: green;
+    }
+    #landing-image-text-2 {
+        font-size: 1em;
+    }
+    #landing-image-btn {
+        font-size: 1em;
+        padding: 0px 20px;
+    }
+    .card-div {
+        display: block;
+    }
+    .card-lg-img {
+        height: 180px;
+    }
+    .card-body {
+        height: 180px;
+        text-align: center;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    /* css rules for large screens from 1200 onwards (xl) */
+    #landing-image-text {
+        height: 30%;
+    }
+    #landing-image-text-1 {
+        font-size: 5em;
+        color: purple;
+    }
+    #landing-image-text-2 {
+        font-size: 1em;
+    }
+    #landing-image-btn {
+        font-size: 1em;
+        padding: 0px 20px;
+    }
+}

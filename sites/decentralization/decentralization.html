@@ -22,8 +22,8 @@
         <!-- Google Font CSS -->
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link href="https://fonts.googleapis.com/css2?family=Exo:wght@900&family=Heebo&family=Nobile:ital,wght@1,500&display=swap" rel="stylesheet" />
-        <!-- Own CSS -->
+        <link href="https://fonts.googleapis.com/css2?family=Encode+Sans:wght@700&family=Inter:wght@900&family=Lato&family=Nunito:wght@500&display=swap" rel="stylesheet" />
+       <!-- Own CSS -->
         <!--for global fonts and colors*/-->
         <link rel="stylesheet" href="../font-and-colors.css" />
         <!--/*template CSS*/-->
@@ -38,24 +38,22 @@
         <!-- Parent Container  -->
         <div class="bg-radial-4" id="parent-container">
             <!-- Navbar  -->
-            <nav class="navbar navbar-dark navbar-expand-lg sticky-top bg-radial-2 font-h1 font-white">
+            <nav class="navbar navbar-expand-sm sticky-top bg-navbar font-h1 font-grey-1">
                 <div class="container-fluid">
-                    <div class="navbar-brand"><i class="fa-brands fa-bitcoin bitcoin-logo"></i> Bitcoin ELI5</div>
+                    <div class="navbar-brand"><i class="px-1 fa-brands fa-bitcoin bitcoin-logo"></i> Bitcoin ELI5</div>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
-                        <span class="navbar-toggler-icon"></span>
+                        <i class="fa-solid fa-bars"></i>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
-                                <a class="nav-link active" href="#">Home</a>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"> Topics </a>
-                                <ul class="dropdown-menu bg-radial-2 font-white">
-                                    <li class="dropdown-item">History</li>
-                                    <li class="dropdown-item">Security</li>
-                                    <li class="dropdown-item">Scarcity</li>
-                                    <li class="dropdown-item">Decentralization</li>
+                        <ul class="navbar-nav me-auto mb-2 mb-sm-0">
+                            <li class="nav-item p-3"><a href="">Home</a></li>
+                            <li class="nav-item dropdown p-3">
+                                <a class="dropdown-toggle" role="button" data-bs-toggle="dropdown"> Topics </a>
+                                <ul class="dropdown-menu bg-navbar font-grey-1" id="navbarDropdown">
+                                    <li class="dropdown-item"><a href="">History</a></li>
+                                    <li class="dropdown-item"><a href="">Security</a></li>
+                                    <li class="dropdown-item"><a href="">Scarcity</a></li>
+                                    <li class="dropdown-item"><a href="">Decentralization</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -68,10 +66,9 @@
             <div id="map"></div>
 
             <!-- Footer  -->
-            <footer class="bg-light text-center text-white">
-                <!-- Copyright -->
-                <div class="text-center p-3 font-p" id="footer-top"><a data-bs-toggle="modal" data-bs-target="#terms"> Terms of Use</a> | <a data-bs-toggle="modal" data-bs-target="#legal">Legal Notice</a></div>
-                <div class="text-center p-3 bg-grey">
+            <footer class="bg-navbar text-center text-white">
+                <!-- Socials -->
+                <div class="text-center p-3">
                     <div>
                         <!-- Facebook -->
                         <a class="btn btn-primary m-2" id="facebook-btn" href="https://www.facebook.com/tbooons" role="button"><i class="fab fa-facebook-f"></i></a>
@@ -80,12 +77,13 @@
                         <!-- Github -->
                         <a class="btn btn-primary m-2" id="github-btn" href="https://github.com/Tayboonsiang90" role="button"><i class="fab fa-github"></i></a>
                     </div>
-                    <div class="font-p">© 2022 Tay Boon Siang</div>
+                    <div class="font-p1">© 2022 Tay Boon Siang</div>
                 </div>
-                <!-- Copyright -->
+                <!-- Legal -->
+                <div class="text-center p-3 bg-black font-p1"><a data-bs-toggle="modal" data-bs-target="#terms"> Terms of Use</a> | <a data-bs-toggle="modal" data-bs-target="#legal">Legal Notice</a></div>
             </footer>
-            <!-- modals  -->
-            <div class="modal fade" id="terms" tabindex="-1">
+            <!-- Modals  -->
+            <modal class="modal fade" id="terms" tabindex="-1">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -110,8 +108,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="modal fade" id="legal" tabindex="-1">
+            </modal>
+            <modal class="modal fade" id="legal" tabindex="-1">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -127,7 +125,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </modal>
         </div>
 
         <!-- Leaflet  -->
