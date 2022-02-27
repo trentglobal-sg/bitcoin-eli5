@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <!-- Required meta tags -->
+        <!-- Required Meta Tags -->
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
         <!-- Own CSS -->
-        <!--/*specific CSS*/-->
+        <!--/*Site Specific CSS*/-->
         <link rel="stylesheet" href="security.css" />
         <!-- Animate CSS  -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
@@ -19,12 +19,12 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link href="https://fonts.googleapis.com/css2?family=Encode+Sans:wght@700&family=Inter:wght@900&family=Lato&family=Nunito:wght@500&display=swap" rel="stylesheet" />
         <!-- Own CSS -->
-        <!--for global fonts and colors*/-->
+        <!-- For global Fonts and Colors -->
         <link rel="stylesheet" href="../font-and-colors.css" />
-        <!--/*template CSS*/-->
+        <!-- Global CSS (Navbar and Footer) -->
         <link rel="stylesheet" href="../global.css" />
 
-        <!-- Title and Favicon  -->
+        <!-- Title and Favicon -->
         <title>Bitcoin ELI5</title>
         <link rel="icon" type="image/x-icon" href="/images/favicon.svg" />
     </head>
@@ -56,15 +56,19 @@
                 </div>
             </nav>
 
-            <!-- Hashing discussion-->
-            <div id="slides-parent">
+            <!-- A short introduction to Cryptography slides -->
+            <slides id="slides-parent">
+                <!-- Hashing Functions Slides  -->
                 <!-- slide 0 -->
-                <div class="container slides font-white hidden" id="slide-0">
-                    <h1>A short introduction to cryptography</h1>
-                    <button type="button" class="btn btn-outline-light">Click here to skip if you already have a strong knowledge of hash functions and digital signatures.</button>
-                </div>
+                <slides class="container slides font-white show" id="slide-0">
+                    <h1 class="mb-5">Main Header</h1>
+                    <h2 class="mb-5">This is a secondary header</h2>
+                    <p class="mb-5">This is bulk paragraph text. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ad, itaque. Porro laboriosam consequatur sed incidunt repellat suscipit, ullam iure, ea quibusdam illum iste obcaecati nulla totam cum quam veritatis? Eveniet.</p>
+                    <p class="mb-5">This is attentition catching text. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ad, itaque. Porro laboriosam consequatur sed incidunt repellat suscipit, ullam iure, ea quibusdam illum iste obcaecati nulla totam cum quam veritatis? Eveniet.</p>
+                    <button type="button" class="btn btn-outline-light">This is a button</button>
+                </slides>
                 <!-- slide 1 -->
-                <div class="container slides font-white hidden" id="slide-1">
+                <slides class="container slides font-white hidden" id="slide-1">
                     <h2>Hash functions</h2>
                     <p class="lead">A hash function is a function that accepts an input (plaintext) of any length and outputs a scrambled output (ciphertext) of fixed length.</p>
                     <p>Try out the example below!</p>
@@ -86,16 +90,16 @@
                         <span class="input-group-text">Ciphertext (HEX)</span>
                         <textarea class="form-control" id="hash-example-1-ciphertext" placeholder="This is the hashed output." readonly></textarea>
                     </div>
-                </div>
+                </slides>
                 <!-- slide 2 -->
-                <div class="container slides font-white hidden" id="slide-2">
+                <slides class="container slides font-white hidden" id="slide-2">
                     <p class="lead">The output of a hash changes drastically when the message is changed.</p>
                     <p>Even if the message is changed by only a single letter, the hash becomes unrecognizable.</p>
                     <p class="lead">A hash function is computationally difficult to reverse.</p>
                     <p>Given a hash, it is hard to guess the message that returns the hash. These are known as one-way functions.</p>
-                </div>
+                </slides>
                 <!-- slide 3 -->
-                <div class="container slides font-white hidden" id="slide-3">
+                <slides class="container slides font-white hidden" id="slide-3">
                     <h2>Security</h2>
                     <p class="lead">Hash functions have 3 important properties.</p>
                     <ol>
@@ -105,9 +109,9 @@
                     </ol>
                     <p class="lead">Notice how #3: Collision resistance is the weakest property.</p>
                     <p>Hence, if a hash function is collision resistant, #1 and #2 are assured as they are stronger properties.</p>
-                </div>
+                </slides>
                 <!-- slide 4 -->
-                <div class="container slides font-white hidden" id="slide-4">
+                <slides class="container slides font-white hidden" id="slide-4">
                     <p class="lead">Lets attempt to generate hashes to find a collision.</p>
                     <p>Try out the example below!</p>
                     <div class="input-group mb-3">
@@ -135,9 +139,9 @@
                             <tbody id="hash-output"></tbody>
                         </table>
                     </div>
-                </div>
+                </slides>
                 <!-- slide 5 -->
-                <div class="container slides font-white hidden" id="slide-5">
+                <slides class="container slides font-white hidden" id="slide-5">
                     <p class="lead">Key in the amount of hashes per second your computer can do below.</p>
                     <div class="input-group mb-3">
                         <input type="text" class="form-control" id="hash-example-3-input" placeholder="Number of hashes per second" />
@@ -153,14 +157,105 @@
                     <p id="hash-example-3-years"></p>
                     <p>years</p>
                     <p class="lead">As you see, brute forcing hashes is an exercise in futility.</p>
-                </div>
+                </slides>
+                <!-- Digital Signatures Slides -->
                 <!-- slide 6 -->
-                <div class="container slides font-white show" id="slide-6">
+                <slides class="container slides font-white hidden" id="slide-6">
                     <h2>Digital Signatures</h2>
-                </div>
-            </div>
+                </slides>
+                <!-- slide 7 -->
+                <slides class="container slides font-white hidden" id="slide-7">
+                    <h2>A digital signature algorithm is a mathematical scheme ensuring authenticity of messages.</h2>
+                    <p>It proves the identity of the sender and that the message was not tampered with.</p>
+                    <p>In Bitcoin, the implementation is called ECDSA (Elliptic Curve digital signature algorithm).</p>
+                    <p class="lead">First a private key (aka password) is generated by the person sending the message.</p>
+                </slides>
+                <!-- slide 8 -->
+                <slides class="container slides font-white hidden" id="slide-8">
+                    <h2>Let us do a demostration of how ECDSA is used.</h2>
+                    <p class="lead">First a private key (aka password) is generated by the person sending the message.</p>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Private Key</span>
+                        <input type="text" class="form-control" placeholder="Generate your private key (password) here." id="dsa-example-1-private-1" />
+                        <button class="btn btn-outline-secondary" type="button" id="dsa-example-1-copy-1">Copy</button>
+                        <button class="btn btn-outline-secondary" type="button" id="dsa-example-1-generate">Click to Generate</button>
+                    </div>
+                    <p class="lead">Your public key (aka username) is generated from your private key that you generated.</p>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Public Key</span>
+                        <input type="text" class="form-control" placeholder="This is your public key." id="dsa-example-1-public" />
+                        <button class="btn btn-outline-secondary" type="button" id="dsa-example-1-copy-2">Copy</button>
+                        <button class="btn btn-outline-secondary" type="button" id="dsa-example-1-generate">Click to Generate</button>
+                    </div>
+                    <p class="lead">Type the message that you want to send below and sign the message with your private key.</p>
+                    <div class="input-group">
+                        <span class="input-group-text">Message</span>
+                        <input type="text" class="form-control" placeholder="Type your message here." id="dsa-example-1-message" />
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Private Key</span>
+                        <input type="text" class="form-control" placeholder="Paste your private key here." id="dsa-example-1-private-2" />
+                        <button class="btn btn-outline-secondary" type="button" id="dsa-example-1-copy">Sign the message</button>
+                    </div>
+                    <p class="lead">Your signed message is below.</p>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Signed Message</span>
+                        <input type="text" class="form-control" placeholder="This is your signed message." id="dsa-example-1-signed-message" />
+                        <button class="btn btn-outline-secondary" type="button" id="dsa-example-1-copy-2">Copy</button>
+                    </div>
+                    <p class="lead">Lets send over your message to the recipient in the next slide.</p>
+                </slides>
+                <!-- slide 9 -->
+                <slides class="container slides font-white hidden" id="slide-9">
+                    <h1>Recap:</h1>
+                    <div class="input-group">
+                        <span class="input-group-text">Private Key</span>
+                        <input type="text" class="form-control" placeholder="This is your private key." id="dsa-example-1-signed-message" />
+                        <button class="btn btn-outline-secondary" type="button" id="dsa-example-1-copy-2">Copy</button>
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-text">Public Key</span>
+                        <input type="text" class="form-control" placeholder="This is your public key." id="dsa-example-1-signed-message" />
+                        <button class="btn btn-outline-secondary" type="button" id="dsa-example-1-copy-2">Copy</button>
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-text">Message</span>
+                        <input type="text" class="form-control" placeholder="This is your message." id="dsa-example-1-signed-message" />
+                        <button class="btn btn-outline-secondary" type="button" id="dsa-example-1-copy-2">Copy</button>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Signed Message</span>
+                        <input type="text" class="form-control" placeholder="This is your signed message." id="dsa-example-1-signed-message" />
+                        <button class="btn btn-outline-secondary" type="button" id="dsa-example-1-copy-2">Copy</button>
+                    </div>
+                    <p class="lead">We shall send over 3 items, the public key, message and signed message. Your private key is to be kept secret, known to only you.</p>
+                    <div class="input-group">
+                        <span class="input-group-text">Public Key</span>
+                        <input type="text" class="form-control" placeholder="This is your public key." id="dsa-example-1-signed-message" />
+                        <button class="btn btn-outline-secondary" type="button" id="dsa-example-1-copy-2">Paste</button>
+                    </div>
+                    <div class="input-group">
+                        <span class="input-group-text">Message</span>
+                        <input type="text" class="form-control" placeholder="This is your message." id="dsa-example-1-signed-message" />
+                        <button class="btn btn-outline-secondary" type="button" id="dsa-example-1-copy-2">Paste</button>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Signed Message</span>
+                        <input type="text" class="form-control" placeholder="This is your signed message." id="dsa-example-1-signed-message" />
+                        <button class="btn btn-outline-secondary" type="button" id="dsa-example-1-copy-2">Paste</button>
+                    </div>
+                    <p class="lead">Nobody can impersonate your signature on the message because they do not have your private key.</p>
+                    <p>If you have done everything correctly, click the verify button to check the authenticity of your message.</p>
+                    <button class="btn btn-outline-secondary" type="button" id="dsa-example-1-copy-2">Verify</button>
+                    <p>The message "" is verified to be sent by someone who holds the private key that can generate the public key XXX.</p>
+                </slides>
+                <!-- slide 10 -->
+                <slides class="container slides font-white hidden" id="slide-10">
+                    <h1>Recap:</h1>
+                </slides>
+            </slides>
 
-            <!-- Slides Navigation bar -->
+            <!-- Slides Navigation Bar -->
             <div class="container fixed-bottom" id="slides-nav-bar">
                 <div class="row font-white">
                     <div class="col"><i class="fa-solid fa-angle-left btn-outline-light p-1" id="previous-btn"></i></div>
@@ -169,7 +264,7 @@
                 </div>
             </div>
 
-            <!-- Footer  -->
+            <!-- Footer -->
             <footer class="bg-navbar text-center text-white">
                 <!-- Socials -->
                 <div class="text-center p-3">
@@ -186,49 +281,53 @@
                 <!-- Legal -->
                 <div class="text-center p-3 bg-black font-p1"><a data-bs-toggle="modal" data-bs-target="#terms"> Terms of Use</a> | <a data-bs-toggle="modal" data-bs-target="#legal">Legal Notice</a></div>
             </footer>
-            <!-- Modals  -->
-            <modal class="modal fade" id="terms" tabindex="-1">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="terms">Terms of Use</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                        </div>
-                        <div class="modal-body">
-                            The use of this website is subject to the following terms of use:
-                            <ul>
-                                <li>
-                                    The author do not provide any warranty or guarantee as to the accuracy, timeliness, performance, completeness or suitability of the information and materials found or offered on this website for any particular purpose. You acknowledge that such information and
-                                    materials may contain inaccuracies or errors and we expressly exclude liability for any such inaccuracies or errors to the fullest extent permitted by law.
-                                </li>
-                                <li>
-                                    Your use of any information or materials on this website is entirely at your own risk, for which the author shall not be liable. It shall be your own responsibility to ensure that any products, services or information available through this website meet your
-                                    specific requirements.
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                </div>
-            </modal>
-            <modal class="modal fade" id="legal" tabindex="-1">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="terms">Legal Notice</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                        </div>
-                        <div class="modal-body">
-                            <p>None of the information contained here constitutes an offer (or solicitation of an offer) to buy or sell any currency, product or financial instrument, to make any investment, or to participate in any particular trading strategy.</p>
-                            <p>The author is not responsible for any loss arising from any investment based on any perceived recommendation, forecast or any other information contained here.</p>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <!-- Modals -->
+            <modal>
+                <!-- Terms of Use Modal -->
+                <modal class="modal fade" id="terms" tabindex="-1">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="terms">Terms of Use</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body">
+                                The use of this website is subject to the following terms of use:
+                                <ul>
+                                    <li>
+                                        The author do not provide any warranty or guarantee as to the accuracy, timeliness, performance, completeness or suitability of the information and materials found or offered on this website for any particular purpose. You acknowledge that such information and
+                                        materials may contain inaccuracies or errors and we expressly exclude liability for any such inaccuracies or errors to the fullest extent permitted by law.
+                                    </li>
+                                    <li>
+                                        Your use of any information or materials on this website is entirely at your own risk, for which the author shall not be liable. It shall be your own responsibility to ensure that any products, services or information available through this website meet your
+                                        specific requirements.
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </modal>
+                <!-- Legal Modal -->
+                <modal class="modal fade" id="legal" tabindex="-1">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="terms">Legal Notice</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p>None of the information contained here constitutes an offer (or solicitation of an offer) to buy or sell any currency, product or financial instrument, to make any investment, or to participate in any particular trading strategy.</p>
+                                <p>The author is not responsible for any loss arising from any investment based on any perceived recommendation, forecast or any other information contained here.</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </modal>
             </modal>
         </main>
 
@@ -240,7 +339,7 @@
         <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
         <!-- Bootstrap -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-        <!-- Own Script -->
+        <!-- Site Specific Script -->
         <script src="security-data.js"></script>
         <script src="security-display.js"></script>
         <script src="security-main.js"></script>

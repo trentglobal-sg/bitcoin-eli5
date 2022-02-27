@@ -48,16 +48,49 @@
 }
 
 /* google font families  */
+/* 4 types of fonts  */
+/* header  */
 .font-h1, h1 {
     font-family: 'Inter', sans-serif;
 }
+/* sub header  */
 .font-h2, h2 {
     font-family: 'Encode Sans', sans-serif;
 }
+/* bulk wording */
 .font-p1, p {
     font-family: "Nunito", sans-serif;
 }
+/* attention catching */
 .font-p2 {
     font-family: 'Lato', sans-serif;
+}
+
+/*Default font sizes for text styling*/
+/* Inspired by Github 3x, 2x, 1x */
+/* headers  */
+h1 {
+    font-size: 3em;
+}
+/* sub header  */
+h2 {
+    font-size: 2em;
+}
+/* bulk wording */
+p {
+    font-size: 1em;
+}
+
+@media screen and (min-width: 576px) {
+    /* css rules for large phones from 576 to 768px (sm) */
+}
+@media screen and (min-width: 768px) {
+    /* css rules for tablets from 768 to 992px (md) */
+}
+@media screen and (min-width: 992px) {
+    /* css rules for laptops from 992 to 1200px (lg) */
+}
+@media screen and (min-width: 1200px) {
+    /* css rules for large screens from 1200 onwards (xl) */
 }
 

@@ -2,7 +2,7 @@
 //slide navbar mechanism
 //////////////////////////////////////////////////////////////
 currentPage = 0;
-const MAXSLIDES = 5; //the highest slide number
+const MAXSLIDES = 10; //the highest slide number
 
 //button clicks
 document.querySelector("#next-btn").addEventListener("click", nextPage);
@@ -111,3 +111,11 @@ document.querySelector("#hash-example-3-input").addEventListener("input", functi
     document.querySelector("#hash-example-3-months").innerText = (POSSIBILITIES / this.value / 60 / 60 / 24 / 30);
     document.querySelector("#hash-example-3-years").innerText = (POSSIBILITIES / this.value / 60 / 60 / 24 / 365);
 })
+
+//////////////////////////////////////////////////////////////
+//slide-8
+//////////////////////////////////////////////////////////////
+
+
+
+
