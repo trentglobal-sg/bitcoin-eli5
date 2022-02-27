@@ -1,4 +1,8 @@
 /* css rules for small phones from 380 to 576px */
+/* For all buttons  */
+.btn-outline-light {
+    border-color: rgba(0, 0, 0, 0) !important;
+}
 
 /* landing image */
 #landing-image {
@@ -8,6 +12,10 @@
 
 #landing-image-parent-div {
     position: relative;
+}
+
+.fa-angle-down {
+    font-size: 1.4rem;
 }
 
 #landing-image-text {
@@ -27,20 +35,29 @@
     align-items: center;
     flex-direction: column;
     /* Asthetics */
-    background-color: rgba(32, 32, 32, 0.65);
+    background-color: rgba(32, 32, 32, 0.8);
     text-align: center;
 }
 
 #landing-image-text-1 {
-    font-size: 1.5em;
-    color: red;
+    font-size: 2rem;
 }
 #landing-image-text-2 {
-    font-size: 1em;
+    font-size: 1rem;
 }
 #landing-image-btn {
-    font-size: 1em;
     padding: 0px 20px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+}
+#landing-image-btn p {
+    font-size: 1rem;
+    margin: 0px;
+}
+
+/* Pick topic header  */
+#pick-topic {
+    text-align: center;
 }
 
 /* cards  */
@@ -56,13 +73,37 @@
 }
 .card-div {
     display: flex;
+    min-height: 150px;
 }
 .card {
     border: none;
     margin-bottom: 1em;
     border-radius: 5% 95% 5% 95% / 95% 5% 95% 5%;
     overflow: hidden;
+    position: relative;
 }
+.card-button {
+    position: absolute;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(96, 96, 96, 0.5);
+    opacity: 0;
+}
+
+.card-button:hover {
+    opacity: 100;
+}
+
+.fa-circle-arrow-right {
+    font-size: 4em;
+}
+
 #card-1 {
     background-image: url("../../images/index/card-1.jpeg");
 }
@@ -82,18 +123,22 @@
         height: 60%;
     }
     #landing-image-text-1 {
-        font-size: 2em;
-        color: blue;
+        font-size: 2.5rem;
     }
     #landing-image-text-2 {
-        font-size: 1em;
+        font-size: 1.5rem;
     }
-    #landing-image-btn {
-        font-size: 1em;
-        padding: 0px 20px;
+    #landing-image-btn p {
+        font-size: 1.5rem;
+    }
+    .fa-angle-down {
+        font-size: 2rem;
     }
     .card-bg {
         width: 200%;
+    }
+    .card-div {
+        min-height: 210px;
     }
 }
 @media screen and (min-width: 768px) {
@@ -102,15 +147,13 @@
         height: 60%;
     }
     #landing-image-text-1 {
-        font-size: 3em;
-        color: yellow;
+        font-size: 3.5em;
     }
     #landing-image-text-2 {
-        font-size: 1em;
+        font-size: 1.5em;
     }
-    #landing-image-btn {
-        font-size: 1em;
-        padding: 0px 20px;
+    #landing-image-btn p {
+        font-size: 1.5rem;
     }
     .card-bg {
         width: 120%;
@@ -123,14 +166,15 @@
     }
     #landing-image-text-1 {
         font-size: 4em;
-        color: green;
     }
     #landing-image-text-2 {
-        font-size: 1em;
+        font-size: 2em;
     }
     #landing-image-btn {
         font-size: 1em;
-        padding: 0px 20px;
+    }
+    .fa-angle-down {
+        font-size: 3rem;
     }
     .card-div {
         display: block;
@@ -147,17 +191,15 @@
 @media screen and (min-width: 1200px) {
     /* css rules for large screens from 1200 onwards (xl) */
     #landing-image-text {
-        height: 30%;
+        height: 45%;
     }
     #landing-image-text-1 {
         font-size: 5em;
-        color: purple;
     }
     #landing-image-text-2 {
-        font-size: 1em;
+        font-size: 2em;
     }
     #landing-image-btn {
         font-size: 1em;
-        padding: 0px 20px;
     }
 }

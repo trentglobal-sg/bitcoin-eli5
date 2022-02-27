@@ -8,6 +8,11 @@
     margin-right: 0.5em;
 }
 
+.dropdown-menu {
+    max-height: 100vh;
+    overflow-y: auto;
+}
+
 #new-coin-dropdown img {
     width: 1em;
     height: auto;

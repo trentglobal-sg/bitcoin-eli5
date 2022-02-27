@@ -30,9 +30,9 @@
 }
 
 #slides-nav-bar .col {
-    height: 10vh;
+    height: 9vh;
     text-align: center;
-    font-size: 4em;
+    font-size: 2em;
 }
 
 #slides-nav-bar i {
@@ -47,8 +47,45 @@
 #hash-example-2-table {
     overflow-x: auto;
 }
+/* Slide 0 Styling  */
+#slide-0 .col-left {
+    text-align: right;
+}
+
+#slide-0 .col-right {
+    text-align: left;
+}
 
 /* Slide 5 Styling  */
 #slide-5 input {
     text-align: center;
+}
+
+@media screen and (min-width: 576px) {
+    /* css rules for large phones from 576 to 768px (sm) */
+    #slides-nav-bar .col {
+        height: 9vh;
+        font-size: 2.5em;
+    }
+}
+@media screen and (min-width: 768px) {
+    /* css rules for tablets from 768 to 992px (md) */
+    #slides-nav-bar .col {
+        height: 9vh;
+        font-size: 3.5em;
+    }
+}
+@media screen and (min-width: 992px) {
+    /* css rules for laptops from 992 to 1200px (lg) */
+    #slides-nav-bar .col {
+        height: 10vh;
+        font-size: 4em;
+    }
+}
+@media screen and (min-width: 1200px) {
+    /* css rules for large screens from 1200 onwards (xl) */
+    #slides-nav-bar .col {
+        height: 10vh;
+        font-size: 4em;
+    }
 }

@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
         <!-- Own CSS -->
-        <!--/*specific CSS*/-->
+        <!--/*Site Specific CSS*/-->
         <link rel="stylesheet" href="scarcity.css" />
         <!-- Animate CSS  -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
@@ -17,11 +17,11 @@
         <!-- Google Font CSS -->
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link href="https://fonts.googleapis.com/css2?family=Exo:wght@900&family=Heebo&family=Nobile:ital,wght@1,500&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600&family=Nunito&family=Source+Code+Pro:ital@1&family=Tourney:wght@700;900&display=swap" rel="stylesheet" />
         <!-- Own CSS -->
-        <!--for global fonts and colors*/-->
+        <!-- For global Fonts and Colors -->
         <link rel="stylesheet" href="../font-and-colors.css" />
-        <!--/*template CSS*/-->
+        <!-- Global CSS (Navbar and Footer) -->
         <link rel="stylesheet" href="../global.css" />
 
         <!-- Title and Favicon  -->
@@ -31,26 +31,24 @@
 
     <body>
         <!-- Parent Container  -->
-        <div class="bg-radial-4" id="parent-container">
+        <main class="bg-main" id="parent-container">
             <!-- Navbar  -->
-            <nav class="navbar navbar-dark navbar-expand-lg sticky-top bg-radial-2 font-h1 font-white">
+            <nav class="navbar navbar-expand-sm sticky-top bg-navbar navbar-font font-grey-1">
                 <div class="container-fluid">
-                    <div class="navbar-brand"><i class="fa-brands fa-bitcoin bitcoin-logo"></i> Bitcoin ELI5</div>
+                    <div class="navbar-brand"><i class="px-1 fa-brands fa-bitcoin bitcoin-logo"></i> Bitcoin ELI5</div>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
-                        <span class="navbar-toggler-icon"></span>
+                        <i class="fa-solid fa-bars btn-outline-dark"></i>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                            <li class="nav-item">
-                                <a class="nav-link active" href="#">Home</a>
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"> Topics </a>
-                                <ul class="dropdown-menu bg-radial-2 font-white">
-                                    <li class="dropdown-item">History</li>
-                                    <li class="dropdown-item">Security</li>
-                                    <li class="dropdown-item">Scarcity</li>
-                                    <li class="dropdown-item">Decentralization</li>
+                        <ul class="navbar-nav me-auto mb-2 mb-sm-0">
+                            <li class="nav-item p-1 p-sm-3 btn-outline-dark"><a href="../index/index.html">Home</a></li>
+                            <li class="nav-item p-1 p-sm-3 dropdown btn-outline-dark">
+                                <a class="dropdown-toggle" role="button" data-bs-toggle="dropdown"> Topics </a>
+                                <ul class="dropdown-menu bg-navbar font-grey-1" id="navbarDropdown">
+                                    <li class="dropdown-items btn btn-outline-dark"><a href="../history/history.html">History</a></li>
+                                    <li class="dropdown-items btn btn-outline-dark"><a href="../security/security.html">Security</a></li>
+                                    <li class="dropdown-items btn btn-outline-dark"><a href="../scarcity/scarcity.html">Scarcity</a></li>
+                                    <li class="dropdown-items btn btn-outline-dark"><a href="../decentralization/decentralization.html">Decentralization</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -71,70 +69,73 @@
                 </div>
             </div>
 
-            <!-- Footer  -->
-            <footer class="bg-light text-center text-white">
-                <!-- Copyright -->
-                <div class="text-center p-3 font-p" id="footer-top"><a data-bs-toggle="modal" data-bs-target="#terms"> Terms of Use</a> | <a data-bs-toggle="modal" data-bs-target="#legal">Legal Notice</a></div>
-                <div class="text-center p-3 bg-grey">
+            <!-- Footer -->
+            <footer class="bg-navbar text-center text-white">
+                <!-- Socials -->
+                <div class="text-center p-3">
                     <div>
                         <!-- Facebook -->
-                        <a class="btn btn-primary m-2" id="facebook-btn" href="https://www.facebook.com/tbooons" role="button"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-secondary m-2" id="facebook-btn" href="https://www.facebook.com/tbooons" role="button"><i class="fab fa-facebook-f"></i></a>
                         <!-- Linkedin -->
-                        <a class="btn btn-primary m-2" id="linkedin-btn" href="https://sg.linkedin.com/in/tay-boon-siang-487537149" role="button"><i class="fab fa-linkedin-in"></i></a>
+                        <a class="btn btn-secondary m-2" id="linkedin-btn" href="https://sg.linkedin.com/in/tay-boon-siang-487537149" role="button"><i class="fab fa-linkedin-in"></i></a>
                         <!-- Github -->
-                        <a class="btn btn-primary m-2" id="github-btn" href="https://github.com/Tayboonsiang90" role="button"><i class="fab fa-github"></i></a>
+                        <a class="btn btn-secondary m-2" id="github-btn" href="https://github.com/Tayboonsiang90" role="button"><i class="fab fa-github"></i></a>
                     </div>
-                    <div class="font-p">© 2022 Tay Boon Siang</div>
+                    <div class="font-p1">© 2022 Tay Boon Siang</div>
                 </div>
-                <!-- Copyright -->
+                <!-- Legal -->
+                <div class="text-center p-3 bg-black font-p1"><a data-bs-toggle="modal" data-bs-target="#terms"> Terms of Use</a> | <a data-bs-toggle="modal" data-bs-target="#legal">Legal Notice</a></div>
             </footer>
-            <!-- modals  -->
-            <!-- terms  -->
-            <div class="modal fade" id="terms" tabindex="-1">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="terms">Terms of Use</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                        </div>
-                        <div class="modal-body">
-                            The use of this website is subject to the following terms of use:
-                            <ul>
-                                <li>
-                                    The author do not provide any warranty or guarantee as to the accuracy, timeliness, performance, completeness or suitability of the information and materials found or offered on this website for any particular purpose. You acknowledge that such information and
-                                    materials may contain inaccuracies or errors and we expressly exclude liability for any such inaccuracies or errors to the fullest extent permitted by law.
-                                </li>
-                                <li>
-                                    Your use of any information or materials on this website is entirely at your own risk, for which the author shall not be liable. It shall be your own responsibility to ensure that any products, services or information available through this website meet your
-                                    specific requirements.
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- legal  -->
-            <div class="modal fade" id="legal" tabindex="-1">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="terms">Legal Notice</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                        </div>
-                        <div class="modal-body">
-                            <p>None of the information contained here constitutes an offer (or solicitation of an offer) to buy or sell any currency, product or financial instrument, to make any investment, or to participate in any particular trading strategy.</p>
-                            <p>The author is not responsible for any loss arising from any investment based on any perceived recommendation, forecast or any other information contained here.</p>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <!-- Modals -->
+            <modal>
+                <!-- Terms of Use Modal -->
+                <modal class="modal fade" id="terms" tabindex="-1">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="terms">Terms of Use</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body">
+                                The use of this website is subject to the following terms of use:
+                                <ul>
+                                    <li>
+                                        The author do not provide any warranty or guarantee as to the accuracy, timeliness, performance, completeness or suitability of the information and materials found or offered on this website for any particular purpose. You acknowledge that such information and
+                                        materials may contain inaccuracies or errors and we expressly exclude liability for any such inaccuracies or errors to the fullest extent permitted by law.
+                                    </li>
+                                    <li>
+                                        Your use of any information or materials on this website is entirely at your own risk, for which the author shall not be liable. It shall be your own responsibility to ensure that any products, services or information available through this website meet your
+                                        specific requirements.
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
+                </modal>
+                <!-- Legal Modal -->
+                <modal class="modal fade" id="legal" tabindex="-1">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="terms">Legal Notice</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p>None of the information contained here constitutes an offer (or solicitation of an offer) to buy or sell any currency, product or financial instrument, to make any investment, or to participate in any particular trading strategy.</p>
+                                <p>The author is not responsible for any loss arising from any investment based on any perceived recommendation, forecast or any other information contained here.</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </modal>
+            </modal>
+        </main>
+
 
         <!-- Axios -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.0/axios.min.js" integrity="sha512-bPh3uwgU5qEMipS/VOmRqynnMXGGSRv+72H/N260MQeXZIK4PG48401Bsby9Nq5P5fz7hy5UGNmC/W1Z51h2GQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

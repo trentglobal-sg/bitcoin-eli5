@@ -7,6 +7,11 @@
     color: orange;
 }
 
+.btn-outline-dark {
+    border: none;
+    width: 100%;
+}
+
 .fa-bars {
     color: #e0e0e0;
 }
@@ -14,10 +19,28 @@
 a {
     color: #e0e0e0;
     text-decoration: none;
+    font-weight: 900;
 }
 
 a:hover {
     color: #e0e0e0;
+}
+
+.navbar-font {
+    font-family: "Tourney", cursive;
+    font-weight: 900;
+}
+
+.navbar-brand {
+    font-size: 1.1em;
+}
+
+.nav-item {
+    font-size: 1em;
+}
+
+.dropdown-items {
+    font-size: 1em;
 }
 
 /* footer  */
@@ -33,14 +56,58 @@ a:hover {
 
 @media screen and (min-width: 576px) {
     /* css rules for large phones from 576 to 768px (sm) */
+    .navbar-brand {
+        font-size: 1.6em;
+    }
+
+    .nav-item {
+        font-size: 1.2em;
+    }
+
+    .dropdown-items {
+        font-size: 1.2em;
+    }
 }
 @media screen and (min-width: 768px) {
     /* css rules for tablets from 768 to 992px (md) */
+    .navbar-brand {
+        font-size: 1.8em;
+    }
+
+    .nav-item {
+        font-size: 1.3em;
+    }
+
+    .dropdown-items {
+        font-size: 1.3em;
+    }
 }
 @media screen and (min-width: 992px) {
     /* css rules for laptops from 992 to 1200px (lg) */
+    .navbar-brand {
+        font-size: 2em;
+    }
+
+    .nav-item {
+        font-size: 1.4em;
+    }
+
+    .dropdown-items {
+        font-size: 1.4em;
+    }
 }
 
 @media screen and (min-width: 1200px) {
     /* css rules for large screens from 1200 onwards (xl) */
+    .navbar-brand {
+        font-size: 2em;
+    }
+
+    .nav-item {
+        font-size: 1.5em;
+    }
+
+    .dropdown-items {
+        font-size: 1.5em;
+    }
 }

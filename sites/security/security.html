@@ -17,7 +17,7 @@
         <!-- Google Font CSS -->
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link href="https://fonts.googleapis.com/css2?family=Encode+Sans:wght@700&family=Inter:wght@900&family=Lato&family=Nunito:wght@500&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600&family=Nunito&family=Source+Code+Pro:ital@1&family=Tourney:wght@700;900&display=swap" rel="stylesheet" />
         <!-- Own CSS -->
         <!-- For global Fonts and Colors -->
         <link rel="stylesheet" href="../font-and-colors.css" />
@@ -33,22 +33,22 @@
         <!-- Parent Container  -->
         <main class="bg-main" id="parent-container">
             <!-- Navbar  -->
-            <nav class="navbar navbar-expand-sm sticky-top bg-navbar font-h1 font-grey-1">
+            <nav class="navbar navbar-expand-sm sticky-top bg-navbar navbar-font font-grey-1">
                 <div class="container-fluid">
                     <div class="navbar-brand"><i class="px-1 fa-brands fa-bitcoin bitcoin-logo"></i> Bitcoin ELI5</div>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
-                        <i class="fa-solid fa-bars"></i>
+                        <i class="fa-solid fa-bars btn-outline-dark"></i>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-sm-0">
-                            <li class="nav-item p-3"><a href="">Home</a></li>
-                            <li class="nav-item dropdown p-3">
+                            <li class="nav-item p-1 p-sm-3 btn-outline-dark"><a href="../index/index.html">Home</a></li>
+                            <li class="nav-item p-1 p-sm-3 dropdown btn-outline-dark">
                                 <a class="dropdown-toggle" role="button" data-bs-toggle="dropdown"> Topics </a>
                                 <ul class="dropdown-menu bg-navbar font-grey-1" id="navbarDropdown">
-                                    <li class="dropdown-item"><a href="">History</a></li>
-                                    <li class="dropdown-item"><a href="">Security</a></li>
-                                    <li class="dropdown-item"><a href="">Scarcity</a></li>
-                                    <li class="dropdown-item"><a href="">Decentralization</a></li>
+                                    <li class="dropdown-items btn btn-outline-dark"><a href="../history/history.html">History</a></li>
+                                    <li class="dropdown-items btn btn-outline-dark"><a href="../security/security.html">Security</a></li>
+                                    <li class="dropdown-items btn btn-outline-dark"><a href="../scarcity/scarcity.html">Scarcity</a></li>
+                                    <li class="dropdown-items btn btn-outline-dark"><a href="../decentralization/decentralization.html">Decentralization</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -61,11 +61,28 @@
                 <!-- Hashing Functions Slides  -->
                 <!-- slide 0 -->
                 <slides class="container slides font-white show" id="slide-0">
-                    <h1 class="mb-5">Main Header</h1>
-                    <h2 class="mb-5">This is a secondary header</h2>
-                    <p class="mb-5">This is bulk paragraph text. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ad, itaque. Porro laboriosam consequatur sed incidunt repellat suscipit, ullam iure, ea quibusdam illum iste obcaecati nulla totam cum quam veritatis? Eveniet.</p>
-                    <p class="mb-5">This is attentition catching text. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ad, itaque. Porro laboriosam consequatur sed incidunt repellat suscipit, ullam iure, ea quibusdam illum iste obcaecati nulla totam cum quam veritatis? Eveniet.</p>
-                    <button type="button" class="btn btn-outline-light">This is a button</button>
+                    <h1 class="mb-4">The Security of Bitcoin</h1>
+                    <h2 class="mb-5">Topics</h2>
+                    <div class="container">
+                        <div class="row mb-3"><p class="att">Introduction to Cryptography</p></div>
+                        <div class="row mb-3">
+                            <div class="col-6 col-left my-auto"><p class="mx-2 my-auto">Hash Functions</p></div>
+                            <div class="col-6 col-right"><button type="button" class="btn btn-outline-light"><p>Go to topic</p></button></div>
+                        </div>
+                        <div class="row mb-5">
+                            <div class="col-6 col-left my-auto"><p class="mx-2 my-auto">Digital Signatures</p></div>
+                            <div class="col-6 col-right"><button type="button" class="btn btn-outline-light"><p>Go to topic</p></button></div>
+                        </div>
+                        <div class="row mb-3"><p class="att">Cryptography in Bitcoin</p></div>
+                        <div class="row mb-3">
+                            <div class="col-6 col-left my-auto"><p class="mx-2 my-auto">Proof of Work (Bitcoin Mining)</p></div>
+                            <div class="col-6 col-right"><button type="button" class="btn btn-outline-light"><p>Go to topic</p></button></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6 col-left my-auto"><p class="mx-2 my-auto">Block Integrity</p></div>
+                            <div class="col-6 col-right"><button type="button" class="btn btn-outline-light"><p>Go to topic</p></button></div>
+                        </div>
+                    </div>
                 </slides>
                 <!-- slide 1 -->
                 <slides class="container slides font-white hidden" id="slide-1">
@@ -270,11 +287,11 @@
                 <div class="text-center p-3">
                     <div>
                         <!-- Facebook -->
-                        <a class="btn btn-primary m-2" id="facebook-btn" href="https://www.facebook.com/tbooons" role="button"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-secondary m-2" id="facebook-btn" href="https://www.facebook.com/tbooons" role="button"><i class="fab fa-facebook-f"></i></a>
                         <!-- Linkedin -->
-                        <a class="btn btn-primary m-2" id="linkedin-btn" href="https://sg.linkedin.com/in/tay-boon-siang-487537149" role="button"><i class="fab fa-linkedin-in"></i></a>
+                        <a class="btn btn-secondary m-2" id="linkedin-btn" href="https://sg.linkedin.com/in/tay-boon-siang-487537149" role="button"><i class="fab fa-linkedin-in"></i></a>
                         <!-- Github -->
-                        <a class="btn btn-primary m-2" id="github-btn" href="https://github.com/Tayboonsiang90" role="button"><i class="fab fa-github"></i></a>
+                        <a class="btn btn-secondary m-2" id="github-btn" href="https://github.com/Tayboonsiang90" role="button"><i class="fab fa-github"></i></a>
                     </div>
                     <div class="font-p1">© 2022 Tay Boon Siang</div>
                 </div>

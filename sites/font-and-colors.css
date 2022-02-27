@@ -50,35 +50,43 @@
 /* google font families  */
 /* 4 types of fonts  */
 /* header  */
-.font-h1, h1 {
-    font-family: 'Inter', sans-serif;
+.font-h1,
+h1 {
+    font-family: "Tourney", cursive;
+    font-weight: 700;
+    font-weight: bold;
 }
 /* sub header  */
-.font-h2, h2 {
-    font-family: 'Encode Sans', sans-serif;
+.font-h2,
+h2 {
+    font-family: "Fredoka", sans-serif;
 }
-/* bulk wording */
-.font-p1, p {
+/* bulk wording for text body*/
+.font-p1,
+p {
     font-family: "Nunito", sans-serif;
 }
-/* attention catching */
-.font-p2 {
-    font-family: 'Lato', sans-serif;
+/* attention catching occasional font*/
+.att {
+    font-family: "Source Code Pro", monospace;
 }
 
 /*Default font sizes for text styling*/
 /* Inspired by Github 3x, 2x, 1x */
 /* headers  */
 h1 {
-    font-size: 3em;
+    font-size: 3rem;
 }
 /* sub header  */
 h2 {
-    font-size: 2em;
+    font-size: 2rem;
 }
 /* bulk wording */
 p {
-    font-size: 1em;
+    font-size: 1rem;
+}
+.att {
+    font-size: 1rem;
 }
 
 @media screen and (min-width: 576px) {
@@ -93,4 +101,3 @@ p {
 @media screen and (min-width: 1200px) {
     /* css rules for large screens from 1200 onwards (xl) */
 }
-
