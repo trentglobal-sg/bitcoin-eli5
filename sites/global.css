@@ -2,6 +2,24 @@
     border: 1px red solid;
 }
 
+/* Customizing bootstrap checkboxes  */
+.form-switch {
+    margin-left: 12px;
+}
+.form-check-input {
+    border: none !important;
+    box-shadow: none !important;
+    margin-top: 0 !important;
+}
+.form-check-input:not(:checked) {
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='rgba%28 255, 153, 0, 1%29'/></svg>") !important;
+    background-color: #f0f0f0 !important;
+}
+.form-check-input:checked {
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='rgba%28 240, 240, 240, 1%29'/></svg>") !important;
+    background-color: #ff9900 !important;
+}
+
 /* navbar  */
 .bitcoin-logo {
     color: orange;

@@ -1,9 +1,12 @@
+//Global Flags
+
+
 //Main page initilization function
 function initPage() {
     initChartPrice();
 }
 
-//initialize  chart skeleton
+//initialize chart skeleton
 function initChartPrice() {
     var options = {
         series: [],
@@ -15,6 +18,9 @@ function initChartPrice() {
             //disable chart zooming
             toolbar: {
                 show: false,
+            },
+            zoom: {
+                enabled: false,
             },
         },
         //Pre-loading title while fetching price data
@@ -109,11 +115,12 @@ function initChartPrice() {
     chartPrice.render();
 }
 
+//renders a apex line chart
 function renderChartPrice(processedData) {
     startDate = new Date(processedData[0][0]);
-    startDate = startDate.getUTCDate() + "/" + startDate.getUTCMonth() + "/" + startDate.getUTCFullYear();
+    startDate = startDate.getUTCDate() + "/" + (startDate.getUTCMonth() + 1) + "/" + startDate.getUTCFullYear();
     endDate = new Date(processedData[processedData.length - 1][0]);
-    endDate = endDate.getUTCDate() + "/" + endDate.getUTCMonth() + "/" + endDate.getUTCFullYear();
+    endDate = endDate.getUTCDate() + "/" + (endDate.getUTCMonth() + 1) + "/" + endDate.getUTCFullYear();
     ApexCharts.exec("chartPrice", "updateSeries", [{ data: processedData }]);
     ApexCharts.exec(
         "chartPrice",
@@ -148,6 +155,7 @@ function renderChartPrice(processedData) {
     );
 }
 
+//hardcoded chart annotations as there are only 2 of them
 function renderChartPriceAnnotations() {
     ApexCharts.exec(
         "chartPrice",
@@ -156,22 +164,43 @@ function renderChartPriceAnnotations() {
             annotations: {
                 points: [
                     {
-                        x: new Date("27 Nov 2017").getTime(),
-                        y: 8500.9,
+                        x: new Date("01 July 2016").getTime(),
+                        y: 693,
                         marker: {
                             size: 3,
                             fillColor: "#f0f0f0",
-                            strokeColor: "#a0a0a0",
+                            strokeColor: "#202020",
                             radius: 2,
                         },
                         label: {
-                            borderColor: "",
+                            borderColor: "#202020",
                             offsetY: 0,
                             style: {
-                                color: "#f0f0f0",
-                                background: "",
+                                color: "#202020",
+                                background: "#f0f0f0",
+                                fontFamily: "Tourney, cursive",
                             },
-                            text: "Event 1",
+                            text: "Second Halving",
+                        },
+                    },
+                    {
+                        x: new Date("01 May 2020").getTime(),
+                        y: 8611,
+                        marker: {
+                            size: 3,
+                            fillColor: "#f0f0f0",
+                            strokeColor: "#202020",
+                            radius: 2,
+                        },
+                        label: {
+                            borderColor: "#202020",
+                            offsetY: 0,
+                            style: {
+                                color: "#202020",
+                                background: "#f0f0f0",
+                                fontFamily: "Tourney, cursive",
+                            },
+                            text: "Third Halving",
                         },
                     },
                 ],
@@ -181,4 +210,3 @@ function renderChartPriceAnnotations() {
         true
     );
 }
-

@@ -63,27 +63,50 @@
             </section>
 
             <!-- Apex Charts Dashboard  -->
-            <div class="row debug">
-                <div class="col-2 debug">
-                    <div class="form-check form-switch">
-                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" />
-                        <label class="form-check-label" for="flexSwitchCheckDefault">Default switch checkbox input</label>
+            <div class="container">
+                <div class="row" id="apex-dashboard">
+                    <div class="col font-white justify-content-center align-items-center mb-3" id="candle-options">
+                        <i class="fa-solid fa-chart-line"></i>
+                        <div class="form-check form-switch" id="candle-switch">
+                            <input class="form-check-input" type="checkbox" />
+                        </div>
+                        <i class="fa-solid fa-chart-column"></i>
+                    </div>
+                    <div class="col font-white justify-content-center align-items-center mb-3" id="log-options">
+                        <p>Linear</p>
+                        <div class="form-check form-switch" id="log-switch">
+                            <input class="form-check-input" type="checkbox" />
+                        </div>
+                        <p>Log</p>
+                    </div>
+                    <div class="col font-white justify-content-center align-items-center mb-3" id="type-options">
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-outline-light active">Price</button>
+                            <button type="button" class="btn btn-outline-light">Marketcap</button>
+                            <button type="button" class="btn btn-outline-light">Volume</button>
+                        </div>
+                    </div>
+                    <div class="col font-white justify-content-center align-items-center mb-3" id="time-options">
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-outline-light">1M</button>
+                            <button type="button" class="btn btn-outline-light">3M</button>
+                            <button type="button" class="btn btn-outline-light">6M</button>
+                            <button type="button" class="btn btn-outline-light">1Y</button>
+                            <button type="button" class="btn btn-outline-light">3Y</button>
+                            <button type="button" class="btn btn-outline-light">5Y</button>
+                            <button type="button" class="btn btn-outline-light active">MAX</button>
+                        </div>
                     </div>
                 </div>
-                <div class="col-2 debug"></div>
-                <div class="col-1 debug"></div>
-                <div class="col-1 debug"></div>
-                <div class="col-1 debug"></div>
-                <div class="col-1 debug"></div>
-                <div class="col-1 debug"></div>
             </div>
+            <!-- Apex Charts  -->
             <div class="mx-3" id="chartPrice"></div>
 
             <!-- Timeline  -->
             <section class="container" id="timeline">
                 <!--  --><!--  --><!--  --><!--  --><!--  -->
                 <div class="row my-5">
-                    <div class="col-12 empty-right order-sm-2">
+                    <div class="col-12 empty-right mb-1 order-sm-2">
                         <h1>1997</h1>
                         <p class="att">May</p>
                     </div>
@@ -96,7 +119,7 @@
                     <div class="col-sm-1 middle-box"><i class="fa-solid fa-circle-arrow-left font-white bg-black"></i></div>
                 </div>
                 <div class="row my-5">
-                    <div class="col-12 empty-left">
+                    <div class="col-12 empty-left mb-1">
                         <h1>2008</h1>
                         <p class="att">October</p>
                     </div>
@@ -112,7 +135,7 @@
                 </div>
                 <!--  --><!--  --><!--  --><!--  --><!--  -->
                 <div class="row my-5">
-                    <div class="col-12 empty-right order-sm-2">
+                    <div class="col-12 empty-right mb-1 order-sm-2">
                         <h1>2009</h1>
                         <p class="att">January</p>
                     </div>
@@ -126,7 +149,7 @@
                     <div class="col-sm-1 middle-box"><i class="fa-solid fa-circle-arrow-left font-white bg-black"></i></div>
                 </div>
                 <div class="row my-5">
-                    <div class="col-12 empty-left">
+                    <div class="col-12 empty-left mb-1">
                         <h1>2010</h1>
                         <p class="att">February</p>
                     </div>
@@ -140,7 +163,7 @@
                 </div>
                 <!--  --><!--  --><!--  --><!--  --><!--  -->
                 <div class="row my-5">
-                    <div class="col-12 empty-right order-sm-2">
+                    <div class="col-12 empty-right mb-1 order-sm-2">
                         <h1>2010</h1>
                         <p class="att">May</p>
                     </div>
@@ -153,7 +176,7 @@
                     <div class="col-sm-1 middle-box"><i class="fa-solid fa-circle-arrow-left font-white bg-black"></i></div>
                 </div>
                 <div class="row my-5">
-                    <div class="col-12 empty-left">
+                    <div class="col-12 empty-left mb-1">
                         <h1>2010</h1>
                         <p class="att">November</p>
                     </div>
@@ -167,7 +190,7 @@
                 </div>
                 <!--  --><!--  --><!--  --><!--  --><!--  -->
                 <div class="row my-5">
-                    <div class="col-12 empty-right order-sm-2">
+                    <div class="col-12 empty-right mb-1 order-sm-2">
                         <h1>2012</h1>
                         <p class="att">November</p>
                     </div>
@@ -180,7 +203,7 @@
                     <div class="col-sm-1 middle-box"><i class="fa-solid fa-circle-arrow-left font-white bg-black"></i></div>
                 </div>
                 <div class="row my-5">
-                    <div class="col-12 empty-left">
+                    <div class="col-12 empty-left mb-1">
                         <h1>2013</h1>
                         <p class="att">October</p>
                     </div>
@@ -194,7 +217,7 @@
                 </div>
                 <!--  --><!--  --><!--  --><!--  --><!--  -->
                 <div class="row my-5">
-                    <div class="col-12 empty-right order-sm-2">
+                    <div class="col-12 empty-right mb-1 order-sm-2">
                         <h1>2014</h1>
                         <p class="att">February</p>
                     </div>
@@ -207,7 +230,7 @@
                     <div class="col-sm-1 middle-box"><i class="fa-solid fa-circle-arrow-left font-white bg-black"></i></div>
                 </div>
                 <div class="row my-5">
-                    <div class="col-12 empty-left">
+                    <div class="col-12 empty-left mb-1">
                         <h1>2016</h1>
                         <p class="att">April</p>
                     </div>
@@ -221,7 +244,7 @@
                 </div>
                 <!--  --><!--  --><!--  --><!--  --><!--  -->
                 <div class="row my-5">
-                    <div class="col-12 empty-right order-sm-2">
+                    <div class="col-12 empty-right mb-1 order-sm-2">
                         <h1>2016</h1>
                         <p class="att">July</p>
                     </div>
@@ -234,7 +257,7 @@
                     <div class="col-sm-1 middle-box"><i class="fa-solid fa-circle-arrow-left font-white bg-black"></i></div>
                 </div>
                 <div class="row my-5">
-                    <div class="col-12 empty-left">
+                    <div class="col-12 empty-left mb-1">
                         <h1>2017</h1>
                         <p class="att">August</p>
                     </div>
@@ -248,7 +271,7 @@
                 </div>
                 <!--  --><!--  --><!--  --><!--  --><!--  -->
                 <div class="row my-5">
-                    <div class="col-12 empty-right order-sm-2">
+                    <div class="col-12 empty-right mb-1 order-sm-2">
                         <h1>2018</h1>
                         <p class="att">October</p>
                     </div>
@@ -261,7 +284,7 @@
                     <div class="col-sm-1 middle-box"><i class="fa-solid fa-circle-arrow-left font-white bg-black"></i></div>
                 </div>
                 <div class="row my-5">
-                    <div class="col-12 empty-left">
+                    <div class="col-12 empty-left mb-1">
                         <h1>2018</h1>
                         <p class="att">December</p>
                     </div>
@@ -275,7 +298,7 @@
                 </div>
                 <!--  --><!--  --><!--  --><!--  --><!--  -->
                 <div class="row my-5">
-                    <div class="col-12 empty-right order-sm-2">
+                    <div class="col-12 empty-right mb-1 order-sm-2">
                         <h1>2020</h1>
                         <p class="att">May</p>
                     </div>
@@ -288,7 +311,7 @@
                     <div class="col-sm-1 middle-box"><i class="fa-solid fa-circle-arrow-left font-white bg-black"></i></div>
                 </div>
                 <div class="row my-5">
-                    <div class="col-12 empty-left">
+                    <div class="col-12 empty-left mb-1">
                         <h1>2021</h1>
                         <p class="att">June</p>
                     </div>
