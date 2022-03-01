@@ -3,34 +3,6 @@
     text-align: center;
 }
 
-/* Apex Charts */
-#chartPrice {
-    background-color: #202020;
-}
-/* Apex Charts Tooltip  */
-.apexcharts-tooltip.apexcharts-theme-light {
-    border: none !important;
-    background-color: rgb(0, 0, 0, 0) !important;
-    box-shadow: none !important;
-}
-#tooltip-top {
-    color: white;
-    font-family: "Nunito", sans-serif;
-    font-weight: 900;
-    font-size: 1em;
-    text-align: center;
-}
-#tooltip-bottom {
-    color: white;
-    font-family: "Nunito", sans-serif;
-    font-weight: 900;
-    font-size: 1.5em;
-    text-align: center;
-}
-/* Apex Charts Annotations */
-
-
-
 /* timeline  */
 /* This is the vertical line that defines the timeline  */
 #timeline {
@@ -61,11 +33,6 @@
 }
 .empty-left {
     text-align: right;
-    color: #FF9900;
-}
-
-.empty-right {
-    color: #FF9900;
 }
 
 /* Change Coin Styling */
@@ -113,9 +80,7 @@
         z-index: 1;
         display: block;
     }
-    .empty-right,
-    .empty-left,
-    .content {
+    .empty-right, .empty-left, .content {
         width: 45.8333% !important;
     }
 }
