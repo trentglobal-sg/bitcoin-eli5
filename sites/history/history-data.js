@@ -3,7 +3,7 @@ const COINGECKO_API_URL = "https://api.coingecko.com/api/v3";
 //get a list of top 50 coins and their associated data and returns the data
 async function getTopList() {
     response = await axios.get(`${COINGECKO_API_URL}/coins/markets`, {
-        params: { vs_currency: "usd", order: "market_cap_desc", per_page: "20", page: "1", sparkline: "true", price_change_percentage: "1h,24h,7d" },
+        params: { vs_currency: "usd", order: "market_cap_desc", per_page: "100", page: "1", sparkline: "true", price_change_percentage: "1h,24h,7d" },
     });
     return response.data;
 }

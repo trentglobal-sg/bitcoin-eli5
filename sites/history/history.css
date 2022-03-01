@@ -1,3 +1,51 @@
+/* title  */
+.title {
+    text-align: center;
+}
+
+/* timeline  */
+/* This is the vertical line that defines the timeline  */
+#timeline {
+    position: relative;
+}
+
+#vertical-line {
+    /* Insert as background image  */
+    position: absolute;
+    width: 6px;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin: 0 auto;
+    /* To shift it to midway */
+    margin-left: -3px;
+    z-index: 1;
+}
+
+.content-box {
+    background-color: #f0f0f0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23a0a0a0' fill-opacity='0.73' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
+    border-radius: 25px;
+    padding: 10px;
+}
+
+.middle-box {
+    font-size: 2em;
+    text-align: center;
+    z-index: 2;
+}
+
+.fa-circle-arrow-left {
+    border-radius: 50%;
+}
+
+.content-left {
+    text-align: right;
+}
+.empty-left {
+    text-align: right;
+}
+
 /* Change Coin Styling */
 #list-of-cryptos a {
     color: black;
@@ -21,4 +69,16 @@
 
 #list-of-days a {
     color: black;
+}
+@media screen and (min-width: 576px) {
+    /* css rules for large phones from 576 to 768px (sm) */
+}
+@media screen and (min-width: 768px) {
+    /* css rules for tablets from 768 to 992px (md) */
+}
+@media screen and (min-width: 992px) {
+    /* css rules for laptops from 992 to 1200px (lg) */
+}
+@media screen and (min-width: 1200px) {
+    /* css rules for large screens from 1200 onwards (xl) */
 }
