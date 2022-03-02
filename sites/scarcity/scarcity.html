@@ -56,18 +56,66 @@
                 </div>
             </nav>
 
-            <!-- content -->
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm">One of three columns</div>
+            <!-- Title  -->
+            <section class="container title font-white my-5">
+                <h1>Scarcity</h1>
+                <h2>Only 21 million Bitcoins will ever be produced according to the chart below.</h2>
+            </section>
+
+            <!-- Apex Charts Dashboard  -->
+
+            <!-- Apex Charts  -->
+            <div class="mx-3" id="lineChart"></div>
+
+            <!-- Educational -->
+            <section class="container title font-white my-5">
+                <h2>How are new Bitcoins made?</h2>
+                <p>Bitcoins are newly made every block by a process called mining. The block reward is distributed to the first person who mines the block.</p>
+                <p>Click on the following cards to learn more.</p>
+                <div class="container my-3 row row-cols-xl-4 row-cols-md-3 row-cols-2 justify-content-center">
+                    <div class="col halving-card card px-3 py-1 justify-content-center align-content-center" id="card-1">
+                        <h2>Initial Block Reward</h2>
+                        <p>50 Bitcoins</p>
+                    </div>
+                    <div class="col halving-card card px-3 py-1 justify-content-center align-content-center" id="card-1">
+                        <h2>Average Block time</h2>
+                        <p>10 Minutes</p>
+                    </div>
+                    <div class="col halving-card card px-3 py-1 justify-content-center align-content-center" id="card-1">
+                        <h2>Halving of Block Reward</h2>
+                        <p>Every 210,000 blocks</p>
+                    </div>
+                    <div class="col halving-card card px-3 py-1 justify-content-center align-content-center" id="card-1">
+                        <h2>Current Block Height</h2>
+                        <p></p>
+                    </div>
+                    <div class="col halving-card card px-3 py-1 justify-content-center align-content-center" id="card-1">
+                        <h2>Current Block Reward</h2>
+                        <p></p>
+                    </div>
+                    <div class="col halving-card card px-3 py-1 justify-content-center align-content-center" id="card-1">
+                        <h2>Current Block Reward</h2>
+                        <p class="att">In USD</p>
+                        <p></p>
+                    </div>
+                    <div class="col halving-card card px-3 py-1 justify-content-center align-content-center" id="card-1">
+                        <h2>Network Difficulty</h2>
+                        <p></p>
+                    </div>
+                    <div class="col halving-card card px-3 py-1 justify-content-center align-content-center" id="card-1">
+                        <h2>Electricity needed to mine a block</h2>
+                        <p class="att">At current difficulty, in KwH</p>
+                    </div>
+                    <div class="col-6 col-md-4 col-xl-4 halving-card card px-3 py-1 justify-content-center align-content-center" id="card-1">
+                        <h2>Cost of Electricity needed to mine a block</h2>
+                        <p class="att">In USD, US Rate</p>
+                    </div>
                 </div>
-                <div class="row">
-                    <div class="col-sm">One of three columns</div>
-                </div>
-                <div class="row">
-                    <div class="col-sm">One of three columns</div>
-                </div>
-            </div>
+                <h2>The value of each newly made Bitcoin</h2>
+                <p>Lies in the electricity cost to mint it. There is real intrinsic value in the amount of labour spent into each block reward. From there, Bitcoin gains value as a medium of ex</p>
+
+                <h1>Bitcoin is the hardest currency ever known to mankind.</h1>
+            </section>
 
             <!-- Footer -->
             <footer class="bg-navbar text-center text-white">
@@ -135,7 +183,6 @@
                 </modal>
             </modal>
         </main>
-
 
         <!-- Axios -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.0/axios.min.js" integrity="sha512-bPh3uwgU5qEMipS/VOmRqynnMXGGSRv+72H/N260MQeXZIK4PG48401Bsby9Nq5P5fz7hy5UGNmC/W1Z51h2GQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

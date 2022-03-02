@@ -44,6 +44,14 @@ a:hover {
     color: #e0e0e0;
 }
 
+h2{
+    margin-bottom: 10px;
+}
+
+p{
+    margin-bottom: 10px;
+}
+
 .navbar-font {
     font-family: "Tourney", cursive;
     font-weight: 900;
