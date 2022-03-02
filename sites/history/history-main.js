@@ -1,8 +1,8 @@
 window.addEventListener("DOMContentLoaded", async function () {
     initPage();
-    data = await getBitcoinPriceData();
-    renderChartPrice(data.prices);
-    renderChartPriceAnnotations();
+    renderLineChart("max");
+    renderChartAnnotations();
+    initCandleChart(); //Call init candle chart after all that to reduce lag
 
 });
 
