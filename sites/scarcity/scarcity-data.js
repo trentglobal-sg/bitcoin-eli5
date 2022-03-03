@@ -19,3 +19,9 @@ function bitcoinSupplyData() {
 
     return dataArray;
 }
+
+async function bitcoinStatsData() {
+    response = await axios.get("https://api.blockchain.info/stats");
+    return response.data;
+}
+

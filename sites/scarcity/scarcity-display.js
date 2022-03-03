@@ -1,5 +1,6 @@
 function initPage() {
     initLineChart();
+    initInfoBoard();
 }
 
 //Initialize line chart Skeleton
@@ -156,4 +157,21 @@ function renderLineChart() {
     );
 }
 
+//Chart Annotations
 function renderChartAnnotations() {}
+
+//Informational Dashboard
+async function initInfoBoard() {
+    data = await bitcoinStatsData();
+    document.querySelector("#card-2>p").innerText = Number(data["minutes_between_blocks"]).toFixed(2) + " mins";
+    document.querySelector("#card-4>p").innerText = data["n_blocks_total"].toLocaleString();
+    document.querySelector("#card-5>p").innerText = 50 / 2 ** Math.floor(data["n_blocks_total"] / 210000) + " BTC";
+    document.querySelector("#card-6>p").innerText = "$" + Number(((50 / 2 ** Math.floor(data["n_blocks_total"] / 210000)) * data["market_price_usd"]).toFixed(0)).toLocaleString();
+    document.querySelector("#card-7>p").innerText = data["difficulty"].toLocaleString();
+    //Antminer TH is 100 Th/s for consumption of 3050W
+    document.querySelector("#card-8>p").innerText = (((data["hash_rate"] * 0.1) / (6000000 * 5)) * 3050).toLocaleString() + " KwH";
+    //Cost price of electricity $0.1042 per KwH
+    document.querySelector("#card-9>p").innerText = "$" + Number((((data["hash_rate"] * 0.1) / (6000000 * 5)) * 3050 * 0.1042).toFixed(0)).toLocaleString();
+    document.querySelector("#card-10>p").innerText = "$" + data["market_price_usd"].toLocaleString();
+    document.querySelector("#card-11>p").innerText = ((data["n_blocks_total"] - 210000 * 3) * 6.25 + 12.5 * 210000 + 25 * 210000 + 50 * 210000).toLocaleString() + " BTC";
+}
