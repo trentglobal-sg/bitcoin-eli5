@@ -17,7 +17,7 @@
         <!-- Google Font CSS -->
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600&family=Nunito&family=Source+Code+Pro:ital@1&family=Tourney:wght@700;900&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600&family=Nunito&family=Source+Code+Pro:ital@1&family=Source+Sans+Pro:wght@200;700&family=Tourney:wght@700;900&display=swap" rel="stylesheet" />
         <!-- Own CSS -->
         <!-- For global Fonts and Colors -->
         <link rel="stylesheet" href="../font-and-colors.css" />
@@ -44,7 +44,7 @@
                             <li class="nav-item p-1 p-sm-3 btn-outline-dark"><a href="../index/index.html">Home</a></li>
                             <li class="nav-item p-1 p-sm-3 dropdown btn-outline-dark">
                                 <a class="dropdown-toggle" role="button" data-bs-toggle="dropdown"> Topics </a>
-                                <ul class="dropdown-menu bg-navbar font-grey-1" id="navbarDropdown">
+                                <ul class="dropdown-menu bg-navbar font-grey-1" id="navbar-dropdown">
                                     <li class="dropdown-items btn btn-outline-dark"><a href="../history/history.html">History</a></li>
                                     <li class="dropdown-items btn btn-outline-dark"><a href="../security/security.html">Security</a></li>
                                     <li class="dropdown-items btn btn-outline-dark"><a href="../scarcity/scarcity.html">Scarcity</a></li>
@@ -56,65 +56,125 @@
                 </div>
             </nav>
 
-            <div class="container debug">
+            <div class="container-fluid" id="blank-canvas">
+                <!-- First row -->
                 <div class="row">
-                    <div class="col-8 debug col-box">
+                    <div class="col-auto col-box mx-auto">
                         <div class="draggable resizable">
-                            <!-- Include a header DIV with the same name as the draggable DIV, followed by "header" -->
-                            <div class="draggable-header">Chart 1<i class="fa-solid fa-xmark"></i></div>
-                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Atque praesentium placeat veniam in, excepturi aperiam similique quo dolor deleniti at quam nesciunt numquam qui aspernatur minima voluptas aliquid quibusdam? Ex?</p>
+                            <div class="draggable-header"><i class="fa-solid fa-info"></i><i class="fa-solid fa-xmark"></i></div>
+                            <div class="content-block" id="content-1">
+                                <div class=""><i class="fa-solid fa-cubes"></i></div>
+                                <div class="">
+                                    <div class="content-header" id="content-1-header">Current Block</div>
+                                    <div class="content-data" id="content-1-data">&nbsp</div>
+                                </div>
+                            </div>
+                            <div class="content-details" id="content-1-details">
+                                <div class="content-details-header"><i class="fa-solid fa-network-wired"></i> Active Nodes</div>
+                                <div class="content-details-data">&nbsp</div>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-4 debug col-box">
+                    <div class="col-auto col-box mx-auto">
                         <div class="draggable resizable">
-                            <!-- Include a header DIV with the same name as the draggable DIV, followed by "header" -->
-                            <div class="draggable-header">Text 1<i class="fa-solid fa-xmark"></i></div>
-                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laborum voluptas libero ipsum rem nesciunt nobis, ipsa dolor nihil ratione totam, quasi labore harum voluptatibus debitis. Molestiae, placeat! Iste, assumenda optio? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Atque praesentium placeat veniam in, excepturi aperiam similique quo dolor deleniti at quam nesciunt numquam qui aspernatur minima voluptas aliquid quibusdam? Ex?</p>
+                            <div class="draggable-header"><i class="fa-solid fa-info"></i><i class="fa-solid fa-xmark"></i></div>
+                            <div class="content-block" id="content-2">
+                                <div class=""><i class="fa-solid fa-hourglass"></i></div>
+                                <div class="">
+                                    <div class="content-header" id="content-2-header">Last Block</div>
+                                    <div class="content-data" id="content-2-data">&nbsp</div>
+                                </div>
+                            </div>
+                            <div class="content-details" id="content-2-details">
+                                <div class="content-details-header"><i class="fa-solid fa-list-ol"></i> No of Transactions in block</div>
+                                <div class="content-details-data">&nbsp</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-auto col-box mx-auto">
+                        <div class="draggable resizable">
+                            <div class="draggable-header"><i class="fa-solid fa-info"></i><i class="fa-solid fa-xmark"></i></div>
+                            <div class="content-block" id="content-3">
+                                <div class=""><i class="fa-solid fa-stopwatch"></i></div>
+                                <div class="">
+                                    <div class="content-header" id="content-3-header">Avg Block Time</div>
+                                    <div class="content-data" id="content-3-data">&nbsp</div>
+                                </div>
+                            </div>
+                            <div class="content-details" id="content-3-details">
+                                <div class="content-details-header"><i class="fa-solid fa-award"></i> Block Reward</div>
+                                <div class="content-details-data">&nbsp</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-auto col-box mx-auto">
+                        <div class="draggable resizable">
+                            <div class="draggable-header"><i class="fa-solid fa-info"></i><i class="fa-solid fa-xmark"></i></div>
+                            <div class="content-block" id="content-4">
+                                <div class=""><i class="fa-solid fa-fire"></i></div>
+                                <div class="">
+                                    <div class="content-header" id="content-4-header">Network Hashrate</div>
+                                    <div class="content-data" id="content-4-data">&nbsp</div>
+                                </div>
+                            </div>
+                            <div class="content-details" id="content-4-details">
+                                <div class="content-details-header"><i class="fa-solid fa-flag-checkered"></i>AVG Hashes to win Block</div>
+                                <div class="content-details-data">&nbsp</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-auto col-box mx-auto">
+                        <div class="draggable resizable">
+                            <div class="draggable-header"><i class="fa-solid fa-info"></i><i class="fa-solid fa-xmark"></i></div>
+                            <div class="content-block" id="content-5">
+                                <div class=""><i class="fa-solid fa-dollar-sign"></i></div>
+                                <div class="">
+                                    <div class="content-header" id="content-5-header">Price</div>
+                                    <div class="content-data" id="content-5-data">&nbsp</div>
+                                </div>
+                            </div>
+                            <div class="content-details" id="content-5-details">
+                                <div class="content-details-header"><i class="fa-solid fa-network-wired"></i> 24H Low/High</div>
+                                <div class="content-details-data">&nbsp</div>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <!-- Second row -->
                 <div class="row">
-                    <div class="col-4 debug col-box">
-                        <div class="draggable resizable">
-                            <!-- Include a header DIV with the same name as the draggable DIV, followed by "header" -->
-                            <div class="draggable-header"><i class="fa-solid fa-xmark"></i></div>
-                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Atque praesentium placeat veniam in, excepturi aperiam similique quo dolor deleniti at quam nesciunt numquam qui aspernatur minima voluptas aliquid quibusdam? Ex?</p>
+                    <div class="col-auto col-box mx-auto">
+                        <div class="draggable draggable-charts resizable">
+                            <div class="draggable-header">Block Time<i class="fa-solid fa-info"></i><i class="fa-solid fa-xmark"></i></div>
+                            <div class="content-block" id="chart-1"></div>
                         </div>
                     </div>
-                    <div class="col-4 debug col-box">
-                        <div class="draggable resizable">
-                            <!-- Include a header DIV with the same name as the draggable DIV, followed by "header" -->
-                            <div class="draggable-header"><i class="fa-solid fa-xmark"></i></div>
-                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Atque praesentium placeat veniam in, excepturi aperiam similique quo dolor deleniti at quam nesciunt numquam qui aspernatur minima voluptas aliquid quibusdam? Ex?</p>
+                    <div class="col-auto col-box mx-auto">
+                        <div class="draggable draggable-charts resizable">
+                            <div class="draggable-header">Transactions<i class="fa-solid fa-info"></i><i class="fa-solid fa-xmark"></i></div>
+                            <div class="content-block" id="chart-2"></div>
                         </div>
                     </div>
-                    <div class="col-4 debug col-box">
-                        <div class="draggable resizable">
-                            <!-- Include a header DIV with the same name as the draggable DIV, followed by "header" -->
-                            <div class="draggable-header"><i class="fa-solid fa-xmark"></i></div>
-                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Atque praesentium placeat veniam in, excepturi aperiam similique quo dolor deleniti at quam nesciunt numquam qui aspernatur minima voluptas aliquid quibusdam? Ex?</p>
+                    <div class="col-auto col-box mx-auto">
+                        <div class="draggable draggable-charts resizable">
+                            <div class="draggable-header">Hashrate Pie<i class="fa-solid fa-info"></i><i class="fa-solid fa-xmark"></i></div>
+                            <div class="content-block" id="chart-3"></div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-4 debug col-box">
-                        <div class="draggable resizable">
-                            <!-- Include a header DIV with the same name as the draggable DIV, followed by "header" -->
-                            <div class="draggable-header"><i class="fa-solid fa-xmark"></i></div>
-                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Atque praesentium placeat veniam in, excepturi aperiam similique quo dolor deleniti at quam nesciunt numquam qui aspernatur minima voluptas aliquid quibusdam? Ex?</p>
+                    <div class="col-auto col-box mx-auto">
+                        <div class="draggable draggable-charts resizable">
+                            <div class="draggable-header">Price Chart<i class="fa-solid fa-info"></i><i class="fa-solid fa-xmark"></i></div>
+                            <div class="content-block" id="chart-4"></div>
                         </div>
                     </div>
-                    <div class="col-8 debug col-box">
-                        <div class="draggable resizable">
-                            <!-- Include a header DIV with the same name as the draggable DIV, followed by "header" -->
-                            <div class="draggable-header"><i class="fa-solid fa-xmark"></i></div>
-                            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Atque praesentium placeat veniam in, excepturi aperiam similique quo dolor deleniti at quam nesciunt numquam qui aspernatur minima voluptas aliquid quibusdam? Ex?</p>
+                    <div class="col-auto col-box mx-auto">
+                        <div class="draggable draggable-charts resizable">
+                            <div class="draggable-header">Orderbook<i class="fa-solid fa-info"></i><i class="fa-solid fa-xmark"></i></div>
+                            <div class="content-block" id="chart-5"></div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="container" id="big-black-space"></div>
             <!-- Apex Charts -->
             <!-- Candle Charts -->
             <!-- <section id="candle">
@@ -212,7 +272,7 @@
         <!-- Own Script -->
         <script src="dashboard-data.js"></script>
         <script src="dashboard-chart-display.js"></script>
-        <script src="dashboard-dynamic-display.js"></script>
+        <script src="dashboard-interactive-display.js"></script>
         <script src="dashboard-main.js"></script>
     </body>
 </html>

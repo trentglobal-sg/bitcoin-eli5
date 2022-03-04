@@ -2,6 +2,11 @@
     border: 1px red solid;
 }
 
+.debugx{
+    border-right: 1px cyan solid;
+    border-left: 1px cyan solid;
+}
+
 /* Customizing bootstrap checkboxes  */
 .form-switch {
     margin-left: 12px;
@@ -52,6 +57,10 @@ p{
     margin-bottom: 10px;
 }
 
+.navbar {
+    padding: 0px !important;
+}
+
 .navbar-font {
     font-family: "Tourney", cursive;
     font-weight: 900;
@@ -67,6 +76,10 @@ p{
 
 .dropdown-items {
     font-size: 1em;
+}
+
+#navbar-dropdown{
+    z-index: 100000;
 }
 
 /* footer  */

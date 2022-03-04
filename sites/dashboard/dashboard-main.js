@@ -1,5 +1,6 @@
 window.addEventListener("DOMContentLoaded", async function () {
-    initDynamicPage();
+    initInteractivePage();
+    initChartPage();
 
     // topList = await getTopList();
     // initPage(topList);

@@ -2,7 +2,7 @@ let highestZIndex = 1020; //The z index of the navbar, arbitrarily set by bootst
 let arraySizes = []; //This is an array that stores the original sizes of the col boxes
 let resizeFlag = true; //We fill the arraySizes array up whenever we detect that this is a new window/resized window
 
-function initDynamicPage() {
+function initInteractivePage() {
     //First fill of Array sizes
     fillArraySizes();
     //Setup the col boxes
@@ -99,7 +99,6 @@ function makeDraggable(domElement) {
     domElement.querySelector(`.draggable-header`).addEventListener("mousedown", dragMouseDown);
 
     function dragMouseDown(event) {
-        console.log("Mouse Down");
         event.preventDefault(); //prevent default event behaviour
         // Place it above everything
         domElement.style.zIndex = highestZIndex + 1;
@@ -120,14 +119,12 @@ function makeDraggable(domElement) {
 
     //Event on drag element
     function elementDrag(event) {
-        console.log("Mouse Drag");
         event.preventDefault();
         // set the element's new position by translating x,y
         domElement.style.transform = `translate(${event.clientX - oldX}px, ${event.clientY - oldY}px)`;
     }
 
     function closeDragElement() {
-        console.log("Mouse Up");
         // Clear all added event listeners when button stops moving
         document.onmouseup = null;
         document.onmousemove = null;
@@ -169,4 +166,3 @@ function resetDraggableBoxes() {
     }
     resizeFlag = true;
 }
-
