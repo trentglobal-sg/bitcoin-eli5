@@ -8,6 +8,11 @@
         <!-- Own CSS -->
         <!--/*Site Specific CSS*/-->
         <link rel="stylesheet" href="dashboard.css" />
+        <!-- leaflet CSS  -->
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
+        <!-- leaflet marker clustering  -->
+        <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css" />
+        <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css" />
         <!-- Animate CSS  -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
         <!-- Font Awesome CSS  -->
@@ -17,7 +22,7 @@
         <!-- Google Font CSS -->
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600&family=Nunito&family=Source+Code+Pro:ital@1&family=Source+Sans+Pro:wght@200;700&family=Tourney:wght@700;900&display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600&family=Nunito&family=Source+Code+Pro:ital@1&family=Source+Sans+Pro:wght@200;400;700&family=Tourney:wght@700;900&display=swap" rel="stylesheet" />
         <!-- Own CSS -->
         <!-- For global Fonts and Colors -->
         <link rel="stylesheet" href="../font-and-colors.css" />
@@ -134,7 +139,7 @@
                                 </div>
                             </div>
                             <div class="content-details" id="content-5-details">
-                                <div class="content-details-header"><i class="fa-solid fa-network-wired"></i> 24H Low/High</div>
+                                <div class="content-details-header"><i class="fa-solid fa-chart-line"></i> 24H Low/High</div>
                                 <div class="content-details-data">&nbsp</div>
                             </div>
                         </div>
@@ -144,32 +149,120 @@
                 <div class="row">
                     <div class="col-auto col-box mx-auto">
                         <div class="draggable draggable-charts resizable">
-                            <div class="draggable-header">Block Time<i class="fa-solid fa-info"></i><i class="fa-solid fa-xmark"></i></div>
+                            <div class="draggable-header"><i class="fa-solid fa-info"></i><i class="fa-solid fa-xmark"></i></div>
                             <div class="content-block" id="chart-1"></div>
                         </div>
                     </div>
                     <div class="col-auto col-box mx-auto">
                         <div class="draggable draggable-charts resizable">
-                            <div class="draggable-header">Transactions<i class="fa-solid fa-info"></i><i class="fa-solid fa-xmark"></i></div>
+                            <div class="draggable-header"><i class="fa-solid fa-info"></i><i class="fa-solid fa-xmark"></i></div>
                             <div class="content-block" id="chart-2"></div>
                         </div>
                     </div>
                     <div class="col-auto col-box mx-auto">
                         <div class="draggable draggable-charts resizable">
-                            <div class="draggable-header">Hashrate Pie<i class="fa-solid fa-info"></i><i class="fa-solid fa-xmark"></i></div>
+                            <div class="draggable-header"><i class="fa-solid fa-info"></i><i class="fa-solid fa-xmark"></i></div>
                             <div class="content-block" id="chart-3"></div>
                         </div>
                     </div>
                     <div class="col-auto col-box mx-auto">
                         <div class="draggable draggable-charts resizable">
-                            <div class="draggable-header">Price Chart<i class="fa-solid fa-info"></i><i class="fa-solid fa-xmark"></i></div>
+                            <div class="draggable-header"><i class="fa-solid fa-info"></i><i class="fa-solid fa-xmark"></i></div>
                             <div class="content-block" id="chart-4"></div>
                         </div>
                     </div>
                     <div class="col-auto col-box mx-auto">
                         <div class="draggable draggable-charts resizable">
-                            <div class="draggable-header">Orderbook<i class="fa-solid fa-info"></i><i class="fa-solid fa-xmark"></i></div>
-                            <div class="content-block" id="chart-5"></div>
+                            <div class="draggable-header"><i class="fa-solid fa-info"></i><i class="fa-solid fa-xmark"></i></div>
+                            <div class="content-block" id="chart-5">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Buy/Sell</th>
+                                            <th>Price</th>
+                                            <th>Qty</th>
+                                            <th>Cost</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Third Row  -->
+                <div class="row">
+                    <div class="col-auto col-box mx-auto">
+                        <div class="draggable draggable-charts resizable">
+                            <div class="draggable-header"><i class="fa-solid fa-info"></i><i class="fa-solid fa-xmark"></i></div>
+                            <div class="content-block" id="chart-6"></div>
+                        </div>
+                    </div>
+                    <div class="col-auto col-box mx-auto">
+                        <div class="draggable draggable-charts resizable">
+                            <div class="draggable-header"><i class="fa-solid fa-info"></i><i class="fa-solid fa-xmark"></i></div>
+                            <div class="content-block" id="chart-7"></div>
+                        </div>
+                    </div>
+                    <div class="col-auto col-box mx-auto">
+                        <div class="draggable draggable-charts resizable">
+                            <div class="draggable-header"><i class="fa-solid fa-info"></i><i class="fa-solid fa-xmark"></i></div>
+                            <div class="content-block" id="chart-8"></div>
+                        </div>
+                    </div>
+                    <div class="col-auto col-box mx-auto">
+                        <div class="draggable draggable-charts resizable">
+                            <div class="draggable-header"><i class="fa-solid fa-info"></i><i class="fa-solid fa-xmark"></i></div>
+                            <div class="content-block" id="chart-9"></div>
+                        </div>
+                    </div>
+                    <div class="col-auto col-box mx-auto">
+                        <div class="draggable draggable-charts resizable">
+                            <div class="draggable-header"><i class="fa-solid fa-info"></i><i class="fa-solid fa-xmark"></i></div>
+                            <div class="content-block" id="chart-10"></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Fourth row -->
+                <div class="row">
+                    <div class="col-auto col-box mx-auto">
+                        <div class="draggable draggable-flexi resizable">
+                            <div class="draggable-header">Bitcoin Node Map<i class="fa-solid fa-info"></i><i class="fa-solid fa-xmark"></i></div>
+                            <div class="content-block" id="flexi-1"></div>
+                        </div>
+                    </div>
+                    <div class="col-auto col-box mx-auto">
+                        <div class="draggable draggable-charts resizable">
+                            <div class="draggable-header"><i class="fa-solid fa-info"></i><i class="fa-solid fa-xmark"></i></div>
+                            <div class="content-block" id="flexi-2"></div>
+                        </div>
+                        <div class="draggable draggable-charts resizable">
+                            <div class="draggable-header"><i class="fa-solid fa-info"></i><i class="fa-solid fa-xmark"></i></div>
+                            <div class="content-block" id="flexi-3"></div>
+                        </div>
+                    </div>
+                    <div class="col-auto col-box mx-auto">
+                        <div class="draggable draggable-flexi resizable">
+                            <div class="draggable-header">Block Explorer<i class="fa-solid fa-info"></i><i class="fa-solid fa-xmark"></i></div>
+                            <div class="content-block" id="flexi-4">
+                                <div class="input-group input-group-sm mb-3">
+                                    <input type="text" class="form-control bg-dark" />
+                                    <div class="input-group-prepend">
+                                        <button type="button" class="btn btn-outline-light">Search</button>
+                                    </div>
+                                </div>
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Block #</th>
+                                            <th>Time</th>
+                                            <th>No of Tx</th>
+                                            <th>Cost</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -199,7 +292,7 @@
             <!-- Footer -->
             <footer class="bg-navbar text-center text-white">
                 <!-- Socials -->
-                <div class="text-center p-3">
+                <div class="text-center p-1">
                     <div>
                         <!-- Facebook -->
                         <a class="btn btn-secondary m-2" id="facebook-btn" href="https://www.facebook.com/tbooons" role="button"><i class="fab fa-facebook-f"></i></a>
@@ -208,10 +301,10 @@
                         <!-- Github -->
                         <a class="btn btn-secondary m-2" id="github-btn" href="https://github.com/Tayboonsiang90" role="button"><i class="fab fa-github"></i></a>
                     </div>
-                    <div class="font-p1">© 2022 Tay Boon Siang</div>
+                    <div class="font-p1">Crafted with Bootstrap, Leaflet, Apexcharts.</div>
                 </div>
                 <!-- Legal -->
-                <div class="text-center p-3 bg-black font-p1"><a data-bs-toggle="modal" data-bs-target="#terms"> Terms of Use</a> | <a data-bs-toggle="modal" data-bs-target="#legal">Legal Notice</a></div>
+                <div class="text-center p-1 bg-black font-p1"><a data-bs-toggle="modal" data-bs-target="#terms"> Terms of Use</a> | <a data-bs-toggle="modal" data-bs-target="#legal">Legal Notice</a></div>
             </footer>
             <!-- Modals -->
             <modal>
@@ -263,6 +356,10 @@
             </modal>
         </main>
 
+        <!-- Leaflet  -->
+        <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+        <!-- Leaflet Marker Clustering -->
+        <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster-src.js"></script>
         <!-- Axios -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.26.0/axios.min.js" integrity="sha512-bPh3uwgU5qEMipS/VOmRqynnMXGGSRv+72H/N260MQeXZIK4PG48401Bsby9Nq5P5fz7hy5UGNmC/W1Z51h2GQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <!-- Apex Chart -->
@@ -271,6 +368,8 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
         <!-- Own Script -->
         <script src="dashboard-data.js"></script>
+        <script src="dashboard-map-display.js"></script>
+        <script src="dashboard-infoboard-display.js"></script>
         <script src="dashboard-chart-display.js"></script>
         <script src="dashboard-interactive-display.js"></script>
         <script src="dashboard-main.js"></script>

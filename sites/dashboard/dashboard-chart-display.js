@@ -1,252 +1,399 @@
-//Global Data Variables
-//for updating content-2's timer
-timeElapsedMinsGlobal = 0;
-timeElapsedSecsGlobal = 0;
-//for updating content-5's price
-priceGlobal = 0;
-
 function initChartPage() {
-    update1MinuteFunctions();
     initCharts();
     update1MinuteCharts();
     //functions that update every minute (60,000ms)
-    window.setInterval(update1MinuteFunctions, 60000);
     window.setInterval(update1MinuteCharts, 60000);
 
-    update1SecondFunctions();
+    update1SecondCharts();
     //functions that update every second (1,000ms)
-    window.setInterval(update1SecondFunctions, 1000);
-}
-
-//////////////////////////////////////////////////////////
-//functions that update every minute (60,000ms)
-async function update1MinuteFunctions() {
-    console.log("1 minute functions updating...");
-    //Data required for content-1
-    let currentBlockHeight = await getCurrentBlockHeight();
-    let activeNodes = await getActiveNodes();
-    //Data required for content-2
-    let currentBlockData = await getBlockData(currentBlockHeight);
-    let currentBlockTimestamp = currentBlockData.time;
-    let noOfTx = currentBlockData.n_tx;
-    //Data required for content-3
-    let averageBlockInterval = await getAverageBlockInterval();
-    let currentBlockReward = await getCurrentBlockReward();
-    //Data required for content-4
-    let averageHashRate = await getAverageHashrate();
-    let hashesToWin = await getHashesToWin();
-    //Data required for content-5
-    let highLowData = await getHighLowData();
-
-    updateContent1(currentBlockHeight, activeNodes);
-    [timeElapsedMinsGlobal, timeElapsedSecsGlobal] = updateContent2(currentBlockTimestamp, noOfTx);
-    updateContent3(averageBlockInterval, currentBlockReward);
-    updateContent4(averageHashRate, hashesToWin);
-    updateContent5(highLowData);
-}
-//functions that update every second (1,000ms)
-async function update1SecondFunctions() {
-    console.log("1 second functions updating...");
-    //Data required for content-5
-    let currentPrice = await getCurrentPrice();
-
-    updateContent2Timer();
-    updateContent5Timer(currentPrice);
-    priceGlobal = Number(currentPrice);
-}
-
-//////////////////////////////////////////////////////////
-//function to update content-1
-function updateContent1(currentBlockHeight, activeNodes) {
-    //main
-    currentBlockHeight = currentBlockHeight.toLocaleString();
-    document.querySelector("#content-1-data").innerText = "#" + currentBlockHeight;
-    //details
-    document.querySelector("#content-1-details .content-details-data").innerText = `${activeNodes - 1234}/${activeNodes}`;
-}
-//functions to update content-2
-//returns the timeElapsedMins and timeElapsedSecs
-function updateContent2(currentBlockTimestamp, noOfTx) {
-    //main
-    let currentTime = new Date();
-    let timeElapsed = currentTime - new Date(currentBlockTimestamp * 1000);
-    let timeElapsedMins = Math.floor(timeElapsed / 60000);
-    let timeElapsedSecs = ((timeElapsed % 60000) / 1000).toFixed(0);
-    document.querySelector("#content-2-data").innerText = `${timeElapsedMins}m ${timeElapsedSecs}s ago`;
-    //details
-    document.querySelector("#content-2-details .content-details-data").innerText = noOfTx;
-
-    //return
-    return [Number(timeElapsedMins), Number(timeElapsedSecs)];
-}
-function updateContent2Timer() {
-    timeElapsedSecsGlobal += 1;
-    if (timeElapsedSecsGlobal == 60) {
-        timeElapsedSecsGlobal = 0;
-        timeElapsedMinsGlobal += 1;
-    }
-    if (timeElapsedMinsGlobal >= 10) {
-        //When the block time is above average, change to red
-        document.querySelector("#content-2 i").style.color = "#F74B4B";
-        document.querySelector("#content-2-data").style.color = "#F74B4B";
-    } else {
-        document.querySelector("#content-2 i").style.color = "#75C237";
-        document.querySelector("#content-2-data").style.color = "#75C237";
-    }
-    document.querySelector("#content-2-data").innerText = `${timeElapsedMinsGlobal}m ${timeElapsedSecsGlobal}s ago`;
-}
-//function to update content-3
-function updateContent3(averageBlockInterval, currentBlockReward) {
-    //main
-    let averageBlockIntervalMins = Math.floor(averageBlockInterval / 60);
-    let averageBlockIntervalSecs = (averageBlockInterval % 60).toFixed(0);
-    document.querySelector("#content-3-data").innerText = `${averageBlockIntervalMins}m ${averageBlockIntervalSecs}s`;
-    //details
-    document.querySelector("#content-3-details .content-details-data").innerText = currentBlockReward + " BTC";
-}
-//function to update content-4
-function updateContent4(averageHashRate, hashesToWin) {
-    //main
-    averageHashRate = (averageHashRate / 1000000000).toFixed(0);
-    document.querySelector("#content-4-data").innerText = `${averageHashRate}m TH/s`;
-    //details
-    hashesToWin = Number((hashesToWin / 1000000000000).toFixed(0)).toLocaleString();
-    document.querySelector("#content-4-details .content-details-data").innerText = hashesToWin + " TH";
-}
-//functions to update content-5
-function updateContent5(highLowData) {
-    //details
-    document.querySelector("#content-5-details .content-details-data").innerText = `$ ${Number(highLowData[0]).toFixed(0)} / $ ${Number(highLowData[1]).toFixed(0)}`;
-}
-function updateContent5Timer(currentPrice) {
-    currentPrice = Number(currentPrice).toFixed(2);
-    if (currentPrice > priceGlobal) {
-        document.querySelector("#content-5 i").style.color = "#75C237";
-        document.querySelector("#content-5-data").style.color = "#75C237";
-    } else if (currentPrice < priceGlobal) {
-        document.querySelector("#content-5 i").style.color = "#F74B4B";
-        document.querySelector("#content-5-data").style.color = "#F74B4B";
-    }
-    document.querySelector("#content-5-data").innerText = `${Number(currentPrice).toLocaleString()}`;
+    window.setInterval(update1SecondCharts, 10000);
 }
 
 //////////////////////////////////////////////////////////
 //charts that update every minute (60,000ms)
 async function update1MinuteCharts() {
     updateChart1();
+
+    //chart 2 data
+    transactionsPerBlockData = await getTransactionsPerBlock();
+    console.log(transactionsPerBlockData)
+    //chart 3 data
+    hashRatePieData = await getHashratePieData(4);
+    processedHashRatePieData = processHashRatePieData(hashRatePieData);
+    updateChart3(processedHashRatePieData);
+}
+//charts that update every Second (1,000ms)
+async function update1SecondCharts() {
+    //chart 4 data
+    klineData = await getKlineData();
+    processedKlineData = processKlineData(klineData);
+    updateChart4(processedKlineData);
+
+    //chart 5 data
+    tradeData = await getTradeData();
+    processedTradeData = processTradeData(tradeData);
+    updateChart5(processedTradeData);
 }
 
-function updateChart1() {
-    //     //Processing candle chart data (O,H,L,C)
-    //     data = await getCandleData(id, days); //in data.js
-    //     processedData = processCandleData(data);
-    //     startDate = processedData[0].x;
-    //     endDate = processedData.slice(-1)[0].x;
-    //     console.log("Rendering Candle Chart:", id);
-    //     //update candle chart series and options with a selector
-    //     ApexCharts.exec("candleChart", "updateSeries", [{ data: processedData }]);
+function updateChart1() {}
+function updateChart() {}
+
+function updateChart3(processedHashRatePieData) {
+    let sumTotal = processedHashRatePieData[0].reduce((currSum, i) => currSum + i, 0);
+    ApexCharts.exec("chart-3", "updateSeries", processedHashRatePieData[0], true, true);
+    ApexCharts.exec(
+        "chart-3",
+        "updateOptions",
+        {
+            title: {
+                text: `HASHRATE DISTRIBUTION`,
+            },
+            legend: {
+                show: true,
+                labels: {
+                    colors: "#f0f0f0",
+                },
+                fontFamily: "Source Sans Pro, sans-serif",
+                fontWeight: "200",
+                fontSize: "14px",
+                formatter: function (val, opts) {
+                    return val + " - " + ((opts.w.globals.series[opts.seriesIndex] * 100) / sumTotal).toFixed(0) + "%";
+                },
+            },
+            labels: processedHashRatePieData[1],
+        },
+        true,
+        true
+    );
+}
+
+function updateChart4(processedKlineData) {
+    ApexCharts.exec("chart-4", "updateSeries", [{ data: processedKlineData }], true, true);
+    ApexCharts.exec(
+        "chart-4",
+        "updateOptions",
+        {
+            title: {
+                text: `25 MIN CANDLESTICK CHART`,
+                offsetY: 20,
+                style: {
+                    fontFamily: "Source Sans Pro, sans-serif",
+                    fontWeight: "800",
+                    fontSize: "14px",
+                },
+            },
+            tooltip: {
+                custom: function ({ series, seriesIndex, dataPointIndex, w }) {
+                    priceString = w.globals.initialSeries[0].data[dataPointIndex].y;
+                    dateString = new Date(w.globals.initialSeries[0].data[dataPointIndex].x);
+                    dateString = dateString.toLocaleTimeString();
+                    return `
+                    <div id="tooltip">
+                    <div id="tooltip-top">${dateString}</div>
+                    <div class="tooltip-bottom-candle">Open: $${Number(priceString[0]).toFixed(0).toLocaleString()}</div>
+                    <div class="tooltip-bottom-candle">High: $${Number(priceString[1]).toFixed(0).toLocaleString()}</div>
+                    <div class="tooltip-bottom-candle">Low: $${Number(priceString[2]).toFixed(0).toLocaleString()}</div>
+                    <div class="tooltip-bottom-candle">Close: $${Number(priceString[3]).toFixed(0).toLocaleString()}</div>
+                    </div>`;
+                },
+            },
+            yaxis: {
+                type: "numeric",
+                tickAmount: 10,
+                labels: {
+                    style: {
+                        colors: "#f0f0f0",
+                        fontFamily: "Source Code Pro, monospace",
+                    },
+                    formatter: function (val) {
+                        return "$" + Number(val.toFixed(0)).toLocaleString();
+                    },
+                    snap: true,
+                },
+            },
+        },
+        true,
+        true
+    );
+}
+
+function updateChart5(processedTradeData) {
+    let tbody = document.querySelector("#chart-5 tbody");
+    tbody.innerHTML = null;
+    for (let entry of processedTradeData) {
+        tr = document.createElement("tr");
+        tr.innerHTML = `
+        <td>${entry[0]}</td>
+        <td>$${Number(entry[1]).toLocaleString()}</td>
+        <td>${entry[2]} BTC</td>
+        <td>$${Number(entry[3]).toLocaleString()}</td>`;
+        tbody.appendChild(tr);
+        if (entry[0] == "BUY") {
+            tr.style.color = "#75c237"
+        } else {
+            tr.style.color = "#F74B4B";
+        }
+    }
 }
 
 //To be called once after document is loaded
 function initCharts() {
     initChart(document.querySelector("#chart-1"), "chart-1", "bar");
     initChart(document.querySelector("#chart-2"), "chart-2", "bar");
+    initChart(document.querySelector("#chart-3"), "chart-3", "donut");
+    initChart(document.querySelector("#chart-4"), "chart-4", "candle");
 }
 
 //Initialize chart Skeleton
 //Input (DOM div, name of chart)
 function initChart(DOMElement, chartName, chartType) {
-    console.log("Initializing Chart");
-    var options = {
-        series: [],
-        chart: {
-            type: chartType,
-            id: chartName, //selector name
-            group: "charts",
-            //disable chart zooming
-            toolbar: {
+    let options = {};
+    if (chartType == "donut") {
+        options = {
+            series: [],
+            chart: {
+                type: chartType,
+                id: chartName, //selector name
+                group: "charts",
+                //disable chart zooming
+                toolbar: {
+                    show: false,
+                },
+                zoom: {
+                    enabled: false,
+                },
+            },
+            //Pre-loading title while fetching price data
+            title: {
+                text: "Loading Charts...",
+                align: "center",
+                style: {
+                    color: "#f0f0f0",
+                    fontFamily: "Source Sans Pro, sans-serif",
+                    fontWeight: "700",
+                    fontSize: "14px",
+                },
+            },
+            //Defining chart color
+            colors: ["#FF9900", "#F74B4B", "#75c237", "#ffd162", "#10a0de", "#f0f0f0", "#a0a0a0"],
+            //Stroke is the Border
+            stroke: {
                 show: false,
             },
-            zoom: {
-                enabled: false,
+            //Fill gradient to color
+            //https://apexcharts.com/docs/options/fill/
+            fill: {
+                type: "gradient",
+                gradient: {
+                    shade: "dark",
+                    shadeIntensity: 1,
+                    opacityFrom: 0,
+                    opacityTo: 1,
+                    stops: [0, 50, 100],
+                },
             },
-        },
-        //Pre-loading title while fetching price data
-        title: {
-            text: "Loading Charts...",
-            align: "center",
-            style: {
-                color: "#f0f0f0",
-                fontFamily: "Source Code Pro, monospace",
-            },
-        },
-        //Data Labels are labels with value on the chart
-        dataLabels: {
-            enabled: false,
-        },
-        //Defining chart color
-        colors: ["#FF9900"],
-        //Line Stroke
-        stroke: {
-            show: true,
-            curve: "smooth",
-            lineCap: "butt",
-            width: 2,
-            dashArray: 0,
-        },
-        //Fill gradient to color
-        //https://apexcharts.com/docs/options/fill/
-        fill: {
-            type: "gradient",
-            gradient: {
-                shade: "dark",
-                shadeIntensity: 0.5,
-                inverseColors: false,
-                opacityFrom: 1,
-                opacityTo: 0,
-                stops: [0, 99, 100],
-            },
-        },
-        xaxis: {
-            type: "datetime",
-            labels: {
+            //the percentages label
+            dataLabels: {
                 style: {
-                    colors: "#f0f0f0",
-                    fontSize: "1rem",
+                    fontSize: "10px",
+                    fontFamily: "Helvetica, Arial, sans-serif",
+                    fontWeight: "bold",
+                    colors: ["#202020"],
+                },
+                dropShadow: {
+                    enabled: false,
+                },
+                formatter(val, opts) {
+                    const name = opts.w.globals.labels[opts.seriesIndex];
+                    return [name];
+                },
+            },
+            //Size of the donut
+            plotOptions: {
+                pie: {
+                    donut: {
+                        size: "35%",
+                    },
+                },
+            },
+            tooltip: {
+                enabled: true,
+            },
+            //Words to show then chart is loading
+            noData: {
+                text: "Loading Charts...",
+                align: "center",
+                verticalAlign: "middle",
+                style: {
+                    color: "#FF9900",
+                    fontSize: "1em",
+                    fontFamily: "Tourney, cursive",
+                },
+            },
+        };
+    } else if (chartType == "candle") {
+        options = {
+            series: [],
+            chart: {
+                type: "candlestick",
+                id: chartName, //selector name
+                group: "charts",
+                //disable chart zooming
+                toolbar: {
+                    show: false,
+                },
+                zoom: {
+                    enabled: false,
+                },
+                offsetY: -15,
+            },
+            //Pre-loading title while fetching price data
+            title: {
+                text: "Loading Charts...",
+                align: "center",
+                style: {
+                    color: "#f0f0f0",
                     fontFamily: "Source Code Pro, monospace",
                 },
             },
-            //vertical crosshairs styling
-            crosshairs: {
-                show: true,
-                width: 1,
-                stroke: {
-                    colors: "#f0f0f0",
-                    width: 2,
-                    dashArray: 0,
-                },
-            },
-            //x-axis tooltip
-            tooltip: {
+            //Data Labels are labels with value on the chart
+            dataLabels: {
                 enabled: false,
             },
-        },
-        //Words to show then chart is loading
-        noData: {
-            text: "Loading Charts...",
-            align: "center",
-            verticalAlign: "middle",
-            style: {
-                color: "#FF9900",
-                fontSize: "1em",
-                fontFamily: "Tourney, cursive",
+            xaxis: {
+                type: "datetime",
+                labels: {
+                    style: {
+                        colors: "#f0f0f0",
+                        fontFamily: "Source Code Pro, monospace",
+                    },
+                },
+                //vertical crosshairs styling
+                crosshairs: {
+                    show: true,
+                    width: 1,
+                    stroke: {
+                        colors: "#f0f0f0",
+                        width: 2,
+                        dashArray: 0,
+                    },
+                },
+                //x-axis tooltip
+                tooltip: {
+                    enabled: false,
+                },
             },
-        },
-    };
-
+            plotOptions: {
+                candlestick: {
+                    wick: {
+                        //useFillColor: true,
+                    },
+                },
+            },
+            //Words to show then chart is loading
+            noData: {
+                text: "Loading Charts...",
+                align: "center",
+                verticalAlign: "middle",
+                style: {
+                    color: "#FF9900",
+                    fontSize: "1em",
+                    fontFamily: "Tourney, cursive",
+                },
+            },
+        };
+    } else {
+        options = {
+            series: [],
+            chart: {
+                type: chartType,
+                id: chartName, //selector name
+                group: "charts",
+                //disable chart zooming
+                toolbar: {
+                    show: false,
+                },
+                zoom: {
+                    enabled: false,
+                },
+            },
+            //Pre-loading title while fetching price data
+            title: {
+                text: "Loading Charts...",
+                align: "center",
+                style: {
+                    color: "#f0f0f0",
+                    fontFamily: "Source Code Pro, monospace",
+                },
+            },
+            //Data Labels are labels with value on the chart
+            dataLabels: {
+                enabled: false,
+            },
+            //Defining chart color
+            colors: ["#FF9900"],
+            //Line Stroke
+            stroke: {
+                show: true,
+                curve: "smooth",
+                lineCap: "butt",
+                width: 2,
+                dashArray: 0,
+            },
+            //Fill gradient to color
+            //https://apexcharts.com/docs/options/fill/
+            fill: {
+                type: "gradient",
+                gradient: {
+                    shade: "dark",
+                    shadeIntensity: 0.5,
+                    inverseColors: false,
+                    opacityFrom: 1,
+                    opacityTo: 0,
+                    stops: [0, 99, 100],
+                },
+            },
+            xaxis: {
+                type: "datetime",
+                labels: {
+                    style: {
+                        colors: "#f0f0f0",
+                        fontSize: "1rem",
+                        fontFamily: "Source Code Pro, monospace",
+                    },
+                },
+                //vertical crosshairs styling
+                crosshairs: {
+                    show: true,
+                    width: 1,
+                    stroke: {
+                        colors: "#f0f0f0",
+                        width: 2,
+                        dashArray: 0,
+                    },
+                },
+                //x-axis tooltip
+                tooltip: {
+                    enabled: false,
+                },
+            },
+            //Words to show then chart is loading
+            noData: {
+                text: "Loading Charts...",
+                align: "center",
+                verticalAlign: "middle",
+                style: {
+                    color: "#FF9900",
+                    fontSize: "1em",
+                    fontFamily: "Tourney, cursive",
+                },
+            },
+        };
+    }
     let lineChart = new ApexCharts(DOMElement, options);
     lineChart.render();
 }
+
 // //global flags
 // //Is volume being displayed currently?
 // let volumeDisplayFlag = false;

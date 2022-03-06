@@ -1,45 +1,249 @@
 const API_ENDPOINT_BLOCKCHAININFO = "https://blockchain.info";
+const API_ENDPOINT_BLOCKCHAININFO2 = "https://api.blockchain.info";
 const API_ENDPOINT_BINANCE = "https://api.binance.com/api/v3";
 const API_ENDPOINT_BITNODES = "https://bitnodes.io/api/v1";
 
-//
+//Global Variables
+let currentBlockHeight = 0;
+
+//Data
 async function getCurrentBlockHeight() {
-    response = await axios.get(API_ENDPOINT_BLOCKCHAININFO + "/q/getblockcount");
+    let response = await axios.get(API_ENDPOINT_BLOCKCHAININFO + "/q/getblockcount");
+    currentBlockHeight = response.data;
     return response.data;
 }
 async function getActiveNodes() {
-    response = await axios.get(API_ENDPOINT_BITNODES + "/snapshots?limit=1");
+    let response = await axios.get(API_ENDPOINT_BITNODES + "/snapshots?limit=1");
     return response.data.results[0].total_nodes;
 }
 //
 async function getBlockData(blockHeight) {
-    response = await axios.get(API_ENDPOINT_BLOCKCHAININFO + "/rawblock/" + blockHeight);
+    let response = await axios.get(API_ENDPOINT_BLOCKCHAININFO + "/rawblock/" + blockHeight);
     return response.data;
 }
 //
 async function getAverageBlockInterval() {
-    response = await axios.get(API_ENDPOINT_BLOCKCHAININFO + "/q/interval");
+    let response = await axios.get(API_ENDPOINT_BLOCKCHAININFO + "/q/interval");
     return response.data;
 }
 async function getCurrentBlockReward() {
-    response = await axios.get(API_ENDPOINT_BLOCKCHAININFO + "/q/bcperblock");
+    let response = await axios.get(API_ENDPOINT_BLOCKCHAININFO + "/q/bcperblock");
     return response.data;
 }
 //
 async function getAverageHashrate() {
-    response = await axios.get(API_ENDPOINT_BLOCKCHAININFO + "/q/hashrate");
+    let response = await axios.get(API_ENDPOINT_BLOCKCHAININFO + "/q/hashrate");
     return response.data;
 }
 async function getHashesToWin() {
-    response = await axios.get(API_ENDPOINT_BLOCKCHAININFO + "/q/hashestowin");
+    let response = await axios.get(API_ENDPOINT_BLOCKCHAININFO + "/q/hashestowin");
     return response.data;
 }
 //
 async function getCurrentPrice() {
-    response = await axios.get(API_ENDPOINT_BINANCE + "/ticker/price?symbol=BTCUSDT");
+    let response = await axios.get(API_ENDPOINT_BINANCE + "/ticker/price?symbol=BTCUSDT");
     return response.data.price;
 }
 async function getHighLowData() {
-    response = await axios.get(API_ENDPOINT_BINANCE + "/ticker/24hr?symbol=BTCUSDT");
+    let response = await axios.get(API_ENDPOINT_BINANCE + "/ticker/24hr?symbol=BTCUSDT");
     return [response.data.lowPrice, response.data.highPrice];
+}
+
+//Charts
+//chart-2
+async function getTransactionsPerBlock() {
+    let timestamp = new Date();
+    console.log(timestamp.getTime());
+    let response = await axios.get(API_ENDPOINT_BLOCKCHAININFO2 + "/charts/n-transactions-per-block", {
+        headers: {
+            //CORS policy
+            "Content-Type": null,
+        },
+        params: {
+            cors: true,
+            start: Number(timestamp.getTime() / 1000 - 86400 * 50).toFixed(0), 
+            //Get the last 50 timestamp
+        },
+    });
+    return response.data;
+}
+
+//chart-3
+async function getHashratePieData(days) {
+    let response = await axios.get(API_ENDPOINT_BLOCKCHAININFO2 + "/pools", {
+        timespan: "${days}days",
+        cors: true,
+    });
+    return response.data;
+}
+//chart-3-processing
+function processHashRatePieData(hashRatePieData) {
+    dataArray = [[], []];
+    for (let key in hashRatePieData) {
+        dataArray[1].push(key);
+        dataArray[0].push(hashRatePieData[key]);
+    }
+    return dataArray;
+}
+
+//chart-4
+async function getKlineData() {
+    let response = await axios.get(API_ENDPOINT_BINANCE + "/klines", {
+        params: {
+            symbol: "BTCUSDT",
+            interval: "1m",
+            limit: "25",
+        },
+    });
+    return response.data;
+}
+//chart-4-processing
+function processKlineData(klineData) {
+    dataArray = [];
+    for (let entry of klineData) {
+        let processedEntry = {};
+        processedEntry["x"] = new Date(entry[0]);
+        processedEntry["y"] = [entry[1], entry[2], entry[3], entry[4]];
+        dataArray.push(processedEntry);
+    }
+
+    return dataArray;
+}
+//chart-5
+async function getTradeData() {
+    let response = await axios.get(API_ENDPOINT_BINANCE + "/aggTrades", {
+        params: {
+            symbol: "BTCUSDT",
+            limit: "200",
+        },
+    });
+    return response.data;
+}
+
+function processTradeData(tradeData) {
+    let dataArray = [];
+    for (let entry of tradeData) {
+        entry["m"] ? (typeEntry = "SELL") : (typeEntry = "BUY");
+        let price = Number(entry["p"]).toFixed(0);
+        let qty = Number(entry["q"]).toFixed(5);
+        let cost = Number(price * qty).toFixed(0);
+        if (cost > 1000) {
+            processedEntry = [typeEntry, price, qty, cost];
+            dataArray.push(processedEntry);
+        }
+    }
+    return dataArray;
+}
+
+//flexi-1 (map)
+
+//get list of nodes in the network
+async function getNodeList() {
+    response = await axios.get(`${API_ENDPOINT_BITNODES}/snapshots/latest`, {
+        params: {}, //remove to get full field: "coordinates"
+    });
+    return response.data;
+}
+//get a list of 2 letter (ISO) country names with full country names
+async function get2LetterCountryNames() {
+    response = await axios.get(`https://pkgstore.datahub.io/core/country-list/data_json/data/8c458f2d15d9f2119654b29ede6e45b8/data_json.json`);
+    return response.data;
+}
+function cleanNodeData(nodeData, countryNames) {
+    addressDeletedCount = 0;
+    for (let key in nodeData.nodes) {
+        if (nodeData.nodes[key][10] == null || nodeData.nodes[key][7] == null) {
+            //Delete if it is an onion node
+            delete nodeData.nodes[key];
+            addressDeletedCount++;
+        } else {
+            nodeData.nodes[key][10] = nodeData.nodes[key][10].split("/");
+            //replace 2 letter country codes with full country names
+            for (let i in countryNames) {
+                if (countryNames[i].Code == nodeData.nodes[key][7]) {
+                    nodeData.nodes[key][7] = countryNames[i].Name;
+                }
+            }
+            //replace _  in city names
+            nodeData.nodes[key][10][1] = nodeData.nodes[key][10][1].replace(/_/g, " ");
+        }
+    }
+    return addressDeletedCount;
+}
+function sortNodeData(nodeData) {
+    continentNodes = {};
+    countryNodes = {};
+    cityNodes = {};
+    for (let key in nodeData.nodes) {
+        let continent = nodeData.nodes[key][10][0];
+        let country = nodeData.nodes[key][7];
+        let city = nodeData.nodes[key][10][1];
+
+        //continent level data processing
+        if (!(continent in continentNodes)) {
+            //if key didnt exist prior, make it
+            continentNodes[continent] = {};
+            continentNodes[continent].count = 0;
+            continentNodes[continent].averageLocation = [0, 0];
+            continentNodes[continent].countryCount = {};
+        }
+        if (!(country in continentNodes[continent].countryCount)) {
+            //is country in the country count
+            continentNodes[continent].countryCount[country] = 0;
+        }
+        continentNodes[continent].count += 1; //Count the number of nodes in the continent
+        continentNodes[continent].averageLocation[0] += nodeData.nodes[key][8]; //sum the lats
+        continentNodes[continent].averageLocation[1] += nodeData.nodes[key][9]; //sum the longs
+        continentNodes[continent].countryCount[country] += 1; //put a count of every country
+
+        //country level data processing
+        if (!(country in countryNodes)) {
+            //if key didnt exist prior, make it
+            countryNodes[country] = {};
+            countryNodes[country].count = 0;
+            countryNodes[country].averageLocation = [0, 0];
+            countryNodes[country].cityCount = {};
+        }
+        if (!(city in countryNodes[country].cityCount)) {
+            //is city in the city count
+            countryNodes[country].cityCount[city] = 0;
+        }
+        countryNodes[country].count += 1; //Count the number of nodes in the country
+        countryNodes[country].averageLocation[0] += nodeData.nodes[key][8]; //sum the lats
+        countryNodes[country].averageLocation[1] += nodeData.nodes[key][9]; //sum the longs
+        countryNodes[country].cityCount[city] += 1; //put a count of every city
+
+        //city level data processing
+        if (!(city in cityNodes)) {
+            //if key didnt exist prior, make it
+            cityNodes[city] = {};
+            cityNodes[city].count = 0;
+            cityNodes[city].averageLocation = [0, 0];
+        }
+        cityNodes[city].count += 1; //Count the number of nodes in the city
+        cityNodes[city].averageLocation[0] += nodeData.nodes[key][8]; //sum the lats
+        cityNodes[city].averageLocation[1] += nodeData.nodes[key][9]; //sum the longs
+    }
+
+    //latlong averaging
+    for (let key in continentNodes) {
+        continentNodes[key].averageLocation[0] /= continentNodes[key].count; //average the lats
+        continentNodes[key].averageLocation[1] /= continentNodes[key].count; //average the longs
+    }
+    for (let key in countryNodes) {
+        countryNodes[key].averageLocation[0] /= countryNodes[key].count; //average the lats
+        countryNodes[key].averageLocation[1] /= countryNodes[key].count; //average the longs
+    }
+    for (let key in cityNodes) {
+        cityNodes[key].averageLocation[0] /= cityNodes[key].count; //average the lats
+        cityNodes[key].averageLocation[1] /= cityNodes[key].count; //average the longs
+    }
+
+    return { continentNodes, countryNodes, cityNodes };
+}
+
+//flexi-4
+async function getBlockData(blockHeight) {
+    let response = await axios.get(API_ENDPOINT_BLOCKCHAININFO + "/rawblock/" + blockHeight);
+    return response.data;
 }
