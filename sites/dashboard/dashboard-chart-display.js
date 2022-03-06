@@ -16,7 +16,7 @@ async function update1MinuteCharts() {
 
     //chart 2 data
     transactionsPerBlockData = await getTransactionsPerBlock();
-    console.log(transactionsPerBlockData)
+    updateChart2(transactionsPerBlockData);
     //chart 3 data
     hashRatePieData = await getHashratePieData(4);
     processedHashRatePieData = processHashRatePieData(hashRatePieData);
@@ -36,7 +36,9 @@ async function update1SecondCharts() {
 }
 
 function updateChart1() {}
-function updateChart() {}
+function updateChart2(transactionsPerBlockData) {
+    ApexCharts.exec("chart-2", "updateSeries", transactionsPerBlockData, true, true);
+}
 
 function updateChart3(processedHashRatePieData) {
     let sumTotal = processedHashRatePieData[0].reduce((currSum, i) => currSum + i, 0);
@@ -139,7 +141,7 @@ function updateChart5(processedTradeData) {
 //To be called once after document is loaded
 function initCharts() {
     initChart(document.querySelector("#chart-1"), "chart-1", "bar");
-    initChart(document.querySelector("#chart-2"), "chart-2", "bar");
+    initChart(document.querySelector("#chart-2"), "chart-2", "column");
     initChart(document.querySelector("#chart-3"), "chart-3", "donut");
     initChart(document.querySelector("#chart-4"), "chart-4", "candle");
 }

@@ -65,7 +65,7 @@ async function getTransactionsPerBlock() {
             //Get the last 50 timestamp
         },
     });
-    return response.data;
+    return response.data.values;
 }
 
 //chart-3
