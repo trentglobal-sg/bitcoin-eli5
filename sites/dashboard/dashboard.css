@@ -204,10 +204,14 @@ td {
 #flexi-2-3-parent {
     width: 357px;
 }
-
-/* For flexi-4 table  */
 #flexi-3-parent {
     transform: translateY(230px);
+}
+
+/* For flexi-4 table  */
+#flexi-4 img{
+    width: 14px;
+    border-radius: 50%;
 }
 
 /* Draggable boxes styling */
