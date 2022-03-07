@@ -11,7 +11,6 @@ async function getTotalNoOfNodes() {
 
 //get list of nodes in the network
 async function getNodeList() {
-    console.log("Getting List of Nodes from Bitnodes.io")
     response = await axios.get(`${BITNODES_API_URL}/snapshots/latest`, {
         params: {}, //remove to get full field: "coordinates"
     });
@@ -40,7 +39,6 @@ async function get2LetterCountryNames() {
 //Replace 2 letter country code with full country name
 //object has been cleaned in-situ
 function cleanNodeData(nodeData, countryNames) {
-    console.log("Cleaning Data");
     addressDeletedCount = 0;
     for (let key in nodeData.nodes) {
         if (nodeData.nodes[key][10] == null || nodeData.nodes[key][7] == null) {
@@ -65,7 +63,6 @@ function cleanNodeData(nodeData, countryNames) {
 //second object contains all countries and details
 //third object contains all cities and details
 function sortNodeData(nodeData) {
-    console.log("Sorting Data...");
     continentNodes = {};
     countryNodes = {};
     cityNodes = {};

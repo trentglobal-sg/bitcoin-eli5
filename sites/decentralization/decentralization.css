@@ -1,28 +1,71 @@
 /* map styling  */
 #map {
-    height: 85vh;
+    height: 50vh;
+}
+
+#map-container {
+    text-align: center;
 }
 
 /* map icons  */
-.fa-brands {
+.marker-header {
+    display: flex;
+}
+.marker-counter {
+    transform: translateY(5px);
+}
+.marker-header > i {
+    font-size: 0.7em;
     display: inline;
 }
-.marker:hover {
-    text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
+.leaflet-popup th {
+    color: black !important;
 }
-.markerCounter {
-    font-family: "League Gothic", "Arial Narrow", Arial, sans;
-    font-weight: 700;
-    line-height: 14px;
-    margin: 0 auto;
+.fa-circle {
+    border-radius: 50%;
+    margin: 10px;
+    box-shadow: 0px 0px 4px 4px #FF9900;
+    animation: glow 1.5s linear infinite alternate;
 }
-.markerText {
-    font-family: "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+.individual-circle {
+    font-size: 0.5em;
+}
+.marker-text,
+.marker-counter {
+    font-family: "Source Sans Pro", sans-serif;
     font-weight: 700;
-    line-height: 14px;
+    font-size: 14px;
     text-transform: uppercase;
-    margin: 0 auto;
+    text-align: left;
+    color: white;
 }
+@keyframes glow {
+    to {
+        box-shadow: 0px 0px 4px 4px #ffffff;
+    }
+}
+
+.marker-cluster {
+    background-color: transparent !important;
+}
+
+.marker-cluster div {
+    width: 20px !important;
+    height: 20px !important;
+    box-shadow: 0px 0px 4px 4px #747de8;
+    background-color: white !important;
+    animation: glow 1.5s linear infinite alternate;
+}
+
+.marker-cluster > div > span {
+    transform: translateY(-5px);
+    font-family: "Source Sans Pro", sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    color: #202020;
+    display: inline-block;
+}
+
 @media screen and (min-width: 576px) {
     /* css rules for large phones from 576 to 768px (sm) */
 }

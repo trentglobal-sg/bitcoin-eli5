@@ -1,17 +1,17 @@
 //first init of map
 function initMap() {
     //Set central point of the world
-    let midPoint = [36, 0];
-    let zoomLevel = 2; //for a good world map view
+    let midPoint = [0, 35];
+    let zoomLevel = 1.75; //for a good world map view
     let map = L.map("map", {
         zoomSnap: 0.25, //zoom snap levels
         zoomDelta: 0.25, //+- button speed
-        wheelPxPerZoomLevel: 150, //mouse scroll speed
+        wheelPxPerZoomLevel: 110, //mouse scroll speed
     }).setView(midPoint, zoomLevel);
 
     // setup the tile layers
-    L.tileLayer("https://stamen-tiles-{s}.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.{ext}", {
-        minZoom: 2,
+    L.tileLayer("https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png", {
+        minZoom: 1,
         maxZoom: 16,
         subdomains: "abcd",
         ext: "jpg",
@@ -33,21 +33,26 @@ function populateNodeMarkers(map, continentNodes, countryNodes, cityNodes, indiv
 
     map.on("zoomend", function () {
         zoomLevel = map.getZoom();
-        document.querySelector("#map-title").innerHTML = zoomLevel;
-        if (zoomLevel < 4) {
+        if (zoomLevel < 3.5) {
             continentNodesLayerGroup.addTo(map);
             countryNodesLayerGroup.remove();
-        } else if ((zoomLevel >= 4) & (zoomLevel < 6)) {
+            cityNodesLayerGroup.remove();
+            individualNodesLayerGroup.remove();
+        } else if ((zoomLevel >= 3.5) & (zoomLevel < 4)) {
             countryNodesLayerGroup.addTo(map);
             continentNodesLayerGroup.remove();
             cityNodesLayerGroup.remove();
-        } else if ((zoomLevel >= 6) & (zoomLevel < 7)) {
+            individualNodesLayerGroup.remove();
+        } else if ((zoomLevel >= 4) & (zoomLevel < 5.75)) {
             cityNodesLayerGroup.addTo(map);
             countryNodesLayerGroup.remove();
+            continentNodesLayerGroup.remove();
             individualNodesLayerGroup.remove();
         } else {
             individualNodesLayerGroup.addTo(map);
             cityNodesLayerGroup.remove();
+            countryNodesLayerGroup.remove();
+            continentNodesLayerGroup.remove();
         }
     });
 }
@@ -57,31 +62,36 @@ function individualNodeRender(individualNodes) {
     //individual nodes grouping into a MCG (for no lag maps at a zoomed level)
     individualNodesLayerGroup = L.markerClusterGroup();
     for (let key in individualNodes.nodes) {
+        //Custom Icon
+        let myIcon = new L.divIcon({
+            className: "my-div-icon",
+            html: `<i class="fa-solid fa-circle individual-circle"></i>`,
+        });
         //create Marker
-        individualNodeMarker = L.marker([individualNodes.nodes[key][8], individualNodes.nodes[key][9]]);
-        let d = new Date(Number(individualNodes.nodes[key][2])*1000);
+        individualNodeMarker = L.marker([individualNodes.nodes[key][8], individualNodes.nodes[key][9]], { icon: myIcon });
+        let d = new Date(Number(individualNodes.nodes[key][2]) * 1000);
         //Popup Binding
         individualNodeMarker.bindPopup(`
         <table class="table table-striped">
             <tbody>
                 <tr>
-                    <th>IP Address </th>
+                    <th>IP Address &nbsp&nbsp</th>
                     <td>${key} <td>
                 </tr>
                 <tr>
-                    <th>Protocol Version </th>
+                    <th>Protocol Version &nbsp&nbsp</th>
                     <td>${individualNodes.nodes[key][0]} <td>
                 </tr>
                 <tr>
-                    <th>Live since </th>
+                    <th>Live since &nbsp&nbsp</th>
                     <td>${d} <td>
                 </tr>
                 <tr>
-                    <th>Block Height </th>
+                    <th>Block Height &nbsp&nbsp</th>
                     <td>${individualNodes.nodes[key][4]} <td>
                 </tr>
                 <tr>
-                    <th>ISP Name </th>
+                    <th>ISP Name &nbsp&nbsp</th>
                     <td>${individualNodes.nodes[key][12]} <td>
                 </tr>
             </tbody>
@@ -104,9 +114,12 @@ function cityNodeRender(cityNodes) {
         let myIcon = new L.divIcon({
             className: "my-div-icon",
             html: `
-            <div class="marker" style="font-size:${fontSize}em">
-                <div class="markerCounter"><i class="fa-brands fa-hashnode"></i> ${cityNodeCount}</div>
-                <div class="markerText">${key}</div>
+            <div class="marker">
+                <div class="marker-header">
+                    <i class="fa-solid fa-circle"></i>
+                    <div class="marker-counter">${cityNodeCount}</div>
+                </div>
+                <div class="marker-text">${key}</div>
             </div>`,
         });
         //Create Marker
@@ -116,11 +129,11 @@ function cityNodeRender(cityNodes) {
         <table class="table table-striped">
             <tbody>
                 <tr>
-                    <th>City </th>
+                    <th>City &nbsp&nbsp</th>
                     <td>${key} <td>
                 </tr>
                 <tr>
-                    <th>Node Count </th>
+                    <th>Node Count &nbsp&nbsp</th>
                     <td>${cityNodes[key].count} <td>
                 </tr>
             </tbody>
@@ -144,9 +157,12 @@ function countryNodeRender(countryNodes) {
         let myIcon = new L.divIcon({
             className: "my-div-icon",
             html: `
-            <div class="marker" style="font-size:${fontSize}em">
-                <div class="markerCounter"><i class="fa-brands fa-hashnode"></i> ${countryNodeCount}</div>
-                <div class="markerText">${key}</div>
+            <div class="marker">
+                <div class="marker-header">
+                    <i class="fa-solid fa-circle"></i>
+                    <div class="marker-counter">${countryNodeCount}</div>
+                </div>
+                <div class="marker-text">${key}</div>
             </div>`,
         });
         //Create Marker
@@ -156,11 +172,11 @@ function countryNodeRender(countryNodes) {
         <table class="table table-striped">
             <tbody>
                 <tr>
-                    <th>Country </th>
+                    <th>Country &nbsp&nbsp</th>
                     <td>${key} <td>
                 </tr>
                 <tr>
-                    <th>Node Count </th>
+                    <th>Node Count &nbsp&nbsp</th>
                     <td>${countryNodes[key].count} <td>
                 </tr>
             </tbody>
@@ -179,28 +195,32 @@ function continentNodeRender(continentNodes) {
     for (let key in continentNodes) {
         //Let continent node count decide font size
         continentNodeCount = continentNodes[key].count;
-        fontSize = Number(continentNodeCount) / 7000 + 1.5;
+        fontSize = Number(continentNodeCount) / 10000 + 1;
         //Create custom icon for every continent
         let myIcon = new L.divIcon({
             className: "my-div-icon",
             html: `
-            <div class="marker" style="font-size:${fontSize}em">
-                <div class="markerCounter"><i class="fa-brands fa-hashnode"></i> ${continentNodeCount}</div>
-                <div class="markerText">${key}</div>
+            <div class="marker">
+                <div class="marker-header">
+                    <i class="fa-solid fa-circle"></i>
+                    <div class="marker-counter">${continentNodeCount}</div>
+                </div>
+                <div class="marker-text">${key}</div>
             </div>`,
         });
         //Create Marker
         continentNodeMarker = L.marker(continentNodes[key].averageLocation, { icon: myIcon });
+
         //Popup Binding
         continentNodeMarker.bindPopup(`
         <table class="table table-striped">
             <tbody>
                 <tr>
-                    <th>Continent </th>
+                    <th>Continent &nbsp&nbsp</th>
                     <td>${key} <td>
                 </tr>
                 <tr>
-                    <th>Node Count </th>
+                    <th>Node Count &nbsp&nbsp</th>
                     <td>${continentNodes[key].count} <td>
                 </tr>
             </tbody>

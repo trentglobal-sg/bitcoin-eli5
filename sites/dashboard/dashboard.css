@@ -111,7 +111,17 @@
 }
 #content-5-details i,
 #content-5-details .content-details-data {
-    color: #ff8a00;
+    color: hsl(32, 100%, 50%);
+}
+/*for chart 1/6/7 table*/
+#chart-1 td,
+#chart-6 td,
+#chart-7 td {
+    color: white;
+}
+#chart-1 .table-pointer,
+#chart-6 .table-pointer {
+    cursor: pointer;
 }
 /* For chart 5 tables */
 th {
@@ -128,6 +138,7 @@ td {
     font-size: 14px;
     padding: 0 !important;
 }
+
 /* For flexi 1 map  */
 #flexi-1 {
     height: 445px;
@@ -141,6 +152,9 @@ td {
 .marker-header > i {
     font-size: 0.7em;
     display: inline;
+}
+.leaflet-popup th {
+    color: black !important;
 }
 .fa-circle {
     border-radius: 50%;
@@ -186,22 +200,14 @@ td {
     display: inline-block;
 }
 
+/* For flexi-2-3 */
+#flexi-2-3-parent {
+    width: 357px;
+}
+
 /* For flexi-4 table  */
-#flexi-4 {
-    flex-direction: column;
-}
-
-.form-control:focus {
-    border-color: white !important;
-    box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.25) !important;
-}
-
-#flexi-4 input {
-    color: #f0f0f0 !important;
-    font-family: "Source Sans Pro", sans-serif;
-    font-weight: 700;
-    font-size: 18px;
-    text-transform: uppercase;
+#flexi-3-parent {
+    transform: translateY(230px);
 }
 
 /* Draggable boxes styling */
@@ -242,11 +248,24 @@ td {
 .fa-info {
     cursor: pointer;
     font-size: 12px;
-    margin-left: 16px;
+    margin-left: 10px;
     transform: translateY(-2px);
 }
+.fa-arrow-rotate-right {
+    cursor: pointer;
+    margin-right: 3px;
+    margin-left: 16px;
+}
+.fa-sort-down {
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: 10px;
+    transform: translateY(-3px);
+}
 .fa-xmark:hover,
-.fa-info:hover {
+.fa-info:hover,
+.fa-arrow-rotate-right:hover,
+.fa-sort-down:hover {
     color: #a0a0a0;
 }
 .col-box {
@@ -290,28 +309,3 @@ td {
 @media screen and (min-width: 1200px) {
     /* css rules for large screens from 1200 onwards (xl) */
 }
-
-/* Change Coin Styling
-#list-of-cryptos a {
-    color: black;
-}
-#list-of-cryptos img {
-    width: 1em;
-    height: auto;
-    margin-right: 0.5em;
-}
-
-.dropdown-menu {
-    max-height: 100vh;
-    overflow-y: auto;
-}
-
-#new-coin-dropdown img {
-    width: 1em;
-    height: auto;
-    margin-left: 0.1em;
-}
-
-#list-of-days a {
-    color: black;
-} */

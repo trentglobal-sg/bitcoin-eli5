@@ -46,24 +46,45 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-sm-0">
-                            <li class="nav-item p-1 p-sm-3 btn-outline-dark"><a href="../index/index.html">Home</a></li>
+                            <li class="nav-item p-1 p-sm-3 btn-outline-dark"><a href="../../index.html">Home</a></li>
                             <li class="nav-item p-1 p-sm-3 dropdown btn-outline-dark">
                                 <a class="dropdown-toggle" role="button" data-bs-toggle="dropdown"> Topics </a>
-                                <ul class="dropdown-menu bg-navbar font-grey-1" id="navbarDropdown">
+                                <ul class="dropdown-menu bg-navbar font-grey-1" id="navbar-dropdown">
                                     <li class="dropdown-items btn btn-outline-dark"><a href="../history/history.html">History</a></li>
                                     <li class="dropdown-items btn btn-outline-dark"><a href="../security/security.html">Security</a></li>
                                     <li class="dropdown-items btn btn-outline-dark"><a href="../scarcity/scarcity.html">Scarcity</a></li>
                                     <li class="dropdown-items btn btn-outline-dark"><a href="../decentralization/decentralization.html">Decentralization</a></li>
                                 </ul>
                             </li>
+                            <li class="nav-item p-1 p-sm-3 btn-outline-dark"><a href="../dashboard/dashboard.html">Dashboard </a></li>
                         </ul>
                     </div>
                 </div>
             </nav>
 
             <!-- map  -->
-            <div id="map-title" class="fs-1 font-white">Bitcoin Node Map</div>
-            <div id="map"></div>
+            <div class="font-gold" id="map-container">
+                <h1 class="p-3">Bitcoin Node Map</h1>
+                <div id="map"></div>
+                <h1 class="p-3">Why is Bitcoin decentralized?</h1>
+                <h2 class="font-white">Nodes</h2>
+                <p class="font-white">Any computer that connects to the Bitcoin network called a node. Each node download every block and transaction and check them against Bitcoin rules.</p>
+                <h2 class="font-white">Rules</h2>
+                <div class="container">
+                    <ul class="font-white">
+                        <li><p class="font-white">Blocks may only create a pre-determined number of Bitcoins</p></li>
+                        <li><p class="font-white">Every transaction must be signed by the correct owner of the private key</p></li>
+                        <li><p class="font-white">All transactions and blocks must be formatted correctly according to the standard</p></li>
+                        <li><p class="font-white">There must be no double spending</p></li>
+                    </ul>
+                <div class="container">
+                <h2 class="font-white">Decentralization</h2>
+                <p class="font-white">As long as there are computers running nodes, the Bitcoin network will always exist.</p>
+                <p class="font-white">It is almost impossible to take down all of Bitcoin nodes at once as anyone can run their own node. </p>
+                <p class="font-white">Due to the geographical distribution of Bitcoin, it is unlikely an attacker can take down all nodes in 1 shot. </p>
+                <h1 class="p-3">Bitcoin lies outside the juristriction of any single entity and country because it is democratized by the fact that anyone can run their node software, anywhere in the world. </h1>
+                </div>
+            </div>
 
             <!-- Footer -->
             <footer class="bg-navbar text-center text-white">

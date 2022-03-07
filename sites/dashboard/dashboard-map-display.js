@@ -77,23 +77,23 @@ function individualNodeRender(individualNodes) {
         <table class="table table-striped">
             <tbody>
                 <tr>
-                    <th>IP Address </th>
+                    <th>IP Address &nbsp&nbsp</th>
                     <td>${key} <td>
                 </tr>
                 <tr>
-                    <th>Protocol Version </th>
+                    <th>Protocol Version &nbsp&nbsp</th>
                     <td>${individualNodes.nodes[key][0]} <td>
                 </tr>
                 <tr>
-                    <th>Live since </th>
+                    <th>Live since &nbsp&nbsp</th>
                     <td>${d} <td>
                 </tr>
                 <tr>
-                    <th>Block Height </th>
+                    <th>Block Height &nbsp&nbsp</th>
                     <td>${individualNodes.nodes[key][4]} <td>
                 </tr>
                 <tr>
-                    <th>ISP Name </th>
+                    <th>ISP Name &nbsp&nbsp</th>
                     <td>${individualNodes.nodes[key][12]} <td>
                 </tr>
             </tbody>
@@ -131,11 +131,11 @@ function cityNodeRender(cityNodes) {
         <table class="table table-striped">
             <tbody>
                 <tr>
-                    <th>City </th>
+                    <th>City &nbsp&nbsp</th>
                     <td>${key} <td>
                 </tr>
                 <tr>
-                    <th>Node Count </th>
+                    <th>Node Count &nbsp&nbsp</th>
                     <td>${cityNodes[key].count} <td>
                 </tr>
             </tbody>
@@ -174,11 +174,11 @@ function countryNodeRender(countryNodes) {
         <table class="table table-striped">
             <tbody>
                 <tr>
-                    <th>Country </th>
+                    <th>Country &nbsp&nbsp</th>
                     <td>${key} <td>
                 </tr>
                 <tr>
-                    <th>Node Count </th>
+                    <th>Node Count &nbsp&nbsp</th>
                     <td>${countryNodes[key].count} <td>
                 </tr>
             </tbody>
@@ -218,11 +218,11 @@ function continentNodeRender(continentNodes) {
         <table class="table table-striped">
             <tbody>
                 <tr>
-                    <th>Continent </th>
+                    <th>Continent &nbsp&nbsp</th>
                     <td>${key} <td>
                 </tr>
                 <tr>
-                    <th>Node Count </th>
+                    <th>Node Count &nbsp&nbsp</th>
                     <td>${continentNodes[key].count} <td>
                 </tr>
             </tbody>

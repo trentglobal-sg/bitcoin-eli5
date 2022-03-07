@@ -18,7 +18,6 @@ function initInfoboardpage() {
 //////////////////////////////////////////////////////////
 //functions that update every minute (60,000ms)
 async function update1MinuteFunctions() {
-    console.log("1 minute functions updating...");
     //Data required for content-1
     let currentBlockHeight = await getCurrentBlockHeight();
     let activeNodes = await getActiveNodes();
@@ -43,7 +42,6 @@ async function update1MinuteFunctions() {
 }
 //functions that update every second (1,000ms)
 async function update1SecondFunctions() {
-    console.log("1 second functions updating...");
     //Data required for content-5
     let currentPrice = await getCurrentPrice();
 

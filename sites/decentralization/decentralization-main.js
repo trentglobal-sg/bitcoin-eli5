@@ -5,7 +5,6 @@ window.addEventListener("DOMContentLoaded", async function () {
     nodeData = await getNodeList();
     countryNames = await get2LetterCountryNames();
     cleanNodeData(nodeData, countryNames);
-    console.log(nodeData);
     let { continentNodes, countryNodes, cityNodes } = sortNodeData(nodeData);
     populateNodeMarkers(map, continentNodes, countryNodes, cityNodes, nodeData);
 });

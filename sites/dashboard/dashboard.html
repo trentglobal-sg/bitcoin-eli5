@@ -46,7 +46,7 @@
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-sm-0">
-                            <li class="nav-item p-1 p-sm-3 btn-outline-dark"><a href="../index/index.html">Home</a></li>
+                            <li class="nav-item p-1 p-sm-3 btn-outline-dark"><a href="../../index.html">Home</a></li>
                             <li class="nav-item p-1 p-sm-3 dropdown btn-outline-dark">
                                 <a class="dropdown-toggle" role="button" data-bs-toggle="dropdown"> Topics </a>
                                 <ul class="dropdown-menu bg-navbar font-grey-1" id="navbar-dropdown">
@@ -56,8 +56,9 @@
                                     <li class="dropdown-items btn btn-outline-dark"><a href="../decentralization/decentralization.html">Decentralization</a></li>
                                 </ul>
                             </li>
+                            <li class="nav-item p-1 p-sm-3 btn-outline-dark"><a href="../dashboard/dashboard.html">Dashboard </a></li>
+                            <li class="nav-item p-1 p-sm-3 btn-outline-dark"><a href="../dashboard/dashboard.html">Reset </a></li>
                         </ul>
-                        <li class="nav-item p-1 p-sm-3 btn-outline-dark"><a href="../dashboard/dashboard.html">Live Dashboard</a></li>
                     </div>
                 </div>
             </nav>
@@ -67,7 +68,7 @@
                 <div class="row">
                     <div class="col-auto col-box mx-auto">
                         <div class="draggable resizable">
-                            <div class="draggable-header"><i class="fa-solid fa-info"></i><i class="fa-solid fa-xmark"></i></div>
+                            <div class="draggable-header">&nbsp&nbsp&nbsp&nbsp<i class="fa-solid fa-arrow-rotate-right"></i><i class="fa-solid fa-sort-down"></i><i class="fa-solid fa-info"></i><i class="fa-solid fa-xmark"></i></div>
                             <div class="content-block" id="content-1">
                                 <div class=""><i class="fa-solid fa-cubes"></i></div>
                                 <div class="">
@@ -83,7 +84,7 @@
                     </div>
                     <div class="col-auto col-box mx-auto">
                         <div class="draggable resizable">
-                            <div class="draggable-header"><i class="fa-solid fa-info"></i><i class="fa-solid fa-xmark"></i></div>
+                            <div class="draggable-header">&nbsp&nbsp&nbsp&nbsp<i class="fa-solid fa-arrow-rotate-right"></i><i class="fa-solid fa-sort-down"></i><i class="fa-solid fa-info"></i><i class="fa-solid fa-xmark"></i></div>
                             <div class="content-block" id="content-2">
                                 <div class=""><i class="fa-solid fa-hourglass"></i></div>
                                 <div class="">
@@ -99,7 +100,7 @@
                     </div>
                     <div class="col-auto col-box mx-auto">
                         <div class="draggable resizable">
-                            <div class="draggable-header"><i class="fa-solid fa-info"></i><i class="fa-solid fa-xmark"></i></div>
+                            <div class="draggable-header">&nbsp&nbsp&nbsp&nbsp<i class="fa-solid fa-arrow-rotate-right"></i><i class="fa-solid fa-sort-down"></i><i class="fa-solid fa-info"></i><i class="fa-solid fa-xmark"></i></div>
                             <div class="content-block" id="content-3">
                                 <div class=""><i class="fa-solid fa-stopwatch"></i></div>
                                 <div class="">
@@ -115,7 +116,7 @@
                     </div>
                     <div class="col-auto col-box mx-auto">
                         <div class="draggable resizable">
-                            <div class="draggable-header"><i class="fa-solid fa-info"></i><i class="fa-solid fa-xmark"></i></div>
+                            <div class="draggable-header">&nbsp&nbsp&nbsp&nbsp<i class="fa-solid fa-arrow-rotate-right"></i><i class="fa-solid fa-sort-down"></i><i class="fa-solid fa-info"></i><i class="fa-solid fa-xmark"></i></div>
                             <div class="content-block" id="content-4">
                                 <div class=""><i class="fa-solid fa-fire"></i></div>
                                 <div class="">
@@ -131,7 +132,7 @@
                     </div>
                     <div class="col-auto col-box mx-auto">
                         <div class="draggable resizable">
-                            <div class="draggable-header"><i class="fa-solid fa-info"></i><i class="fa-solid fa-xmark"></i></div>
+                            <div class="draggable-header">&nbsp&nbsp&nbsp&nbsp<i class="fa-solid fa-arrow-rotate-right"></i><i class="fa-solid fa-sort-down"></i><i class="fa-solid fa-info"></i><i class="fa-solid fa-xmark"></i></div>
                             <div class="content-block" id="content-5">
                                 <div class=""><i class="fa-solid fa-dollar-sign"></i></div>
                                 <div class="">
@@ -150,31 +151,43 @@
                 <div class="row">
                     <div class="col-auto col-box mx-auto">
                         <div class="draggable draggable-charts resizable">
-                            <div class="draggable-header"><i class="fa-solid fa-info"></i><i class="fa-solid fa-xmark"></i></div>
-                            <div class="content-block" id="chart-1"></div>
+                            <div class="draggable-header">Block List&nbsp&nbsp&nbsp&nbsp<i class="fa-solid fa-arrow-rotate-right"></i><i class="fa-solid fa-sort-down"></i><i class="fa-solid fa-info"></i><i class="fa-solid fa-xmark"></i></div>
+                            <div class="content-block" id="chart-1">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Block Height</th>
+                                            <th>Time Mined</th>
+                                            <th>Txns</th>
+                                            <th>Fees</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                     <div class="col-auto col-box mx-auto">
                         <div class="draggable draggable-charts resizable">
-                            <div class="draggable-header"><i class="fa-solid fa-info"></i><i class="fa-solid fa-xmark"></i></div>
+                            <div class="draggable-header">&nbsp&nbsp&nbsp&nbsp<i class="fa-solid fa-arrow-rotate-right"></i><i class="fa-solid fa-sort-down"></i><i class="fa-solid fa-info"></i><i class="fa-solid fa-xmark"></i></div>
                             <div class="content-block" id="chart-2"></div>
                         </div>
                     </div>
                     <div class="col-auto col-box mx-auto">
                         <div class="draggable draggable-charts resizable">
-                            <div class="draggable-header"><i class="fa-solid fa-info"></i><i class="fa-solid fa-xmark"></i></div>
+                            <div class="draggable-header">&nbsp&nbsp&nbsp&nbsp<i class="fa-solid fa-arrow-rotate-right"></i><i class="fa-solid fa-sort-down"></i><i class="fa-solid fa-info"></i><i class="fa-solid fa-xmark"></i></div>
                             <div class="content-block" id="chart-3"></div>
                         </div>
                     </div>
                     <div class="col-auto col-box mx-auto">
                         <div class="draggable draggable-charts resizable">
-                            <div class="draggable-header"><i class="fa-solid fa-info"></i><i class="fa-solid fa-xmark"></i></div>
+                            <div class="draggable-header">&nbsp&nbsp&nbsp&nbsp<i class="fa-solid fa-arrow-rotate-right"></i><i class="fa-solid fa-sort-down"></i><i class="fa-solid fa-info"></i><i class="fa-solid fa-xmark"></i></div>
                             <div class="content-block" id="chart-4"></div>
                         </div>
                     </div>
                     <div class="col-auto col-box mx-auto">
                         <div class="draggable draggable-charts resizable">
-                            <div class="draggable-header"><i class="fa-solid fa-info"></i><i class="fa-solid fa-xmark"></i></div>
+                            <div class="draggable-header">Exchange Orderbook&nbsp&nbsp&nbsp&nbsp<i class="fa-solid fa-arrow-rotate-right"></i><i class="fa-solid fa-sort-down"></i><i class="fa-solid fa-info"></i><i class="fa-solid fa-xmark"></i></div>
                             <div class="content-block" id="chart-5">
                                 <table class="table table-striped">
                                     <thead>
@@ -195,31 +208,51 @@
                 <div class="row">
                     <div class="col-auto col-box mx-auto">
                         <div class="draggable draggable-charts resizable">
-                            <div class="draggable-header"><i class="fa-solid fa-info"></i><i class="fa-solid fa-xmark"></i></div>
-                            <div class="content-block" id="chart-6"></div>
+                            <div class="draggable-header">Transaction List&nbsp&nbsp&nbsp&nbsp<i class="fa-solid fa-arrow-rotate-right"></i><i class="fa-solid fa-sort-down"></i><i class="fa-solid fa-info"></i><i class="fa-solid fa-xmark"></i></div>
+                            <div class="content-block" id="chart-6">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Transaction List for Block #</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                     <div class="col-auto col-box mx-auto">
                         <div class="draggable draggable-charts resizable">
-                            <div class="draggable-header"><i class="fa-solid fa-info"></i><i class="fa-solid fa-xmark"></i></div>
-                            <div class="content-block" id="chart-7"></div>
+                            <div class="draggable-header">Transaction Details&nbsp&nbsp&nbsp&nbsp<i class="fa-solid fa-arrow-rotate-right"></i><i class="fa-solid fa-sort-down"></i><i class="fa-solid fa-info"></i><i class="fa-solid fa-xmark"></i></div>
+                            <div class="content-block" id="chart-7">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th>TxId Details:</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                     <div class="col-auto col-box mx-auto">
                         <div class="draggable draggable-charts resizable">
-                            <div class="draggable-header"><i class="fa-solid fa-info"></i><i class="fa-solid fa-xmark"></i></div>
+                            <div class="draggable-header">&nbsp&nbsp&nbsp&nbsp<i class="fa-solid fa-arrow-rotate-right"></i><i class="fa-solid fa-sort-down"></i><i class="fa-solid fa-info"></i><i class="fa-solid fa-xmark"></i></div>
                             <div class="content-block" id="chart-8"></div>
                         </div>
                     </div>
                     <div class="col-auto col-box mx-auto">
                         <div class="draggable draggable-charts resizable">
-                            <div class="draggable-header"><i class="fa-solid fa-info"></i><i class="fa-solid fa-xmark"></i></div>
+                            <div class="draggable-header">&nbsp&nbsp&nbsp&nbsp<i class="fa-solid fa-arrow-rotate-right"></i><i class="fa-solid fa-sort-down"></i><i class="fa-solid fa-info"></i><i class="fa-solid fa-xmark"></i></div>
                             <div class="content-block" id="chart-9"></div>
                         </div>
                     </div>
                     <div class="col-auto col-box mx-auto">
                         <div class="draggable draggable-charts resizable">
-                            <div class="draggable-header"><i class="fa-solid fa-info"></i><i class="fa-solid fa-xmark"></i></div>
+                            <div class="draggable-header">&nbsp&nbsp&nbsp&nbsp<i class="fa-solid fa-arrow-rotate-right"></i><i class="fa-solid fa-sort-down"></i><i class="fa-solid fa-info"></i><i class="fa-solid fa-xmark"></i></div>
                             <div class="content-block" id="chart-10"></div>
                         </div>
                     </div>
@@ -228,37 +261,32 @@
                 <div class="row">
                     <div class="col-auto col-box mx-auto">
                         <div class="draggable draggable-flexi resizable">
-                            <div class="draggable-header">Bitcoin Node Map<i class="fa-solid fa-info"></i><i class="fa-solid fa-xmark"></i></div>
+                            <div class="draggable-header">Bitcoin Node Map&nbsp&nbsp&nbsp&nbsp<i class="fa-solid fa-arrow-rotate-right"></i><i class="fa-solid fa-sort-down"></i><i class="fa-solid fa-info"></i><i class="fa-solid fa-xmark"></i></div>
                             <div class="content-block" id="flexi-1"></div>
                         </div>
                     </div>
-                    <div class="col-auto col-box mx-auto">
+                    <div class="col-auto col-box mx-auto" id="flexi-2-3-parent">
                         <div class="draggable draggable-charts resizable">
-                            <div class="draggable-header"><i class="fa-solid fa-info"></i><i class="fa-solid fa-xmark"></i></div>
+                            <div class="draggable-header">&nbsp&nbsp&nbsp&nbsp<i class="fa-solid fa-arrow-rotate-right"></i><i class="fa-solid fa-sort-down"></i><i class="fa-solid fa-info"></i><i class="fa-solid fa-xmark"></i></div>
                             <div class="content-block" id="flexi-2"></div>
                         </div>
-                        <div class="draggable draggable-charts resizable">
-                            <div class="draggable-header"><i class="fa-solid fa-info"></i><i class="fa-solid fa-xmark"></i></div>
+                        <div class="draggable draggable-charts resizable" id="flexi-3-parent">
+                            <div class="draggable-header">&nbsp&nbsp&nbsp&nbsp<i class="fa-solid fa-arrow-rotate-right"></i><i class="fa-solid fa-sort-down"></i><i class="fa-solid fa-info"></i><i class="fa-solid fa-xmark"></i></div>
                             <div class="content-block" id="flexi-3"></div>
                         </div>
                     </div>
                     <div class="col-auto col-box mx-auto">
                         <div class="draggable draggable-flexi resizable">
-                            <div class="draggable-header">Block Explorer<i class="fa-solid fa-info"></i><i class="fa-solid fa-xmark"></i></div>
+                            <div class="draggable-header">Individual Exchange Data&nbsp&nbsp&nbsp&nbsp<i class="fa-solid fa-arrow-rotate-right"></i><i class="fa-solid fa-sort-down"></i><i class="fa-solid fa-info"></i><i class="fa-solid fa-xmark"></i></div>
                             <div class="content-block" id="flexi-4">
-                                <div class="input-group input-group-sm mb-3">
-                                    <input type="text" class="form-control bg-dark" />
-                                    <div class="input-group-prepend">
-                                        <button type="button" class="btn btn-outline-light">Search</button>
-                                    </div>
-                                </div>
                                 <table class="table table-striped">
                                     <thead>
                                         <tr>
-                                            <th>Block #</th>
-                                            <th>Time</th>
-                                            <th>No of Tx</th>
-                                            <th>Cost</th>
+                                            <th>Exchange</th>
+                                            <th>Price</th>
+                                            <th>Volume</th>
+                                            <th>Spread %</th>
+                                            <th>Activity</th>
                                         </tr>
                                     </thead>
                                     <tbody></tbody>
@@ -268,27 +296,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Apex Charts -->
-            <!-- Candle Charts -->
-            <!-- <section id="candle">
-                <div class="dropdown" id="new-coin-dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">Choose a Coin to Display</button>
-                    <ul class="dropdown-menu" id="list-of-cryptos"></ul>
-                </div>
-                <div id="candle-chart-options">
-                    <span class="dropdown" id="candle-chart-days" style="display: none">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">7 Days</button>
-                        <ul class="dropdown-menu" id="list-of-days"></ul>
-                    </span>
-                    <span id="candle-chart-show-volume"> </span>
-                    <span id="candle-chart-close" style="display: none">
-                        <button type="button" class="btn btn-secondary">Close Charts</button>
-                    </span>
-                </div>
-                <div id="candle-chart" style="display: none"></div>
-                <div id="volume-chart" style="display: none"></div>
-            </section> -->
 
             <!-- Footer -->
             <footer class="bg-navbar text-center text-white">

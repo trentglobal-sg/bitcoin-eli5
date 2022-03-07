@@ -1,4 +1,4 @@
-let highestZIndex = 1020; //The z index of the navbar, arbitrarily set by bootstrap
+let highestZIndex = 1; //The z index of the navbar, arbitrarily set by bootstrap
 let arraySizes = []; //This is an array that stores the original sizes of the col boxes
 let resizeFlag = true; //We fill the arraySizes array up whenever we detect that this is a new window/resized window
 
@@ -164,5 +164,6 @@ function resetDraggableBoxes() {
             draggableObjects[i].style.height = null; //quirk
         }
     }
+    document.querySelector("#flexi-3-parent").style.transform = "translateY(230px)";
     resizeFlag = true;
 }

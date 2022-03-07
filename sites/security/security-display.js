@@ -62,7 +62,6 @@ document.querySelector("#hash-example-1-plaintext").addEventListener("input", fu
 });
 
 document.querySelector("#hash-example-1-select").addEventListener("change", function () {
-    console.log("triggered");
     document.querySelector("#hash-example-1-plaintext").setAttribute("placeholder", `Please key in your message to be hashed.`);
 });
 

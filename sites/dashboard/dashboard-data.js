@@ -2,11 +2,13 @@ const API_ENDPOINT_BLOCKCHAININFO = "https://blockchain.info";
 const API_ENDPOINT_BLOCKCHAININFO2 = "https://api.blockchain.info";
 const API_ENDPOINT_BINANCE = "https://api.binance.com/api/v3";
 const API_ENDPOINT_BITNODES = "https://bitnodes.io/api/v1";
+const API_ENDPOINT_COINGECKO = "https://api.coingecko.com/api/v3";
+const API_ENDPOINT_APIARY = "https://private-anon-4b7d3dd6a8-blockchaininfo.apiary-mock.com";
 
 //Global Variables
 let currentBlockHeight = 0;
 
-//Data
+//1
 async function getCurrentBlockHeight() {
     let response = await axios.get(API_ENDPOINT_BLOCKCHAININFO + "/q/getblockcount");
     currentBlockHeight = response.data;
@@ -16,12 +18,12 @@ async function getActiveNodes() {
     let response = await axios.get(API_ENDPOINT_BITNODES + "/snapshots?limit=1");
     return response.data.results[0].total_nodes;
 }
-//
+//2
 async function getBlockData(blockHeight) {
     let response = await axios.get(API_ENDPOINT_BLOCKCHAININFO + "/rawblock/" + blockHeight);
     return response.data;
 }
-//
+//3
 async function getAverageBlockInterval() {
     let response = await axios.get(API_ENDPOINT_BLOCKCHAININFO + "/q/interval");
     return response.data;
@@ -30,7 +32,7 @@ async function getCurrentBlockReward() {
     let response = await axios.get(API_ENDPOINT_BLOCKCHAININFO + "/q/bcperblock");
     return response.data;
 }
-//
+//4
 async function getAverageHashrate() {
     let response = await axios.get(API_ENDPOINT_BLOCKCHAININFO + "/q/hashrate");
     return response.data;
@@ -39,7 +41,7 @@ async function getHashesToWin() {
     let response = await axios.get(API_ENDPOINT_BLOCKCHAININFO + "/q/hashestowin");
     return response.data;
 }
-//
+//5
 async function getCurrentPrice() {
     let response = await axios.get(API_ENDPOINT_BINANCE + "/ticker/price?symbol=BTCUSDT");
     return response.data.price;
@@ -50,10 +52,25 @@ async function getHighLowData() {
 }
 
 //Charts
+//charts-1-6-7
+async function getLastBlocksData() {
+    let responseArray = [];
+    for (i = 0; i < 8; i++) {
+        let response = await axios.get(API_ENDPOINT_BLOCKCHAININFO + "/rawblock/" + (currentBlockHeight - i), {
+            headers: {
+                //CORS policy
+                "Content-Type": null,
+            },
+        });
+        responseArray[i] = response.data;
+        responseArray[i].height = currentBlockHeight - i;
+    }
+    return responseArray;
+}
+
 //chart-2
 async function getTransactionsPerBlock() {
     let timestamp = new Date();
-    console.log(timestamp.getTime());
     let response = await axios.get(API_ENDPOINT_BLOCKCHAININFO2 + "/charts/n-transactions-per-block", {
         headers: {
             //CORS policy
@@ -61,11 +78,18 @@ async function getTransactionsPerBlock() {
         },
         params: {
             cors: true,
-            start: Number(timestamp.getTime() / 1000 - 86400 * 50).toFixed(0), 
+            start: Number(timestamp.getTime() / 1000 - 86400 * 50).toFixed(0),
             //Get the last 50 timestamp
         },
     });
     return response.data.values;
+}
+//chart-2-processing
+function processTransactionsPerBlockData(transactionsPerBlockData) {
+    for (let entry of transactionsPerBlockData) {
+        entry.x = entry.x * 1000;
+    }
+    return transactionsPerBlockData;
 }
 
 //chart-3
@@ -87,28 +111,26 @@ function processHashRatePieData(hashRatePieData) {
 }
 
 //chart-4
-async function getKlineData() {
-    let response = await axios.get(API_ENDPOINT_BINANCE + "/klines", {
+async function getTotalHashRate() {
+    let response = await axios.get(API_ENDPOINT_BLOCKCHAININFO2 + "/charts/hash-rate", {
+        headers: {
+            //CORS policy
+            "Content-Type": null,
+        },
         params: {
-            symbol: "BTCUSDT",
-            interval: "1m",
-            limit: "25",
+            cors: true,
         },
     });
-    return response.data;
+    return response.data.values;
 }
 //chart-4-processing
-function processKlineData(klineData) {
-    dataArray = [];
-    for (let entry of klineData) {
-        let processedEntry = {};
-        processedEntry["x"] = new Date(entry[0]);
-        processedEntry["y"] = [entry[1], entry[2], entry[3], entry[4]];
-        dataArray.push(processedEntry);
+function processTotalHashRateData(totalHashRateData) {
+    for (let entry of totalHashRateData) {
+        entry.x = entry.x * 1000;
     }
-
-    return dataArray;
+    return totalHashRateData;
 }
+
 //chart-5
 async function getTradeData() {
     let response = await axios.get(API_ENDPOINT_BINANCE + "/aggTrades", {
@@ -135,6 +157,29 @@ function processTradeData(tradeData) {
     return dataArray;
 }
 
+//chart-9
+async function getKlineData() {
+    let response = await axios.get(API_ENDPOINT_BINANCE + "/klines", {
+        params: {
+            symbol: "BTCUSDT",
+            interval: "1m",
+            limit: "25",
+        },
+    });
+    return response.data;
+}
+//chart-9-processing
+function processKlineData(klineData) {
+    dataArray = [];
+    for (let entry of klineData) {
+        let processedEntry = {};
+        processedEntry["x"] = new Date(entry[0]);
+        processedEntry["y"] = [entry[1], entry[2], entry[3], entry[4]];
+        dataArray.push(processedEntry);
+    }
+
+    return dataArray;
+}
 //flexi-1 (map)
 
 //get list of nodes in the network
@@ -242,8 +287,39 @@ function sortNodeData(nodeData) {
     return { continentNodes, countryNodes, cityNodes };
 }
 
-//flexi-4
-async function getBlockData(blockHeight) {
-    let response = await axios.get(API_ENDPOINT_BLOCKCHAININFO + "/rawblock/" + blockHeight);
+//flexi-2
+//flexi-3
+async function getMarketChart() {
+    let response = await axios.get(API_ENDPOINT_COINGECKO + "/coins/bitcoin/market_chart", {
+        params: {
+            vs_currency: "usd",
+            days: 90,
+            interval: "1h",
+        },
+    });
     return response.data;
+}
+function processMarketChartData(marketChartData) {
+    return marketChartData;
+}
+
+//flexi-4
+async function getExchangeData() {
+    let response = await axios.get(API_ENDPOINT_COINGECKO + "/coins/bitcoin/tickers", {
+        params: {
+            include_exchange_logo: true,
+            order: "volume_desc",
+            depth: true,
+        },
+    });
+    return response.data;
+}
+function processExchangeData(exchangeData) {
+    for (let i = 0; i < exchangeData.tickers.length; i++) {
+        if (exchangeData.tickers[i].base != "BTC" || !(exchangeData.tickers[i].target == "USD" || exchangeData.tickers[i].target == "USDT")) {
+            exchangeData.tickers.splice(i, 1);
+            i--;
+        }
+    }
+    return exchangeData.tickers;
 }
