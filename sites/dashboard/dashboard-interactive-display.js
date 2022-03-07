@@ -40,7 +40,6 @@ function resetEverything() {
 }
 
 function adjustBoxesWidth() {
-    console.log(window.innerWidth);
     if (window.innerWidth > 1800) {
         document.querySelector("#col-resizable-1 .draggable-infobox").style.left = 0;
         document.querySelector("#col-resizable-3 .draggable-infobox").style.right = 0;
@@ -165,6 +164,20 @@ function adjustBoxesWidth() {
         document.querySelector("#col-resizable-chart-7 .draggable-charts").style.right = "auto";
         document.querySelector("#col-resizable-chart-8 .draggable-charts").style.left = "auto";
         document.querySelector("#col-resizable-chart-9 .draggable-charts").style.right = "auto";
+        let allDOM1 = document.querySelectorAll(".draggable-infobox");
+        for (let i of allDOM1) {
+            i.style.width = "357px";
+        }
+        let allDOM2 = document.querySelectorAll(".draggable-charts");
+        for (let i of allDOM2) {
+            i.style.width = "357px";
+            i.style.height = "230px";
+        }
+        let allDOM3 = document.querySelectorAll(".draggable-flexi");
+        for (let i of allDOM3) {
+            i.style.width = "714px";
+            i.style.height = "460px";
+        }
     } else if (window.innerWidth > 725) {
         document.querySelector("#col-resizable-1").classList.remove("col-5");
         document.querySelector("#col-resizable-2").classList.remove("col-5");
@@ -212,7 +225,7 @@ function adjustBoxesWidth() {
         let allDOM2 = document.querySelectorAll(".draggable-charts");
         for (let i of allDOM2) {
             i.style.width = window.innerWidth - 30 + "px";
-            i.style.height = Math.max((window.innerWidth - 100), 230) + "px";
+            i.style.height = Math.max(window.innerWidth - 100, 230) + "px";
         }
         let allDOM3 = document.querySelectorAll(".draggable-flexi");
         for (let i of allDOM3) {

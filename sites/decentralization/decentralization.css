@@ -52,7 +52,7 @@
 .marker-cluster div {
     width: 20px !important;
     height: 20px !important;
-    box-shadow: 0px 0px 4px 4px #747de8;
+    box-shadow: 0px 0px 4px 4px #FF9900;
     background-color: white !important;
     animation: glow 1.5s linear infinite alternate;
 }
