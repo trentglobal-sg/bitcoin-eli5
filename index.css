@@ -5,10 +5,6 @@
     border-color: rgba(0, 0, 0, 0) !important;
 }
 
-#cards-section {
-    margin-bottom: 300px !important;
-}
-
 /* landing image */
 #landing-image {
     width: 100%;
@@ -69,7 +65,6 @@
 .card-bg {
     width: 80%;
 }
-
 .card-left {
     text-align: left;
 }
@@ -145,6 +140,9 @@
     .card-div {
         min-height: 210px;
     }
+    #cards-section {
+        margin-bottom: 300px !important;
+    }
 }
 @media screen and (min-width: 768px) {
     /* css rules for tablets from 768 to 992px (md) */
@@ -162,6 +160,9 @@
     }
     .card-bg {
         width: 120%;
+    }
+    #cards-section {
+        margin-bottom: 300px !important;
     }
 }
 @media screen and (min-width: 992px) {
@@ -191,6 +192,9 @@
         height: 180px;
         text-align: center;
     }
+    #cards-section {
+        margin-bottom: 50px !important;
+    }
 }
 
 @media screen and (min-width: 1200px) {
@@ -206,5 +210,8 @@
     }
     #landing-image-btn {
         font-size: 1em;
+    }
+    #cards-section {
+        margin-bottom: 50px !important;
     }
 }
