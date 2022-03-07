@@ -331,6 +331,12 @@ td {
     font-size: 1em !important;
 }
 
+.btn-danger {
+    font-family: "Tourney", cursive !important;
+    font-weight: 700 !important;
+    font-weight: bold !important;
+}
+
 /* For responsiveness */
 /* Responsiveness is mainly handled in js */
 .col-4 {
