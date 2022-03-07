@@ -188,13 +188,13 @@ Used 17 times in dashboard.html
 # TEST CASES
 | #  | Description | Steps | Expected|
 | ------------- | ------------- | ------------- | ------------- |
-|In History.html|In History.html|In History.html|In History.html|
+||In History.html|In History.html|In History.html|
 | 1 | Bitcoin Price Chart must be able to load  | Load Site, wait for chart to appear | Check the graph against https://www.coingecko.com/en/coins/bitcoin to see if it matches (Max) |
 | 2 | Logarithmic Button switches data to logarithmic  | Click logarithmic button | Check against https://www.coingecko.com/en/coins/bitcoin, logarithmic chart  |
 | 3 | Candle button switches chart to candlestick | Click candlestick button   | Check against https://www.coingecko.com/en/coins/bitcoin, candle chart |
 | 4 | Timespan buttons switches to the correct data  | Change timespan, check against https://www.coingecko.com/en/coins/bitcoin, select date | Days selected matches the x-axis of the chart |
 | 5 | While clicking buttons, logarithmic and candle settings are applied | Click on a new timespan  | Check if the same logarithmic and candle settings are still applied   |
-|In Dashboard.html|In Dashboard.html|In Dashboard.html|In Dashboard.html|
+||In Dashboard.html|In Dashboard.html|In Dashboard.html|
 | 1 | All 19 Widgets, from left to right, top to bottom | Wait for it to load  | Check if all widgets are displaying something  |
 | 2 | Widget 1 (Current Block) | Should display latest block  | Check against https://www.blockchain.com/explorer, under Latest Blocks  |
 | 3 | Widget 2 (Last Block) | (1 minute refresh rate)  | Check against https://www.blockchain.com/explorer, make sure the time elapsed is the same  |
@@ -216,7 +216,11 @@ Used 17 times in dashboard.html
 | 20 | Widget 13, 17, 18  | Hover mouse on one of their charts | All 3 charts should be synchronized   |
 | 21 | Widget 19 (Exchange Data) | When table loads  | Check against https://www.coingecko.com/en/coins/bitcoin#markets  |
 | 22 | Widget 19 (Exchange Data)  | Click on any of the exchange in the row | A new tab should pop up, leading you to that exchange  |
-|In Decentralization.html|In Decentralization.html|In Decentralization.html|In Decentralization.html|
+|23| All widgets| All widgets are resizable and movable| Check for that
+|24| All widgets| All widgets will have the highest z index when last clicked on| Check for that
+|25| All widgets| Upon resize, all widgets will snap back to original position and size|Check for that
+|26| All widgets| All widgets can be closed by clicking an X on the top right| Check for that
+||In Decentralization.html|In Decentralization.html|In Decentralization.html|
 | 1 | Node Map  | Clustering based on continent, then zoom in, then cluster by countries, then zoom in, then cluster by cities, then zoom in, then cluster by location, then zoom in to see individual nodes  | Check that there are no irregularities  |
 | 2 | Node Map    | Each node, when clicked on, should show details about the node  | Check node data against https://bitnodes.io/ |
 
