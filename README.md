@@ -217,7 +217,9 @@ Used 17 times in dashboard.html
 | 21 | Widget 19 (Exchange Data) | When table loads  | Check against https://www.coingecko.com/en/coins/bitcoin#markets  |
 | 22 | Widget 19 (Exchange Data)  | Click on any of the exchange in the row | A new tab should pop up, leading you to that exchange  |
 |23| All widgets| All widgets are resizable and movable| Check for that
-|24| All widgets| All widgets will have the highest z index when last clicked on| check for that
+|24| All widgets| All widgets will have the highest z index when last clicked on| Check for that
+|25| All widgets| Upon resize, all widgets will snap back to original position and size|Check for that
+|26| All widgets| All widgets can be closed by clicking an X on the top right| Check for that
 ||In Decentralization.html|In Decentralization.html|In Decentralization.html|
 | 1 | Node Map  | Clustering based on continent, then zoom in, then cluster by countries, then zoom in, then cluster by cities, then zoom in, then cluster by location, then zoom in to see individual nodes  | Check that there are no irregularities  |
 | 2 | Node Map    | Each node, when clicked on, should show details about the node  | Check node data against https://bitnodes.io/ |
