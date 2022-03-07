@@ -220,6 +220,18 @@ Used 17 times in dashboard.html
 | 1 | Node Map  | Clustering based on continent, then zoom in, then cluster by countries, then zoom in, then cluster by cities, then zoom in, then cluster by location, then zoom in to see individual nodes  | Check that there are no irregularities  |
 | 2 | Node Map    | Each node, when clicked on, should show details about the node  | Check node data against https://bitnodes.io/ |
 
+# Deployment
+Hosted on Netlify free plan, without database. All dependencies are delivered via CDN. 
+To deploy, fork this code, link your Github account with netlify, and make this repo a site. 
+
+# Dependencies
+- Bootstrap v5.1
+- Font Awesome
+- Google Fonts
+- Leaflet
+- Leaflet Marker Clustering
+- Apex Charts
+- Axios
 
 # CREDITS AND ACKNOWLEDGMENT
 - Visual Studio Code
@@ -236,3 +248,6 @@ Used 17 times in dashboard.html
 - Leaflet Marker Clustering
 - Apex Charts
 - Axios
+- Last but not least, Trent Global College and their excellent teacher, Paul.
+- Also my wife.
+- And Family
