@@ -66,7 +66,7 @@ async function update1SecondCharts() {
 function updateChart1(blockData) {
     let tbody = document.querySelector("#chart-1 tbody");
     tbody.innerHTML = null;
-    for (let i = 0; i < blockData.length; i++) {
+    for (let i = 1; i < blockData.length; i++) {
         let blockTimestamp = new Date(blockData[i].time * 1000);
         tr = document.createElement("tr");
         td1 = document.createElement("td");
@@ -89,7 +89,7 @@ function updateChart1(blockData) {
         tr.appendChild(td4);
         tbody.appendChild(tr);
     }
-    updateChart6(blockData, 0);
+    updateChart6(blockData, 1);
 }
 function updateChart2(processedTransactionsPerBlockData) {
     ApexCharts.exec("chart-2", "updateSeries", [{ data: processedTransactionsPerBlockData }], true, true);

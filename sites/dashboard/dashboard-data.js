@@ -3,7 +3,6 @@ const API_ENDPOINT_BLOCKCHAININFO2 = "https://api.blockchain.info";
 const API_ENDPOINT_BINANCE = "https://api.binance.com/api/v3";
 const API_ENDPOINT_BITNODES = "https://bitnodes.io/api/v1";
 const API_ENDPOINT_COINGECKO = "https://api.coingecko.com/api/v3";
-const API_ENDPOINT_APIARY = "https://private-anon-4b7d3dd6a8-blockchaininfo.apiary-mock.com";
 
 //Global Variables
 let currentBlockHeight = 0;
