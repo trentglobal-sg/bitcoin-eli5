@@ -1,5 +1,6 @@
-# Project Name
-Bitcoin Explained Like I’m Five (ELI5)
+# BITCOIN ELI5
+## Bitcoin Explained Like I’m Five (ELI5)
+
 # URL
 # Summary
 This is an educational website meant to spread blockchain awareness (without dishing out financial advice). It focuses on Bitcoin as the most common example of a blockchain. 

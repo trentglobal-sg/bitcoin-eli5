@@ -1,7 +1,12 @@
 /* css rules for small phones from 380 to 576px */
+
 /* For all buttons  */
 .btn-outline-light {
     border-color: rgba(0, 0, 0, 0) !important;
+}
+
+#cards-section {
+    margin-bottom: 200px !important;
 }
 
 /* landing image */
