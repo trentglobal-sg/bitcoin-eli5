@@ -2,25 +2,23 @@ let processedData = [];
 
 function initChartPage() {
     initCharts();
-    update1MinuteCharts();
-    //functions that update every minute (60,000ms)
-    window.setInterval(update1MinuteCharts, 60000);
+
+    update1SecondCharts();
+    //functions that update every second (1,000ms)
+    window.setInterval(update1SecondCharts, 1000);
 
     update10SecondCharts();
     //functions that update every 10 seconds (10,000ms)
     window.setInterval(update10SecondCharts, 10000);
 
-    update1SecondCharts();
-    //functions that update every second (1,000ms)
-    window.setInterval(update1SecondCharts, 1000);
+    update1MinuteCharts();
+    //functions that update every minute (60,000ms)
+    window.setInterval(update1MinuteCharts, 60000);
 }
 
 //////////////////////////////////////////////////////////
 //charts that update every minute (60,000ms)
 async function update1MinuteCharts() {
-    //Chart 1 Data
-    blockData = await getLastBlocksData();
-    updateChart1(blockData);
     //chart 2 data
     transactionsPerBlockData = await getTransactionsPerBlock();
     processedTransactionsPerBlockData = processTransactionsPerBlockData(transactionsPerBlockData);
@@ -39,6 +37,10 @@ async function update1MinuteCharts() {
     updateChart8(processedMarketChartData.prices);
     updateFlexi2(processedMarketChartData.total_volumes);
     updateFlexi3(processedMarketChartData.market_caps);
+
+    //Chart 1 Data
+    blockData = await getLastBlocksData();
+    updateChart1(blockData);
 }
 //functions that update every minute (60,000ms)
 async function update10SecondCharts() {
@@ -75,7 +77,7 @@ function updateChart1(blockData) {
             updateChart6(blockData, i);
         });
         td1btn.innerText = blockData[i].height;
-        td1btn.classList.add("table-pointer")
+        td1btn.classList.add("table-pointer");
         td1.appendChild(td1btn);
         tr.appendChild(td1);
         td2 = document.createElement("td");
@@ -256,17 +258,16 @@ function updateChart6(blockData, i) {
         tr.appendChild(td1);
         let td2 = document.createElement("td");
         td2.innerText = transactionId;
-        td2.classList.add("table-pointer")
+        td2.classList.add("table-pointer");
         td2.addEventListener("click", function () {
             updateChart7(blockData, i, j, transactionId);
         });
         tr.appendChild(td2);
         tbodyInner.appendChild(tr);
-        if (j==0) {
+        if (j == 0) {
             updateChart7(blockData, i, j, transactionId);
         }
     }
-
 }
 async function updateChart7(blockData, i, j, transactionId) {
     let outputSum = 0;
@@ -295,7 +296,7 @@ async function updateChart7(blockData, i, j, transactionId) {
     </tr>
     <tr>
         <td> Value Moved</td>
-        <td> $${Number(Math.abs(((Math.max(inputSum, outputSum)) / 100000000) * priceGlobal).toFixed(2)).toLocaleString()}</td>
+        <td> $${Number(Math.abs((Math.max(inputSum, outputSum) / 100000000) * priceGlobal).toFixed(2)).toLocaleString()}</td>
     </tr>
     <tr>
         <td> Fees </td>
@@ -564,7 +565,7 @@ function updateFlexi4(processedExchangeData) {
         }
         tr = document.createElement("tr");
         tr.innerHTML = `
-        <td><img class="flexi-4-image" src="${entry.market.logo}"></img>  <a href="${entry.trade_url}  target="_blank" rel="noopener noreferrer" ">${entry.market.name}</a></td>
+        <td><img class="flexi-4-image" src="${entry.market.logo}"></img>  <a href="${entry.trade_url}"   target="_blank">${entry.market.name}</a></td>
         <td style="color:${colorFont}">$${Number(entry.last).toLocaleString()}</td>
         <td style="color:${colorFont}">$${Number(entry.volume).toLocaleString()}</td>
         <td style="color:${colorFont}">±${Number(entry.bid_ask_spread_percentage * 100).toLocaleString()}%</td>
@@ -994,4 +995,3 @@ function initChart(DOMElement, chartName, chartType) {
     let newChart = new ApexCharts(DOMElement, options);
     newChart.render();
 }
-

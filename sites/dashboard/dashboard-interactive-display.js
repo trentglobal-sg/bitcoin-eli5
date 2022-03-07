@@ -5,30 +5,220 @@ let resizeFlag = true; //We fill the arraySizes array up whenever we detect that
 function initInteractivePage() {
     //First fill of Array sizes
     fillArraySizes();
+    //Adjust the boxes width based on screen
+    adjustBoxesWidth();
     //Setup the col boxes
     initColBoxes();
     //Init the draggable objects
     initDraggableObjects();
+    //Adjust the Boxes Sizes
 
     window.addEventListener("resize", function () {
-        resetDraggableBoxes(); //reset transforms and resizes, set position static
-        let colBoxes = document.querySelectorAll(".col-box");
-        for (let i = 0; i < colBoxes.length; i++) {
-            //reset col-boxes for bootstrap grid to adjust
-            removeDimensions(colBoxes[i]);
-            positionNull(colBoxes[i]);
-        }
-
-        //reinitiate everything that was reset on mouse up
-        initColBoxes();
-        let draggableObjects = document.querySelectorAll(".draggable");
-        for (let i = 0; i < draggableObjects.length; i++) {
-            positionAbsolute(draggableObjects[i]);
-        }
+        resetEverything();
     });
 
     //Record the array sizes when there is a click on the document (after a fresh resize event)
     document.onmousedown = fillArraySizes;
+}
+
+function resetEverything() {
+    resetDraggableBoxes(); //reset transforms and resizes, set position static
+    let colBoxes = document.querySelectorAll(".col-box");
+    for (let i = 0; i < colBoxes.length; i++) {
+        //reset col-boxes for bootstrap grid to adjust
+        removeDimensions(colBoxes[i]);
+        positionNull(colBoxes[i]);
+    }
+
+    //reinitiate everything that was reset on mouse up
+    initColBoxes();
+    let draggableObjects = document.querySelectorAll(".draggable");
+    for (let i = 0; i < draggableObjects.length; i++) {
+        positionAbsolute(draggableObjects[i]);
+    }
+    adjustBoxesWidth();
+}
+
+function adjustBoxesWidth() {
+    console.log(window.innerWidth);
+    if (window.innerWidth > 1800) {
+        document.querySelector("#col-resizable-1 .draggable-infobox").style.left = 0;
+        document.querySelector("#col-resizable-3 .draggable-infobox").style.right = 0;
+        document.querySelector("#col-resizable-4 .draggable-infobox").style.left = 0;
+        document.querySelector("#col-resizable-5 .draggable-infobox").style.right = 0;
+        document.querySelector("#col-resizable-1").classList.remove("col-4");
+        document.querySelector("#col-resizable-2").classList.remove("col-4");
+        document.querySelector("#col-resizable-3").classList.remove("col-4");
+        document.querySelector("#col-resizable-chart-1 .draggable-charts").style.left = 0;
+        document.querySelector("#col-resizable-chart-3 .draggable-charts").style.right = 0;
+        document.querySelector("#col-resizable-chart-4 .draggable-charts").style.left = 0;
+        document.querySelector("#col-resizable-chart-5 .draggable-charts").style.right = 0;
+        document.querySelector("#col-resizable-chart-1").classList.remove("col-4");
+        document.querySelector("#col-resizable-chart-2").classList.remove("col-4");
+        document.querySelector("#col-resizable-chart-3").classList.remove("col-4");
+        document.querySelector("#col-resizable-chart-6 .draggable-charts").style.left = 0;
+        document.querySelector("#col-resizable-chart-8 .draggable-charts").style.right = 0;
+        document.querySelector("#col-resizable-chart-9 .draggable-charts").style.left = 0;
+        document.querySelector("#col-resizable-chart-10 .draggable-charts").style.right = 0;
+        document.querySelector("#col-resizable-chart-6").classList.remove("col-4");
+        document.querySelector("#col-resizable-chart-7").classList.remove("col-4");
+        document.querySelector("#col-resizable-chart-8").classList.remove("col-4");
+        let allDOM1 = document.querySelectorAll(".draggable-infobox");
+        for (let i of allDOM1) {
+            i.style.width = Math.max(window.innerWidth / 6, 357) + "px";
+        }
+        let allDOM2 = document.querySelectorAll(".draggable-charts");
+        for (let i of allDOM2) {
+            i.style.width = Math.max(window.innerWidth / 6, 357) + "px";
+            i.style.height = 230 + Math.max(window.innerWidth / 6, 357) - 357 + "px";
+        }
+    } else if (window.innerWidth > 1426) {
+        document.querySelector("#col-resizable-1").classList.add("col-4");
+        document.querySelector("#col-resizable-2").classList.add("col-4");
+        document.querySelector("#col-resizable-3").classList.add("col-4");
+        document.querySelector("#col-resizable-1 .draggable-infobox").style.left = "auto";
+        document.querySelector("#col-resizable-3 .draggable-infobox").style.right = "auto";
+        document.querySelector("#col-resizable-4 .draggable-infobox").style.left = "auto";
+        document.querySelector("#col-resizable-5 .draggable-infobox").style.right = "auto";
+        document.querySelector("#col-resizable-chart-1").classList.add("col-4");
+        document.querySelector("#col-resizable-chart-2").classList.add("col-4");
+        document.querySelector("#col-resizable-chart-3").classList.add("col-4");
+        document.querySelector("#col-resizable-chart-1 .draggable-charts").style.left = "auto";
+        document.querySelector("#col-resizable-chart-3 .draggable-charts").style.right = "auto";
+        document.querySelector("#col-resizable-chart-4 .draggable-charts").style.left = "auto";
+        document.querySelector("#col-resizable-chart-5 .draggable-charts").style.right = "auto";
+        document.querySelector("#col-resizable-chart-6").classList.add("col-4");
+        document.querySelector("#col-resizable-chart-7").classList.add("col-4");
+        document.querySelector("#col-resizable-chart-8").classList.add("col-4");
+        document.querySelector("#col-resizable-chart-6 .draggable-charts").style.left = "auto";
+        document.querySelector("#col-resizable-chart-8 .draggable-charts").style.right = "auto";
+        document.querySelector("#col-resizable-chart-9 .draggable-charts").style.left = "auto";
+        document.querySelector("#col-resizable-chart-10 .draggable-charts").style.right = "auto";
+    } else if (window.innerWidth > 1090) {
+        document.querySelector("#col-resizable-1").classList.remove("col-4");
+        document.querySelector("#col-resizable-2").classList.remove("col-4");
+        document.querySelector("#col-resizable-3").classList.remove("col-4");
+        document.querySelector("#col-resizable-chart-1").classList.remove("col-4");
+        document.querySelector("#col-resizable-chart-2").classList.remove("col-4");
+        document.querySelector("#col-resizable-chart-3").classList.remove("col-4");
+        document.querySelector("#col-resizable-chart-6").classList.remove("col-4");
+        document.querySelector("#col-resizable-chart-7").classList.remove("col-4");
+        document.querySelector("#col-resizable-chart-8").classList.remove("col-4");
+        document.querySelector("#col-resizable-1 .draggable-infobox").style.left = 0;
+        document.querySelector("#col-resizable-3 .draggable-infobox").style.right = 0;
+        document.querySelector("#col-resizable-4 .draggable-infobox").style.left = 0;
+        document.querySelector("#col-resizable-5 .draggable-infobox").style.right = 0;
+        document.querySelector("#col-resizable-chart-1 .draggable-charts").style.left = 0;
+        document.querySelector("#col-resizable-chart-3 .draggable-charts").style.right = 0;
+        document.querySelector("#col-resizable-chart-4 .draggable-charts").style.left = 0;
+        document.querySelector("#col-resizable-chart-5 .draggable-charts").style.right = 0;
+        document.querySelector("#col-resizable-chart-6 .draggable-charts").style.left = 0;
+        document.querySelector("#col-resizable-chart-8 .draggable-charts").style.right = 0;
+        document.querySelector("#col-resizable-chart-9 .draggable-charts").style.left = 0;
+        document.querySelector("#col-resizable-chart-10 .draggable-charts").style.right = 0;
+        document.querySelector("#col-resizable-1").classList.remove("col-5");
+        document.querySelector("#col-resizable-2").classList.remove("col-5");
+        document.querySelector("#col-resizable-3").classList.remove("col-5");
+        document.querySelector("#col-resizable-4").classList.remove("col-5");
+        document.querySelector("#col-resizable-1 .draggable-infobox").style.left = 0;
+        document.querySelector("#col-resizable-2 .draggable-infobox").style.right = 0;
+        document.querySelector("#col-resizable-3 .draggable-infobox").style.left = 0;
+        document.querySelector("#col-resizable-4 .draggable-infobox").style.right = 0;
+        document.querySelector("#col-resizable-chart-1").classList.remove("col-5");
+        document.querySelector("#col-resizable-chart-2").classList.remove("col-5");
+        document.querySelector("#col-resizable-chart-3").classList.remove("col-5");
+        document.querySelector("#col-resizable-chart-4").classList.remove("col-5");
+        document.querySelector("#col-resizable-chart-1 .draggable-charts").style.left = 0;
+        document.querySelector("#col-resizable-chart-2 .draggable-charts").style.right = 0;
+        document.querySelector("#col-resizable-chart-3 .draggable-charts").style.left = 0;
+        document.querySelector("#col-resizable-chart-4 .draggable-charts").style.right = 0;
+        document.querySelector("#col-resizable-chart-6").classList.remove("col-5");
+        document.querySelector("#col-resizable-chart-7").classList.remove("col-5");
+        document.querySelector("#col-resizable-chart-8").classList.remove("col-5");
+        document.querySelector("#col-resizable-chart-9").classList.remove("col-5");
+        document.querySelector("#col-resizable-chart-6 .draggable-charts").style.left = 0;
+        document.querySelector("#col-resizable-chart-7 .draggable-charts").style.right = 0;
+        document.querySelector("#col-resizable-chart-8 .draggable-charts").style.left = 0;
+        document.querySelector("#col-resizable-chart-9 .draggable-charts").style.right = 0;
+    } else if (window.innerWidth > 800) {
+        document.querySelector("#col-resizable-1").classList.add("col-5");
+        document.querySelector("#col-resizable-2").classList.add("col-5");
+        document.querySelector("#col-resizable-3").classList.add("col-5");
+        document.querySelector("#col-resizable-4").classList.add("col-5");
+        document.querySelector("#col-resizable-1 .draggable-infobox").style.left = "auto";
+        document.querySelector("#col-resizable-2 .draggable-infobox").style.right = "auto";
+        document.querySelector("#col-resizable-3 .draggable-infobox").style.left = "auto";
+        document.querySelector("#col-resizable-4 .draggable-infobox").style.right = "auto";
+        document.querySelector("#col-resizable-chart-1").classList.add("col-5");
+        document.querySelector("#col-resizable-chart-2").classList.add("col-5");
+        document.querySelector("#col-resizable-chart-3").classList.add("col-5");
+        document.querySelector("#col-resizable-chart-4").classList.add("col-5");
+        document.querySelector("#col-resizable-chart-1 .draggable-charts").style.left = "auto";
+        document.querySelector("#col-resizable-chart-2 .draggable-charts").style.right = "auto";
+        document.querySelector("#col-resizable-chart-3 .draggable-charts").style.left = "auto";
+        document.querySelector("#col-resizable-chart-4 .draggable-charts").style.right = "auto";
+        document.querySelector("#col-resizable-chart-6").classList.add("col-5");
+        document.querySelector("#col-resizable-chart-7").classList.add("col-5");
+        document.querySelector("#col-resizable-chart-8").classList.add("col-5");
+        document.querySelector("#col-resizable-chart-9").classList.add("col-5");
+        document.querySelector("#col-resizable-chart-6 .draggable-charts").style.left = "auto";
+        document.querySelector("#col-resizable-chart-7 .draggable-charts").style.right = "auto";
+        document.querySelector("#col-resizable-chart-8 .draggable-charts").style.left = "auto";
+        document.querySelector("#col-resizable-chart-9 .draggable-charts").style.right = "auto";
+    } else if (window.innerWidth > 725) {
+        document.querySelector("#col-resizable-1").classList.remove("col-5");
+        document.querySelector("#col-resizable-2").classList.remove("col-5");
+        document.querySelector("#col-resizable-3").classList.remove("col-5");
+        document.querySelector("#col-resizable-4").classList.remove("col-5");
+        document.querySelector("#col-resizable-1 .draggable-infobox").style.left = 0;
+        document.querySelector("#col-resizable-2 .draggable-infobox").style.right = 0;
+        document.querySelector("#col-resizable-3 .draggable-infobox").style.left = 0;
+        document.querySelector("#col-resizable-4 .draggable-infobox").style.right = 0;
+        document.querySelector("#col-resizable-chart-1").classList.remove("col-5");
+        document.querySelector("#col-resizable-chart-2").classList.remove("col-5");
+        document.querySelector("#col-resizable-chart-3").classList.remove("col-5");
+        document.querySelector("#col-resizable-chart-4").classList.remove("col-5");
+        document.querySelector("#col-resizable-chart-1 .draggable-charts").style.left = 0;
+        document.querySelector("#col-resizable-chart-2 .draggable-charts").style.right = 0;
+        document.querySelector("#col-resizable-chart-3 .draggable-charts").style.left = 0;
+        document.querySelector("#col-resizable-chart-4 .draggable-charts").style.right = 0;
+        document.querySelector("#col-resizable-chart-6").classList.remove("col-5");
+        document.querySelector("#col-resizable-chart-7").classList.remove("col-5");
+        document.querySelector("#col-resizable-chart-8").classList.remove("col-5");
+        document.querySelector("#col-resizable-chart-9").classList.remove("col-5");
+        document.querySelector("#col-resizable-chart-6 .draggable-charts").style.left = 0;
+        document.querySelector("#col-resizable-chart-7 .draggable-charts").style.right = 0;
+        document.querySelector("#col-resizable-chart-8 .draggable-charts").style.left = 0;
+        document.querySelector("#col-resizable-chart-9 .draggable-charts").style.right = 0;
+        let allDOM1 = document.querySelectorAll(".draggable-infobox");
+        for (let i of allDOM1) {
+            i.style.width = "357px";
+        }
+        let allDOM2 = document.querySelectorAll(".draggable-charts");
+        for (let i of allDOM2) {
+            i.style.width = "357px";
+            i.style.height = "230px";
+        }
+        let allDOM3 = document.querySelectorAll(".draggable-flexi");
+        for (let i of allDOM3) {
+            i.style.width = "714px";
+            i.style.height = "460px";
+        }
+    } else {
+        let allDOM1 = document.querySelectorAll(".draggable-infobox");
+        for (let i of allDOM1) {
+            i.style.width = window.innerWidth - 30 + "px";
+        }
+        let allDOM2 = document.querySelectorAll(".draggable-charts");
+        for (let i of allDOM2) {
+            i.style.width = window.innerWidth - 30 + "px";
+            i.style.height = Math.max((window.innerWidth - 100), 230) + "px";
+        }
+        let allDOM3 = document.querySelectorAll(".draggable-flexi");
+        for (let i of allDOM3) {
+            i.style.width = window.innerWidth - 30 + "px";
+        }
+    }
 }
 
 //Fill the array arraySizes with the original sizes

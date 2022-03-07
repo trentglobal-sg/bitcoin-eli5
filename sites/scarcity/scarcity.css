@@ -73,6 +73,13 @@
     opacity: 100%;
 }
 
+.table-entry, .table-middle {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border: 1px solid white;
+}
+
+
 @media screen and (min-width: 576px) {
     /* css rules for large phones from 576 to 768px (sm) */
     .apexcharts-toolbar {
