@@ -2,7 +2,7 @@ const API_ENDPOINT_BLOCKCHAININFO = "https://blockchain.info";
 const API_ENDPOINT_BLOCKCHAININFO2 = "https://api.blockchain.info";
 const API_ENDPOINT_BINANCE = "https://api.binance.com/api/v3";
 const API_ENDPOINT_BITNODES = "https://expert-parakeet-97w6rv7qjjxr3pjx4-3000.app.github.dev/api/v1";
-const API_ENDPOINT_COINGECKO = "https://api.coingecko.com/api/v3";
+const API_ENDPOINT_COINGECKO = "https://expert-parakeet-97w6rv7qjjxr3pjx4-3000.app.github.dev/api/coingecko/v3";
 
 //Global Variables
 let currentBlockHeight = 0;
@@ -288,12 +288,13 @@ function sortNodeData(nodeData) {
 
 //flexi-2
 //flexi-3
+// --> Maybe need to remove as this is a duplicate of the function in history-data.js
 async function getMarketChart() {
     let response = await axios.get(API_ENDPOINT_COINGECKO + "/coins/bitcoin/market_chart", {
         params: {
             vs_currency: "usd",
             days: 90,
-            interval: "1h",
+            interval: "daily",
         },
     });
     return response.data;

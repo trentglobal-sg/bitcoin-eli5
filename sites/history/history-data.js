@@ -1,4 +1,5 @@
-const COINGECKO_API_URL = "https://api.coingecko.com/api/v3";
+// const COINGECKO_API_URL = "https://api.coingecko.com/api/v3";
+const COINGECKO_API_URL="https://expert-parakeet-97w6rv7qjjxr3pjx4-3000.app.github.dev/api/coingecko/v3";
 
 //get only the price data of Bitcoin
 async function getBitcoinPriceData(days) {

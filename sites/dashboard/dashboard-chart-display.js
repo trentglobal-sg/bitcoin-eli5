@@ -5,15 +5,15 @@ function initChartPage() {
 
     update1SecondCharts();
     //functions that update every second (1,000ms)
-    window.setInterval(update1SecondCharts, 1000);
+    // window.setInterval(update1SecondCharts, 60000);
 
     update10SecondCharts();
     //functions that update every 10 seconds (10,000ms)
-    window.setInterval(update10SecondCharts, 10000);
+    // window.setInterval(update10SecondCharts, 10000);
 
     update1MinuteCharts();
     //functions that update every minute (60,000ms)
-    window.setInterval(update1MinuteCharts, 60000);
+    // window.setInterval(update1MinuteCharts, 60000);
 }
 
 //////////////////////////////////////////////////////////
@@ -22,7 +22,7 @@ async function update1MinuteCharts() {
     //chart 2 data
     transactionsPerBlockData = await getTransactionsPerBlock();
     processedTransactionsPerBlockData = processTransactionsPerBlockData(transactionsPerBlockData);
-    updateChart2(processedTransactionsPerBlockData);
+    // updateChart2(processedTransactionsPerBlockData);
     //chart 3 data
     hashRatePieData = await getHashratePieData(4);
     processedHashRatePieData = processHashRatePieData(hashRatePieData);
@@ -94,50 +94,62 @@ function updateChart1(blockData) {
     updateChart6(blockData, 1);
 }
 function updateChart2(processedTransactionsPerBlockData) {
-    ApexCharts.exec("chart-2", "updateSeries", [{ data: processedTransactionsPerBlockData }], true, true);
-    ApexCharts.exec(
-        "chart-2",
-        "updateOptions",
-        {
-            title: {
-                text: `AVG TRANSACTIONS PER BLOCK`,
-                offsetY: 20,
-                style: {
-                    fontFamily: "Source Sans Pro, sans-serif",
-                    fontWeight: "800",
-                    fontSize: "14px",
-                },
-            },
-            tooltip: {
-                custom: function ({ series, seriesIndex, dataPointIndex, w }) {
-                    dataString = w.globals.initialSeries[0].data[dataPointIndex].y;
-                    dateString = new Date(w.globals.initialSeries[0].data[dataPointIndex].x);
-                    dateString = dateString.toLocaleDateString();
-                    return `
-                    <div id="tooltip">
-                    <div id="tooltip-top">Date: ${dateString}</div>
-                    <div class="tooltip-bottom-candle">Avg Tx/Block: ${Number(dataString).toFixed(0).toLocaleString()}</div>
-                    </div>`;
-                },
-            },
-            yaxis: {
-                type: "numeric",
-                tickAmount: 5,
-                labels: {
-                    style: {
-                        colors: "#f0f0f0",
-                        fontFamily: "Source Code Pro, monospace",
-                    },
-                    formatter: function (val) {
-                        return Number(val.toFixed(0)).toLocaleString();
-                    },
-                    snap: true,
-                },
-            },
-        },
-        true,
-        true
-    );
+    // console.log(processedTransactionsPerBlockData)
+
+    const formattedData = processedTransactionsPerBlockData.map(point => ({
+        x: new Date(point.x).toLocaleDateString('en-US'), // or any format you like
+        y: point.y
+    }));
+    
+    ApexCharts.exec("chart-2", "updateSeries", [
+        { name: "Transactions", data: formattedData }
+    ], true, true);
+
+    // draw processed transactions per block data in chart-2
+
+    // ApexCharts.exec(
+    //     "chart-2",
+    //     "updateOptions",
+    //     {
+    //         title: {
+    //             text: `AVG TRANSACTIONS PER BLOCK`,
+    //             offsetY: 20,
+    //             style: {
+    //                 fontFamily: "Source Sans Pro, sans-serif",
+    //                 fontWeight: "800",
+    //                 fontSize: "14px",
+    //             },
+    //         },
+    //         // tooltip: {
+    //         //     custom: function ({ series, seriesIndex, dataPointIndex, w }) {
+    //         //         dataString = w.globals.initialSeries[0].data[dataPointIndex].y;
+    //         //         dateString = new Date(w.globals.initialSeries[0].data[dataPointIndex].x);
+    //         //         dateString = dateString.toLocaleDateString();
+    //         //         return `
+    //         //         <div id="tooltip">
+    //         //         <div id="tooltip-top">Date: ${dateString}</div>
+    //         //         <div class="tooltip-bottom-candle">Avg Tx/Block: ${Number(dataString).toFixed(0).toLocaleString()}</div>
+    //         //         </div>`;
+    //         //     },
+    //         // },
+    //         // yaxis: {
+    //         //     type: "numeric",
+    //         //     tickAmount: 5,
+    //         //     labels: {
+    //         //         style: {
+    //         //             colors: "#f0f0f0",
+    //         //             fontFamily: "Source Code Pro, monospace",
+    //         //         },
+    //         //         formatter: function (val) {
+    //         //             return Number(val.toFixed(0)).toLocaleString();
+    //         //         },
+    //         //         snap: true,
+    //         //     },
+    //         // },
+    //     },
+    //     true,
+    //     true
+    // );
 }
 function updateChart3(processedHashRatePieData) {
     let sumTotal = processedHashRatePieData[0].reduce((currSum, i) => currSum + i, 0);
@@ -581,7 +593,7 @@ function updateFlexi4(processedExchangeData) {
 
 //To be called once after document is loaded
 function initCharts() {
-    initChart(document.querySelector("#chart-2"), "chart-2", "column");
+    // initChart(document.querySelector("#chart-2"), "chart-2", "column");
     initChart(document.querySelector("#chart-3"), "chart-3", "donut");
     initChart(document.querySelector("#chart-4"), "chart-4", "area");
     initChart(document.querySelector("#chart-8"), "chart-8", "area");
