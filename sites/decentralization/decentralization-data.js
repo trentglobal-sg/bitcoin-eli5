@@ -1,4 +1,4 @@
-const BITNODES_API_URL = "https://bitnodes.io/api/v1";
+const BITNODES_API_URL = "https://expert-parakeet-97w6rv7qjjxr3pjx4-3000.app.github.dev/api/v1";
 
 ////////////////////////////Data Retrieval/////////////////////////////////////
 //get current total nodes in network, blockheight
