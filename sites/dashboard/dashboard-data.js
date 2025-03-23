@@ -18,7 +18,14 @@ async function getActiveNodes() {
     return response.data.results[0].total_nodes;
 }
 //2
+let flag = 0;
 async function getBlockData(blockHeight) {
+    flag += 1;
+    console.log("flag =", flag);
+    if (flag > 1) {
+        console.error("error");
+    }
+    
     let response = await axios.get(API_ENDPOINT_BLOCKCHAININFO + "/rawblock/" + blockHeight);
     return response.data;
 }
@@ -52,18 +59,43 @@ async function getHighLowData() {
 
 //Charts
 //charts-1-6-7
+// async function getLastBlocksData() {
+//     let responseArray = [];
+//     for (i = 0; i < 8; i++) {
+//         let response = await axios.get(API_ENDPOINT_BLOCKCHAININFO + "/rawblock/" + (currentBlockHeight - i), {
+//             headers: {
+//                 //CORS policy
+//                 "Content-Type": null,
+//             },
+//         });
+//         responseArray[i] = response.data;
+//         responseArray[i].height = currentBlockHeight - i;
+//     }
+//     return responseArray;
+// }
+
 async function getLastBlocksData() {
     let responseArray = [];
-    for (i = 0; i < 8; i++) {
-        let response = await axios.get(API_ENDPOINT_BLOCKCHAININFO + "/rawblock/" + (currentBlockHeight - i), {
-            headers: {
-                //CORS policy
-                "Content-Type": null,
-            },
-        });
-        responseArray[i] = response.data;
-        responseArray[i].height = currentBlockHeight - i;
+    let promises = [];
+
+    for (let i = 0; i < 8; i++) {
+        promises.push(
+            axios.get(API_ENDPOINT_BLOCKCHAININFO + "/rawblock/" + (currentBlockHeight - i), {
+                headers: {
+                    //CORS policy
+                    "Content-Type": null,
+                },
+            })
+        );
     }
+
+    let responses = await Promise.all(promises);
+
+    responses.forEach((response, index) => {
+        responseArray[index] = response.data;
+        responseArray[index].height = currentBlockHeight - index;
+    });
+
     return responseArray;
 }
 

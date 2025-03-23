@@ -96,14 +96,14 @@ function updateChart1(blockData) {
 function updateChart2(processedTransactionsPerBlockData) {
     // console.log(processedTransactionsPerBlockData)
 
-    const formattedData = processedTransactionsPerBlockData.map(point => ({
-        x: new Date(point.x).toLocaleDateString('en-US'), // or any format you like
-        y: point.y
-    }));
+    // const formattedData = processedTransactionsPerBlockData.map(point => ({
+    //     x: new Date(point.x).toLocaleDateString('en-US'), // or any format you like
+    //     y: point.y
+    // }));
     
-    ApexCharts.exec("chart-2", "updateSeries", [
-        { name: "Transactions", data: formattedData }
-    ], true, true);
+    // ApexCharts.exec("chart-2", "updateSeries", [
+    //     { name: "Transactions", data: formattedData }
+    // ], true, true);
 
     // draw processed transactions per block data in chart-2
 

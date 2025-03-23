@@ -12,12 +12,12 @@ function initMap() {
     }).setView(midPoint, zoomLevel);
 
     // setup the tile layers
-    L.tileLayer("https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png", {
+    L.tileLayer("https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png?api_key=52089bbf-5a67-450f-8a32-3d0967f64e86", {
         minZoom: 1,
         maxZoom: 16,
         subdomains: "abcd",
         ext: "jpg",
-        accessToken: "pk.eyJ1IjoidGF5Ym9vbnNpYW5nOTAiLCJhIjoiY2t6a21pOXc2NHJ6NTJ3bzBicThtajRpdCJ9.0REMD3Dtjx2avR8W188LhA", //demo access token
+        accessToken: "52089bbf-5a67-450f-8a32-3d0967f64e86", //demo access token
     }).addTo(map);
 
     return map;

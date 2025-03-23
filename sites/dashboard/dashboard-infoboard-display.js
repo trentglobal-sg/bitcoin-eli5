@@ -8,11 +8,11 @@ priceGlobal = 0;
 function initInfoboardpage() {
     update1MinuteFunctions();
     //functions that update every minute (60,000ms)
-    window.setInterval(update1MinuteFunctions, 60000);
+    //window.setInterval(update1MinuteFunctions, 60000);
 
     update1SecondFunctions();
     //functions that update every second (1,000ms)
-    window.setInterval(update1SecondFunctions, 1000);
+    //window.setInterval(update1SecondFunctions, 1000);
 }
 
 //////////////////////////////////////////////////////////
