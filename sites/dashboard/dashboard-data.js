@@ -1,8 +1,8 @@
 const API_ENDPOINT_BLOCKCHAININFO = "https://blockchain.info";
 const API_ENDPOINT_BLOCKCHAININFO2 = "https://api.blockchain.info";
 const API_ENDPOINT_BINANCE = "https://api.binance.com/api/v3";
-const API_ENDPOINT_BITNODES = "https://expert-parakeet-97w6rv7qjjxr3pjx4-3000.app.github.dev/api/v1";
-const API_ENDPOINT_COINGECKO = "https://expert-parakeet-97w6rv7qjjxr3pjx4-3000.app.github.dev/api/coingecko/v3";
+const API_ENDPOINT_BITNODES = "https://bitcoin-eli5-proxy.onrender.com/api/v1";
+const API_ENDPOINT_COINGECKO = "https://bitcoin-eli5-proxy.onrender.com/api/coingecko/v3";
 
 //Global Variables
 let currentBlockHeight = 0;
